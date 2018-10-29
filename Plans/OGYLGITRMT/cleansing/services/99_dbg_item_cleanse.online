@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ServiceConfig version="10.6.1.ga-2016-11-20">
+    <services>
+        <serviceBean configFile="../components/item_cleanse.comp" maxPoolSize="5" minPoolSize="1" name="item_cleanse" parallelismLevel="0">
+            <additionalActions/>
+            <method class="com.ataccama.dqc.online.cfg.SoapOverHttpMethod" location="/item_cleanse" soapAction="item_cleanse" soapVersion="SOAP11">
+                <inputFormat namespace="http://www.example.com/ws" schemaValidation="false">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlInputSection idColumn="int_record_id_level_1" name="in" stepId="in" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlColumn name="in_item_gtin" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_item_long_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_item_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_item_eff_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_key_item_ind" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlColumn name="in_item_base_price" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlColumn name="in_item_base_cost" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlColumn name="in_item_barcode" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocd_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocs_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_item_eol_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_item_short_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_item_sku" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_subject" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                </columns>
+                                <references/>
+                                <sections/>
+                            </xmlInputSection>
+                        </sections>
+                    </rootSection>
+                </inputFormat>
+                <outputFormat namespace="http://www.example.com/ws">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlOutputSection idColumn="int_record_id_level_1" name="out" stepId="out" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlOutputColumn name="out_item_gtin" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_item_long_desc" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_item_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_item_eff_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_key_item_ind" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlOutputColumn name="out_item_base_price" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlOutputColumn name="out_item_base_cost" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlOutputColumn name="out_item_barcode" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocd_item_base_uom" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocs_item_base_uom" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_item_eol_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_item_short_desc" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_item_sku" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="tag_subject" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                </columns>
+                                <sections/>
+                            </xmlOutputSection>
+                        </sections>
+                    </rootSection>
+                </outputFormat>
+            </method>
+        </serviceBean>
+    </services>
+</ServiceConfig>

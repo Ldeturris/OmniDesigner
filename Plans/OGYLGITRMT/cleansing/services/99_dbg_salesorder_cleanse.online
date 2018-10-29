@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ServiceConfig version="10.6.1.ga-2016-11-20">
+    <services>
+        <serviceBean configFile="../components/salesorder_cleanse.comp" maxPoolSize="5" minPoolSize="1" name="salesorder_cleanse" parallelismLevel="0">
+            <additionalActions/>
+            <method class="com.ataccama.dqc.online.cfg.SoapOverHttpMethod" location="/salesorder_cleanse" soapAction="salesorder_cleanse" soapVersion="SOAP11">
+                <inputFormat namespace="http://www.example.com/ws" schemaValidation="false">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlInputSection idColumn="int_record_id_level_1" name="in" stepId="in" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlColumn name="in_cmt_delivery_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_cmt_ship_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_req_st_street" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_req_st_zip" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocd_order_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocs_order_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_st_street" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_st_state" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_req_delivery_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_sales_order_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_ocd_order_priority" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocs_order_priority" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_delivery_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_act_st_city" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_lnk_sold_sales_org" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocd_sales_order_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_ocs_sales_order_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_req_st_city" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_st_zip" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_lnk_ord_cust_id" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_ship_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="in_req_st_state" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_req_st_country" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_act_st_country" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="in_req_ship_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="tag_subject" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                </columns>
+                                <references/>
+                                <sections/>
+                            </xmlInputSection>
+                        </sections>
+                    </rootSection>
+                </inputFormat>
+                <outputFormat namespace="http://www.example.com/ws">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlOutputSection idColumn="int_record_id_level_1" name="out" stepId="out" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlOutputColumn name="out_cmt_delivery_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_cmt_ship_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_req_st_street" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_req_st_zip" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocd_order_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocs_order_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_st_street" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_st_state" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_req_delivery_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_sales_order_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_ocd_order_priority" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocs_order_priority" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_delivery_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_act_st_city" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_lnk_sold_sales_org" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocd_sales_order_type" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_ocs_sales_order_type" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_req_st_city" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_st_zip" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_lnk_ord_cust_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_ship_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="out_req_st_state" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_req_st_country" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_act_st_country" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="out_req_ship_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="tag_subject" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                </columns>
+                                <sections/>
+                            </xmlOutputSection>
+                        </sections>
+                    </rootSection>
+                </outputFormat>
+            </method>
+        </serviceBean>
+    </services>
+</ServiceConfig>

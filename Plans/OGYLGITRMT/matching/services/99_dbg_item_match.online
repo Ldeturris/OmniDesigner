@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ServiceConfig version="10.6.1.ga-2016-11-20">
+    <services>
+        <serviceBean configFile="../components/item_match.comp" maxPoolSize="5" minPoolSize="1" name="item_match" parallelismLevel="0">
+            <additionalActions/>
+            <method class="com.ataccama.dqc.online.cfg.SoapOverHttpMethod" location="/item_match" soapAction="item_match" soapVersion="SOAP11">
+                <inputFormat namespace="http://www.example.com/ws" schemaValidation="false">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlInputSection idColumn="int_record_id_level_1" name="in" stepId="in_item" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlColumn name="cio_item_item_barcode" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_sku" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_eff_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_short_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_long_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_key_item_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_gtin" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_base_cost" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_ocd_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_ocs_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_eol_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_base_price" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_master_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_can_group_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_rule" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality_detail" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="override_instance_id_whitelist" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="override_instance_id_blacklist" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                </columns>
+                                <references/>
+                                <sections/>
+                            </xmlInputSection>
+                        </sections>
+                    </rootSection>
+                </inputFormat>
+                <outputFormat namespace="http://www.example.com/ws">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlOutputSection idColumn="int_record_id_level_1" name="out" stepId="out_item" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlOutputColumn name="eng_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_instance_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_instance_id_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_status_reason" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_created_date" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="eng_source_created_by" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_modified_date" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="eng_source_modified_by" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocd_source_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocs_source_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="override_instance_id_whitelist" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="override_instance_id_blacklist" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="flg_deleted" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlOutputColumn name="master_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_quality_detail" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_can_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_role" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_rule" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_quality" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlOutputColumn name="match_processing_timestamp" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="match_processing_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                </columns>
+                                <sections/>
+                            </xmlOutputSection>
+                        </sections>
+                    </rootSection>
+                </outputFormat>
+            </method>
+        </serviceBean>
+    </services>
+</ServiceConfig>

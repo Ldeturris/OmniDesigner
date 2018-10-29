@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.2.ga-2017-03-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Add output columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add output columns">
+		<properties>
+			<addedColumns>
+				<addedColumn name="out_first_name" type="STRING"/>
+				<addedColumn name="out_middle_name" type="STRING"/>
+				<addedColumn name="out_last_name" type="STRING"/>
+				<addedColumn name="out_display_name" type="STRING"/>
+				<addedColumn name="out_legal_name" type="STRING"/>
+				<addedColumn name="out_company_name" type="STRING"/>
+				<addedColumn name="out_dba_name" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,120,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add output columns"/>
+		<target endpoint="in" step="Add working columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="in_first_name" name="pur_first_name" type="STRING"/>
+				<addedColumn expression="in_middle_name" name="pur_middle_name" type="STRING"/>
+				<addedColumn expression="in_last_name" name="pur_last_name" type="STRING"/>
+				<addedColumn expression="in_display_name" name="pur_display_name" type="STRING"/>
+				<addedColumn expression="in_legal_name" name="pur_legal_name" type="STRING"/>
+				<addedColumn expression="in_company_name" name="pur_company_name" type="STRING"/>
+				<addedColumn expression="in_dba_name" name="pur_dba_name" type="STRING"/>
+				<addedColumn name="tmp_score" type="INTEGER"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns"/>
+		<target endpoint="in" step="Insert cleansing rules here"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Tags) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.scoring.SimpleScoring" disabled="false" id="Create Tags">
+		<properties defaultScoreColumn="tmp_score" defaultExplainColumn="tag_subject">
+			<scoringCases>
+				<scoringCase score="0" description="All name attributes empty" explanation="&quot;ERR_NAME_BLANK&quot;">
+					<condition>out_first_name is null and out_middle_name is null and out_last_name is null
+and out_display_name is null</condition>
+				</scoringCase>
+				<scoringCase score="0" condition="out_last_name is null and out_first_name is not null" description="Last Name Blank" explanation="&quot;ERR_LAST_NAME_BLANK&quot;"/>
+			</scoringCases>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Tags"/>
+		<target endpoint="in" step="Remove working columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Insert cleansing rules here) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Insert cleansing rules here">
+		<properties>
+			<assignments>
+				<assignment column="pur_first_name">
+					<expression>
+iif (pur_first_name is null and pur_display_name is not null
+,	case(
+		wordCount(pur_display_name) is 3,
+		word(pur_display_name,0),
+		wordCount(pur_display_name) is 2,
+		word(pur_display_name,0),
+		null
+	)
+,pur_first_name)</expression>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment column="pur_middle_name">
+					<expression>
+iif (pur_middle_name is null and pur_display_name is not null
+,	case(
+		wordCount(pur_display_name) is 3,
+		word(pur_display_name,1),
+		null
+	)
+,pur_middle_name)</expression>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment column="pur_last_name">
+					<expression>
+iif (pur_last_name is null and pur_display_name is not null
+,	case(
+		wordCount(pur_display_name) is 3,
+		word(pur_display_name,2),
+		wordCount(pur_display_name) is 2,
+		word(pur_display_name,1),
+		wordCount(pur_display_name) is 1,
+		pur_display_name,
+		null
+	)
+,pur_last_name)</expression>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment column="pur_display_name">
+					<expression>
+iif(pur_display_name is null and
+	pur_first_name is not null and pur_last_name is not null
+	, squeezeSpaces(pur_first_name + &quot; &quot; + pur_middle_name + &quot; &quot;  + pur_last_name)
+	,pur_display_name
+)
+
+</expression>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_first_name" column="out_first_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_middle_name" column="out_middle_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_last_name" column="out_last_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_display_name" column="out_display_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_legal_name" column="out_legal_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_company_name" column="out_company_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="pur_dba_name" column="out_dba_name">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Insert cleansing rules here"/>
+		<target endpoint="in" step="Create Tags"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Remove working columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="eng_id"/>
+				<columnRef name="eng_source_name"/>
+				<columnRef name="eng_source_instance_id"/>
+				<columnRef name="eng_status"/>
+				<columnRef name="eng_status_reason"/>
+				<columnRef name="eng_source_created_date"/>
+				<columnRef name="eng_source_created_by"/>
+				<columnRef name="eng_source_modified_date"/>
+				<columnRef name="eng_source_modified_by"/>
+				<columnRef name="eng_ocd_source_status_code"/>
+				<columnRef name="eng_ocs_source_status_code"/>
+				<columnRef name="tmp_score"/>
+				<columnRef name="pur_first_name"/>
+				<columnRef name="pur_middle_name"/>
+				<columnRef name="pur_last_name"/>
+				<columnRef name="pur_display_name"/>
+				<columnRef name="pur_legal_name"/>
+				<columnRef name="pur_company_name"/>
+				<columnRef name="pur_dba_name"/>
+				<columnRef name="in_first_name"/>
+				<columnRef name="in_middle_name"/>
+				<columnRef name="in_last_name"/>
+				<columnRef name="in_display_name"/>
+				<columnRef name="in_legal_name"/>
+				<columnRef name="in_company_name"/>
+				<columnRef name="in_dba_name"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Remove working columns"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG">
+					<comm:comment>DQ required attribute (always present)</comm:comment>
+				</columnDef>
+				<columnDef name="eng_id" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_name" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_instance_id" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_instance_id_name" type="STRING">
+					<comm:comment>Engine added attribute (do not remove)</comm:comment>
+				</columnDef>
+				<columnDef name="eng_status" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_status_reason" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_created_date" type="DATETIME">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_created_by" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_modified_date" type="DATETIME">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_source_modified_by" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_ocd_source_status_code" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="eng_ocs_source_status_code" type="STRING">
+					<comm:comment>Engine added attribute (always present)
+					</comm:comment>
+				</columnDef>
+				<columnDef name="tag_subject" type="STRING">
+					<comm:comment>Subject level tag attribute</comm:comment>
+				</columnDef>
+				<columnDef name="in_first_name" type="STRING"/>
+				<columnDef name="in_middle_name" type="STRING"/>
+				<columnDef name="in_last_name" type="STRING"/>
+				<columnDef name="in_display_name" type="STRING"/>
+				<columnDef name="in_legal_name" type="STRING"/>
+				<columnDef name="in_company_name" type="STRING"/>
+				<columnDef name="in_dba_name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,48,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in"/>
+		<target endpoint="in" step="Add output columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,480,-1,-1"/>
+	</step>
+
+</purity-config>

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<purity-config xmlns:def="http://www.ataccama.com/purity/defaults" version="10.6.1.ga-2016-11-20">
+    <references/>
+    <component-mappings>
+        <propertyMappings>
+            <property insert="false" mappedTo="Match item/processingMode" name="processingMode">
+                <def:default-value>
+                    <processingMode>NONINCREMENTAL</processingMode>
+                </def:default-value>
+            </property>
+        </propertyMappings>
+    </component-mappings>
+    <!-- (in_item) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_item" mode="NORMAL">
+        <properties>
+            <columns>
+                <columnDef name="int_record_id_level_1" type="LONG"/>
+                <columnDef name="eng_id" type="STRING"/>
+                <columnDef name="eng_source_name" type="STRING"/>
+                <columnDef name="eng_source_instance_id" type="STRING"/>
+                <columnDef name="eng_source_instance_id_name" type="STRING"/>
+                <columnDef name="eng_status" type="STRING"/>
+                <columnDef name="eng_status_reason" type="STRING"/>
+                <columnDef name="eng_source_created_date" type="DATETIME"/>
+                <columnDef name="eng_source_created_by" type="STRING"/>
+                <columnDef name="eng_source_modified_date" type="DATETIME"/>
+                <columnDef name="eng_source_modified_by" type="STRING"/>
+                <columnDef name="eng_ocd_source_status_code" type="STRING"/>
+                <columnDef name="eng_ocs_source_status_code" type="STRING"/>
+                <columnDef name="eng_master_id" type="STRING"/>
+                <columnDef name="eng_match_can_group_id" type="STRING"/>
+                <columnDef name="eng_match_quality" type="STRING"/>
+                <columnDef name="eng_match_quality_detail" type="STRING"/>
+                <columnDef name="eng_match_rule" type="STRING"/>
+                <columnDef name="eng_match_role" type="STRING"/>
+                <columnDef name="override_instance_id_whitelist" type="STRING"/>
+                <columnDef name="override_instance_id_blacklist" type="STRING"/>
+                <columnDef name="cio_item_item_barcode" type="STRING"/>
+                <columnDef name="cio_item_item_name" type="STRING"/>
+                <columnDef name="cio_item_item_sku" type="STRING"/>
+                <columnDef name="cio_item_item_eff_dt" type="STRING"/>
+                <columnDef name="cio_item_item_short_desc" type="STRING"/>
+                <columnDef name="cio_item_item_long_desc" type="STRING"/>
+                <columnDef name="cio_item_key_item_ind" type="STRING"/>
+                <columnDef name="cio_item_item_gtin" type="STRING"/>
+                <columnDef name="cio_item_item_base_cost" type="STRING"/>
+                <columnDef name="cio_item_ocd_item_base_uom" type="STRING"/>
+                <columnDef name="cio_item_ocs_item_base_uom" type="STRING"/>
+                <columnDef name="cio_item_item_eol_dt" type="STRING"/>
+                <columnDef name="cio_item_item_base_price" type="STRING"/>
+                <columnDef name="tag_item" type="STRING"/>
+            </columns>
+            <shadowColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="in_item"/>
+        <target endpoint="in" step="Condition [Do not remove]"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Condition [Do not remove]) -->
+    <step className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="Condition [Do not remove]" mode="NORMAL">
+        <properties condition="true"/>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out_false" step="Condition [Do not remove]"/>
+        <target endpoint="in_a" step="Union [Do not remove]"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out_true" step="Condition [Do not remove]"/>
+        <target endpoint="in_b" step="Union [Do not remove]"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Union [Do not remove]) -->
+    <step className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [Do not remove]" mode="NORMAL">
+        <properties>
+            <columnMappings>
+                <columnMapping dest="int_record_id_level_1" in_a="int_record_id_level_1" in_b="int_record_id_level_1"/>
+                <columnMapping dest="eng_id" in_a="eng_id" in_b="eng_id"/>
+                <columnMapping dest="eng_source_name" in_a="eng_source_name" in_b="eng_source_name"/>
+                <columnMapping dest="eng_source_instance_id" in_a="eng_source_instance_id" in_b="eng_source_instance_id"/>
+                <columnMapping dest="eng_source_instance_id_name" in_a="eng_source_instance_id_name" in_b="eng_source_instance_id_name"/>
+                <columnMapping dest="eng_status" in_a="eng_status" in_b="eng_status"/>
+                <columnMapping dest="eng_status_reason" in_a="eng_status_reason" in_b="eng_status_reason"/>
+                <columnMapping dest="eng_source_created_date" in_a="eng_source_created_date" in_b="eng_source_created_date"/>
+                <columnMapping dest="eng_source_created_by" in_a="eng_source_created_by" in_b="eng_source_created_by"/>
+                <columnMapping dest="eng_source_modified_date" in_a="eng_source_modified_date" in_b="eng_source_modified_date"/>
+                <columnMapping dest="eng_source_modified_by" in_a="eng_source_modified_by" in_b="eng_source_modified_by"/>
+                <columnMapping dest="eng_ocd_source_status_code" in_a="eng_ocd_source_status_code" in_b="eng_ocd_source_status_code"/>
+                <columnMapping dest="eng_ocs_source_status_code" in_a="eng_ocs_source_status_code" in_b="eng_ocs_source_status_code"/>
+                <columnMapping dest="eng_master_id" in_a="eng_master_id" in_b="eng_master_id"/>
+                <columnMapping dest="eng_match_can_group_id" in_a="eng_match_can_group_id" in_b="eng_match_can_group_id"/>
+                <columnMapping dest="eng_match_quality" in_a="eng_match_quality" in_b="eng_match_quality"/>
+                <columnMapping dest="eng_match_quality_detail" in_a="eng_match_quality_detail" in_b="eng_match_quality_detail"/>
+                <columnMapping dest="eng_match_rule" in_a="eng_match_rule" in_b="eng_match_rule"/>
+                <columnMapping dest="eng_match_role" in_a="eng_match_role" in_b="eng_match_role"/>
+                <columnMapping dest="override_instance_id_whitelist" in_a="override_instance_id_whitelist" in_b="override_instance_id_whitelist"/>
+                <columnMapping dest="override_instance_id_blacklist" in_a="override_instance_id_blacklist" in_b="override_instance_id_blacklist"/>
+                <columnMapping dest="cio_item_item_barcode" in_a="cio_item_item_barcode" in_b="cio_item_item_barcode"/>
+                <columnMapping dest="cio_item_item_name" in_a="cio_item_item_name" in_b="cio_item_item_name"/>
+                <columnMapping dest="cio_item_item_sku" in_a="cio_item_item_sku" in_b="cio_item_item_sku"/>
+                <columnMapping dest="cio_item_item_eff_dt" in_a="cio_item_item_eff_dt" in_b="cio_item_item_eff_dt"/>
+                <columnMapping dest="cio_item_item_short_desc" in_a="cio_item_item_short_desc" in_b="cio_item_item_short_desc"/>
+                <columnMapping dest="cio_item_item_long_desc" in_a="cio_item_item_long_desc" in_b="cio_item_item_long_desc"/>
+                <columnMapping dest="cio_item_key_item_ind" in_a="cio_item_key_item_ind" in_b="cio_item_key_item_ind"/>
+                <columnMapping dest="cio_item_item_gtin" in_a="cio_item_item_gtin" in_b="cio_item_item_gtin"/>
+                <columnMapping dest="cio_item_item_base_cost" in_a="cio_item_item_base_cost" in_b="cio_item_item_base_cost"/>
+                <columnMapping dest="cio_item_ocd_item_base_uom" in_a="cio_item_ocd_item_base_uom" in_b="cio_item_ocd_item_base_uom"/>
+                <columnMapping dest="cio_item_ocs_item_base_uom" in_a="cio_item_ocs_item_base_uom" in_b="cio_item_ocs_item_base_uom"/>
+                <columnMapping dest="cio_item_item_eol_dt" in_a="cio_item_item_eol_dt" in_b="cio_item_item_eol_dt"/>
+                <columnMapping dest="cio_item_item_base_price" in_a="cio_item_item_base_price" in_b="cio_item_item_base_price"/>
+                <columnMapping dest="tag_item" in_a="tag_item" in_b="tag_item"/>
+            </columnMappings>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Union [Do not remove]"/>
+        <target endpoint="in" step="Create Matching output columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create Matching output columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Matching output columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn expression="eng_status is 'INACTIVE'" name="flg_deleted" type="BOOLEAN"/>
+                <addedColumn name="master_id" type="STRING"/>
+                <addedColumn name="match_quality_detail" type="STRING"/>
+                <addedColumn name="match_can_id" type="STRING"/>
+                <addedColumn name="match_role" type="STRING"/>
+                <addedColumn name="match_rule" type="STRING"/>
+                <addedColumn name="match_quality" type="FLOAT"/>
+                <addedColumn name="match_processing_timestamp" type="DATETIME"/>
+                <addedColumn name="match_processing_status" type="STRING"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create Matching output columns"/>
+        <target endpoint="in" step="Create mat_columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create mat_columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create mat_columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn expression="cio_item_item_barcode" name="mat_item_item_barcode" type="STRING"/>
+                <addedColumn expression="cio_item_item_name" name="mat_item_item_name" type="STRING"/>
+                <addedColumn expression="cio_item_item_sku" name="mat_item_item_sku" type="STRING"/>
+                <addedColumn expression="cio_item_item_eff_dt" name="mat_item_item_eff_dt" type="STRING"/>
+                <addedColumn expression="cio_item_item_short_desc" name="mat_item_item_short_desc" type="STRING"/>
+                <addedColumn expression="cio_item_item_long_desc" name="mat_item_item_long_desc" type="STRING"/>
+                <addedColumn expression="cio_item_key_item_ind" name="mat_item_key_item_ind" type="STRING"/>
+                <addedColumn expression="cio_item_item_gtin" name="mat_item_item_gtin" type="STRING"/>
+                <addedColumn expression="cio_item_item_base_cost" name="mat_item_item_base_cost" type="STRING"/>
+                <addedColumn expression="cio_item_ocd_item_base_uom" name="mat_item_ocd_item_base_uom" type="STRING"/>
+                <addedColumn expression="cio_item_ocs_item_base_uom" name="mat_item_ocs_item_base_uom" type="STRING"/>
+                <addedColumn expression="cio_item_item_eol_dt" name="mat_item_item_eol_dt" type="STRING"/>
+                <addedColumn expression="cio_item_item_base_price" name="mat_item_item_base_price" type="STRING"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create mat_columns"/>
+        <target endpoint="in" step="Create mat_ values"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create mat_ values) -->
+    <step className="com.ataccama.dqc.tasks.clean.MatchingValues" disabled="false" id="Create mat_ values" mode="NORMAL">
+        <properties>
+            <columns>
+                <matchingColumn expression="mat_item_item_barcode" name="mat_item_item_barcode">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_name" name="mat_item_item_name">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_sku" name="mat_item_item_sku">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_eff_dt" name="mat_item_item_eff_dt">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_short_desc" name="mat_item_item_short_desc">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_long_desc" name="mat_item_item_long_desc">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_key_item_ind" name="mat_item_key_item_ind">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_gtin" name="mat_item_item_gtin">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_base_cost" name="mat_item_item_base_cost">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_ocd_item_base_uom" name="mat_item_ocd_item_base_uom">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_ocs_item_base_uom" name="mat_item_ocs_item_base_uom">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_eol_dt" name="mat_item_item_eol_dt">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+                <matchingColumn expression="mat_item_item_base_price" name="mat_item_item_base_price">
+                    <generator doRemoveDia="true" doRemoveRepeatedChars="false" doSqueezeWS="true" doUpperCase="true"/>
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </matchingColumn>
+            </columns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create mat_ values"/>
+        <target endpoint="in" step="Match item"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Match item) -->
+    <step className="com.ataccama.dqc.unify.ExtendedUnify" disabled="false" id="Match item" mode="NORMAL">
+        <properties dataSource="repo" deleteFlagColumn="flg_deleted" directUpdate="false" exclusiveMode="true" mapAllColumns="false" minimumIdToAssign="1" primaryKeyColumn="eng_id" processingMode="NONINCREMENTAL" processingStatusColumn="match_processing_status" processingTimestampColumn="match_processing_timestamp" readOnly="false" repositoryName="repos_item" timestampColumn="eng_source_modified_date">
+            <operations>
+                <iOperationConfig candidateIdColumn="match_can_id" class="com.ataccama.dqc.unify.config.UnifyOperation" defaultMaxIterations="250" id="Match item" matchQualityColumn="match_quality" matchingIdColumn="master_id" outputDiscardedIds="NONE" ruleNameColumn="match_rule" unificationRoleColumn="match_role" useCenterAsSurvivor="true">
+                    <defaultCenterSelectionRule>
+                        <orderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                    </defaultCenterSelectionRule>
+                    <defaultMatchingRules/>
+                    <defaultMergeSurvivorSelectionRule/>
+                    <groups>
+                        <iGroupingMethod class="com.ataccama.dqc.tasks.identify.grouping.Union" matchNearest="true">
+                            <centerSelectionRule/>
+                            <keys>
+                                <unionKey noEmptyComponent="true">
+                                    <components>
+                                        <unionKeyComponent behaveAsSet="true" expression="trim(eng_id+&quot; &quot;+override_instance_id_whitelist)" separator=" "/>
+                                    </components>
+                                </unionKey>
+                            </keys>
+                            <matchingRules>
+                                <matchingRule maximumAllowed="0.0" name="01_MATCH_OVERRIDE">
+                                    <expression>measures.SC_POSITIVE_OVERRIDE
++
+measures.SC_NEGATIVE_OVERRIDE
+
+&gt;= 1000</expression>
+                                    <tests/>
+                                </matchingRule>
+                            </matchingRules>
+                            <mergeSurvivorSelectionRule/>
+                        </iGroupingMethod>
+                    </groups>
+                    <matchingMeasures>
+                        <matchingMeasure name="SC_POSITIVE_OVERRIDE">
+                            <expression>case(
+	//If master instance ID is in slave LINK list
+	set.contains(center.override_instance_id_whitelist, slave.eng_id, " "),
+	10000,
+	0
+)</expression>
+                        </matchingMeasure>
+                        <matchingMeasure name="SC_NEGATIVE_OVERRIDE">
+                            <expression>case(
+	//If master instance ID is in slave LINK list
+	set.contains(center.override_instance_id_blacklist, slave.eng_id, " "),
+	-10000,
+	0
+)</expression>
+                        </matchingMeasure>
+                    </matchingMeasures>
+                </iOperationConfig>
+            </operations>
+            <outputStrategy exportDiscarded="false" exportUnchanged="true"/>
+            <repositoryColumns>
+                <columnRef name="master_id"/>
+                <columnRef name="match_can_id"/>
+                <columnRef name="match_role"/>
+                <columnRef name="match_rule"/>
+                <columnRef name="match_quality"/>
+                <columnRef name="eng_id"/>
+                <columnRef name="override_instance_id_whitelist"/>
+                <columnRef name="override_instance_id_blacklist"/>
+                <columnRef name="match_quality_detail"/>
+                <columnRef name="match_processing_timestamp"/>
+                <columnRef name="match_processing_status"/>
+                <columnRef name="mat_item_item_barcode"/>
+                <columnRef name="mat_item_item_name"/>
+                <columnRef name="mat_item_item_sku"/>
+                <columnRef name="mat_item_item_eff_dt"/>
+                <columnRef name="mat_item_item_short_desc"/>
+                <columnRef name="mat_item_item_long_desc"/>
+                <columnRef name="mat_item_key_item_ind"/>
+                <columnRef name="mat_item_item_gtin"/>
+                <columnRef name="mat_item_item_base_cost"/>
+                <columnRef name="mat_item_ocd_item_base_uom"/>
+                <columnRef name="mat_item_ocs_item_base_uom"/>
+                <columnRef name="mat_item_item_eol_dt"/>
+                <columnRef name="mat_item_item_base_price"/>
+            </repositoryColumns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Match item"/>
+        <target endpoint="in" step="Remove working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Remove working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns" mode="NORMAL">
+        <properties>
+            <addedColumns/>
+            <removedColumns>
+                <columnRef name="mat_item_item_barcode"/>
+                <columnRef name="mat_item_item_name"/>
+                <columnRef name="mat_item_item_sku"/>
+                <columnRef name="mat_item_item_eff_dt"/>
+                <columnRef name="mat_item_item_short_desc"/>
+                <columnRef name="mat_item_item_long_desc"/>
+                <columnRef name="mat_item_key_item_ind"/>
+                <columnRef name="mat_item_item_gtin"/>
+                <columnRef name="mat_item_item_base_cost"/>
+                <columnRef name="mat_item_ocd_item_base_uom"/>
+                <columnRef name="mat_item_ocs_item_base_uom"/>
+                <columnRef name="mat_item_item_eol_dt"/>
+                <columnRef name="mat_item_item_base_price"/>
+                <columnRef name="cio_item_item_barcode"/>
+                <columnRef name="cio_item_item_name"/>
+                <columnRef name="cio_item_item_sku"/>
+                <columnRef name="cio_item_item_eff_dt"/>
+                <columnRef name="cio_item_item_short_desc"/>
+                <columnRef name="cio_item_item_long_desc"/>
+                <columnRef name="cio_item_key_item_ind"/>
+                <columnRef name="cio_item_item_gtin"/>
+                <columnRef name="cio_item_item_base_cost"/>
+                <columnRef name="cio_item_ocd_item_base_uom"/>
+                <columnRef name="cio_item_ocs_item_base_uom"/>
+                <columnRef name="cio_item_item_eol_dt"/>
+                <columnRef name="cio_item_item_base_price"/>
+                <columnRef name="tag_item"/>
+            </removedColumns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Remove working columns"/>
+        <target endpoint="in" step="out_item"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (out_item) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_item" mode="NORMAL">
+        <properties>
+            <requiredColumns/>
+        </properties>
+    </step>
+</purity-config>

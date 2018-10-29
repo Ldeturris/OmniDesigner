@@ -1,0 +1,2505 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" xmlns:def="http://www.ataccama.com/purity/defaults" version="10.6.2.ga-2017-03-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings>
+			<property name="processingMode" insert="false" mappedTo="Match customer/processingMode">
+				<def:default-value>
+					<processingMode>NONINCREMENTAL</processingMode>
+				</def:default-value>
+			</property>
+		</propertyMappings>
+	</component-mappings>
+
+<!-- (Alter Format) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Alter Format">
+		<properties>
+			<addedColumns>
+				<addedColumn name="count_can_id" type="INTEGER"/>
+				<addedColumn name="count_master_id" type="INTEGER"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,744,48,48"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Alter Format"/>
+		<target endpoint="in" step="Match customer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create Matching output columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create Matching output columns">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="eng_status is &#39;INACTIVE&#39;" name="flg_deleted" type="BOOLEAN"/>
+				<addedColumn name="master_id" type="STRING"/>
+				<addedColumn name="match_quality_detail" type="STRING"/>
+				<addedColumn name="match_can_id" type="STRING"/>
+				<addedColumn name="match_role" type="STRING"/>
+				<addedColumn name="match_rule" type="STRING"/>
+				<addedColumn name="match_quality" type="FLOAT"/>
+				<addedColumn name="match_processing_timestamp" type="DATETIME"/>
+				<addedColumn name="match_processing_status" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,528,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create Matching output columns"/>
+		<target endpoint="in" step="Create mat_columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create mat_ values) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.clean.MatchingValues" disabled="false" id="Create mat_ values">
+		<properties>
+			<columns>
+				<matchingColumn expression="mat_customer_legal_name" name="mat_customer_legal_name">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_customer_tax_exempt_num" name="mat_customer_tax_exempt_num">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_date_of_birth">
+					<expression>// remove most likely invalid DoBs
+case (
+	mat_customer_date_of_birth in {&#39;1900-01-01&#39;}
+	,null
+	
+	,mat_customer_date_of_birth
+
+)</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_customer_tax_id" name="mat_customer_tax_id">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_soc_sec_num">
+					<expression>
+// only want the numbers
+trashNonDigits(mat_customer_soc_sec_num)</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_display_name">
+					<expression>
+squeezeSpaces(replace(mat_customer_display_name,&quot;.&quot;,&quot;&quot;))</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_customer_company_name" name="mat_customer_company_name">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_last_name">
+					<expression>
+squeezeSpaces(replace(mat_customer_last_name,&quot;.&quot;,&quot;&quot;))</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_first_name">
+					<expression>
+squeezeSpaces(replace(mat_customer_first_name,&quot;.&quot;,&quot;&quot;))</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn name="mat_customer_middle_name">
+					<expression>
+squeezeSpaces(replace(mat_customer_middle_name,&quot;.&quot;,&quot;&quot;))</expression>
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_address_ocd_address_type" name="mat_address_ocd_address_type">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_address_postal_code" name="mat_address_postal_code">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_address_street_address1" name="mat_address_street_address1">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_custdemographics_ocd_gender" name="mat_custdemographics_ocd_gender">
+					<generator doRemoveDia="true" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_email_addresses" name="mat_email_addresses">
+					<generator doRemoveDia="false" doUpperCase="true" doSqueezeWS="true" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_phones_office" name="mat_phones_office">
+					<generator doRemoveDia="false" doUpperCase="false" doSqueezeWS="false" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_phones_mobile" name="mat_phones_mobile">
+					<generator doRemoveDia="false" doUpperCase="false" doSqueezeWS="false" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+				<matchingColumn expression="mat_phones_home" name="mat_phones_home">
+					<generator doRemoveDia="false" doUpperCase="false" doSqueezeWS="false" doRemoveRepeatedChars="false"/>
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</matchingColumn>
+			</columns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create mat_ values"/>
+		<target endpoint="in" step="Alter Format"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create mat_columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Create mat_columns">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="cio_customer_legal_name" name="mat_customer_legal_name" type="STRING"/>
+				<addedColumn expression="cio_customer_tax_exempt_num" name="mat_customer_tax_exempt_num" type="STRING"/>
+				<addedColumn expression="cio_customer_date_of_birth" name="mat_customer_date_of_birth" type="STRING"/>
+				<addedColumn expression="cio_customer_tax_id" name="mat_customer_tax_id" type="STRING"/>
+				<addedColumn expression="cio_customer_soc_sec_num" name="mat_customer_soc_sec_num" type="STRING"/>
+				<addedColumn expression="cio_customer_company_name" name="mat_customer_company_name" type="STRING"/>
+				<addedColumn expression="cio_customer_first_name" name="mat_customer_first_name" type="STRING"/>
+				<addedColumn expression="cio_customer_middle_name" name="mat_customer_middle_name" type="STRING"/>
+				<addedColumn expression="cio_customer_last_name" name="mat_customer_last_name" type="STRING"/>
+				<addedColumn expression="cio_customer_display_name" name="mat_customer_display_name" type="STRING"/>
+				<addedColumn expression="cio_address_ocd_address_type" name="mat_address_ocd_address_type" type="STRING"/>
+				<addedColumn expression="cio_address_postal_code" name="mat_address_postal_code" type="STRING"/>
+				<addedColumn expression="squeezeSpaces(cio_address_street_address1 + &quot; &quot; + cio_address_street_address1)" name="mat_address_street_address1" type="STRING"/>
+				<addedColumn expression="cio_custdemographics_ocd_gender" name="mat_custdemographics_ocd_gender" type="STRING"/>
+				<addedColumn expression="email_addresses" name="mat_email_addresses" type="STRING"/>
+				<addedColumn expression="phones_office" name="mat_phones_office" type="STRING"/>
+				<addedColumn expression="phones_mobile" name="mat_phones_mobile" type="STRING"/>
+				<addedColumn expression="phones_home" name="mat_phones_home" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,600,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Create mat_columns"/>
+		<target endpoint="in" step="Create mat_ values"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup account">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+								<attributeCfgRepr expression="best.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+								<attributeCfgRepr expression="best.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+								<attributeCfgRepr expression="best.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+								<attributeCfgRepr expression="best.cio_account_account_name" name="cio_account_account_name"/>
+								<attributeCfgRepr expression="best.cio_account_credit_limit" name="cio_account_credit_limit"/>
+								<attributeCfgRepr expression="best.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+								<attributeCfgRepr expression="best.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+								<attributeCfgRepr expression="best.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+								<attributeCfgRepr expression="best.cio_account_credit_terms" name="cio_account_credit_terms"/>
+								<attributeCfgRepr expression="best.tag_account" name="tag_account"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup account"/>
+		<target endpoint="in_right" step="Join in account"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup accountteam">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_team_end_dt" name="cio_accountteam_acct_team_end_dt"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_team_start_dt" name="cio_accountteam_acct_team_start_dt"/>
+								<attributeCfgRepr expression="best.cio_accountteam_direct_sales_rep" name="cio_accountteam_direct_sales_rep"/>
+								<attributeCfgRepr expression="best.cio_accountteam_credit_rep" name="cio_accountteam_credit_rep"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_executive" name="cio_accountteam_acct_executive"/>
+								<attributeCfgRepr expression="best.cio_accountteam_current_ind" name="cio_accountteam_current_ind"/>
+								<attributeCfgRepr expression="best.tag_accountteam" name="tag_accountteam"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup accountteam"/>
+		<target endpoint="in_right" step="Join in accountteam"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup address">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.tag_address" name="tag_address"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>common attributes</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_address_time_zone" name="cio_address_time_zone"/>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_type" name="cio_address_ocd_address_type"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_type" name="cio_address_ocs_address_type"/>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_status" name="cio_address_ocd_address_status"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_status" name="cio_address_ocs_address_status"/>
+								<attributeCfgRepr expression="best.cio_address_city" name="cio_address_city"/>
+								<attributeCfgRepr expression="best.cio_address_postal_code" name="cio_address_postal_code"/>
+								<attributeCfgRepr expression="best.cio_address_state_territory" name="cio_address_state_territory"/>
+								<attributeCfgRepr expression="best.cio_address_attn_to_contact" name="cio_address_attn_to_contact"/>
+								<attributeCfgRepr expression="best.cio_address_street_address1" name="cio_address_street_address1"/>
+								<attributeCfgRepr expression="best.cio_address_street_address2" name="cio_address_street_address2"/>
+								<attributeCfgRepr expression="best.cio_address_latitude" name="cio_address_latitude"/>
+								<attributeCfgRepr expression="best.cio_address_primary_ind" name="cio_address_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_address_longitude" name="cio_address_longitude"/>
+								<attributeCfgRepr expression="best.cio_address_country" name="cio_address_country"/>
+								<attributeCfgRepr expression="best.cio_address_county" name="cio_address_county"/>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_geo_area" name="cio_address_ocd_address_geo_area"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_geo_area" name="cio_address_ocs_address_geo_area"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>// order first where we have an address line
+case (
+	squeezeSpaces(cio_address_street_address1 + &quot; &quot; + cio_address_street_address2) is not null
+	,10
+	
+	,0
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>case (
+	// favor business addresses that are primary
+	cio_address_ocd_address_type in {&#39;B&#39;,&#39;Business&#39;} 
+	and cio_address_primary_ind=&#39;true&#39;
+	,10
+
+	,cio_address_ocd_address_type in {&#39;ShipTo&#39;,&#39;ST&#39;,&#39;Ship-to&#39;}
+	and cio_address_primary_ind=&#39;true&#39;
+	,9
+
+	,cio_address_ocd_address_type in {&#39;BillTo&#39;,&#39;BT&#39;,&#39;Bill-to&#39;}
+	and cio_address_primary_ind=&#39;true&#39;
+	,8
+
+	,cio_address_ocd_address_type in {&#39;B&#39;,&#39;Business&#39;} 
+	,5
+
+	,cio_address_ocd_address_type in {&#39;ShipTo&#39;,&#39;ST&#39;,&#39;Ship-to&#39;}
+	,4
+
+	,cio_address_ocd_address_type in {&#39;BillTo&#39;,&#39;BT&#39;,&#39;Bill-to&#39;}
+	,3
+	
+	,0
+
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>//order by active, order descending so we get active/current address
+case(
+
+	// addresses without errors or warnings
+	cio_address_ocd_address_status in {&#39;A&#39;,&#39;Current&#39;} 
+		and indexOf(tag_address,&#39;ERR_&#39;) is null and indexOf(tag_address,&#39;WRN_&#39;) is null
+	,10
+
+	// addresses without warnings
+	,cio_address_ocd_address_status in {&#39;A&#39;,&#39;Current&#39;} 
+		and indexOf(tag_address,&#39;WRN_&#39;) is null
+	,8
+
+	// any active address
+	,cio_address_ocd_address_status in {&#39;A&#39;,&#39;Current&#39;} 
+	,6
+	
+	,0
+	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>address attributes</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="888,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup address"/>
+		<target endpoint="in_right" step="Join in address"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup contact">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.cio_contact_first_name" name="cio_contact_first_name"/>
+								<attributeCfgRepr expression="best.cio_contact_title" name="cio_contact_title"/>
+								<attributeCfgRepr expression="best.cio_contact_full_name" name="cio_contact_full_name"/>
+								<attributeCfgRepr expression="best.cio_contact_middle_name" name="cio_contact_middle_name"/>
+								<attributeCfgRepr expression="best.cio_contact_last_name" name="cio_contact_last_name"/>
+								<attributeCfgRepr expression="best.cio_contact_primary_ind" name="cio_contact_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_contact_ocd_contact_type" name="cio_contact_ocd_contact_type"/>
+								<attributeCfgRepr expression="best.cio_contact_ocs_contact_type" name="cio_contact_ocs_contact_type"/>
+								<attributeCfgRepr expression="best.tag_contact" name="tag_contact"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="744,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup contact"/>
+		<target endpoint="in_right" step="Join in contact"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup custdemographics">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_current_ind" name="cio_custdemographics_current_ind"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_ethnicity" name="cio_custdemographics_ocd_ethnicity"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_ethnicity" name="cio_custdemographics_ocs_ethnicity"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_gender" name="cio_custdemographics_ocd_gender"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_gender" name="cio_custdemographics_ocs_gender"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_marital_status" name="cio_custdemographics_ocd_marital_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_marital_status" name="cio_custdemographics_ocs_marital_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_employment_status" name="cio_custdemographics_ocd_employment_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_employment_status" name="cio_custdemographics_ocs_employment_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_age_generation" name="cio_custdemographics_ocd_age_generation"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_age_generation" name="cio_custdemographics_ocs_age_generation"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_cust_demo_eff_dt" name="cio_custdemographics_cust_demo_eff_dt"/>
+								<attributeCfgRepr expression="best.tag_custdemographics" name="tag_custdemographics"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>case(
+
+	cio_custdemographics_current_ind=&#39;true&#39;
+	,1
+	
+	,0
+
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup custdemographics"/>
+		<target endpoint="in_right" step="Join in custdemographics"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup email">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr name="email_addresses">
+									<expression>// concat only the email addresses without an ERR tag
+concatenateif(indexOf(tag_email,&#39;ERR_&#39;) is null,cio_email_email_address,&quot;!!!&quot;)</expression>
+								</attributeCfgRepr>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup email"/>
+		<target endpoint="in_right" step="Join in email"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Dedup phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Dedup phone">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="nvl(toString(int_record_id_level_1),eng_parent_id)"/>
+					<keyComponent expression="cio_phone_ocd_comm_status"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.int_record_id_level_1" name="int_record_id_level_1"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.tag_phone" name="tag_phone"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+						</attributeSetCfg>
+						<attributeSetCfg acceptanceCondition="cio_phone_ocd_phone_type in {&#39;O&#39;,&#39;Of&#39;}">
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr name="phones_office">
+									<expression>// only phone numbers without errors and strip off the ()- junk
+concatenateif(indexOf(tag_phone,&#39;ERR_&#39;) is null
+	,replace(transliterate(cio_phone_phone_number,&quot;()-&quot;,&quot;   &quot;),&quot; &quot;,&quot;&quot;)
+	,&quot;!!!&quot;
+	,10000)</expression>
+								</attributeCfgRepr>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>office phones</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg acceptanceCondition="cio_phone_ocd_phone_type in {&#39;C&#39;,&#39;Mo&#39;}">
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr name="phones_mobile">
+									<expression>// only phone numbers without errors and strip off the ()- junk
+concatenateif(indexOf(tag_phone,&#39;ERR_&#39;) is null
+	,replace(transliterate(cio_phone_phone_number,&quot;()-&quot;,&quot;   &quot;),&quot; &quot;,&quot;&quot;)
+	,&quot;!!!&quot;
+	,10000)</expression>
+								</attributeCfgRepr>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>mobile phones</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg acceptanceCondition="cio_phone_ocd_phone_type in {&#39;H&#39;,&#39;Ho&#39;}">
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr name="phones_home">
+									<expression>// only phone numbers without errors and strip off the ()- junk
+concatenateif(indexOf(tag_phone,&#39;ERR_&#39;) is null
+	,replace(transliterate(cio_phone_phone_number,&quot;()-&quot;,&quot;   &quot;),&quot; &quot;,&quot;&quot;)
+	,&quot;!!!&quot;
+	,10000)</expression>
+								</attributeCfgRepr>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>home phones</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Dedup phone"/>
+		<target endpoint="in_right" step="Join in phone"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in account">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_right.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+				<columnDefinition expression="in_right.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+				<columnDefinition expression="in_right.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+				<columnDefinition expression="in_right.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+				<columnDefinition expression="in_right.cio_account_account_name" name="cio_account_account_name"/>
+				<columnDefinition expression="in_right.cio_account_credit_limit" name="cio_account_credit_limit"/>
+				<columnDefinition expression="in_right.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+				<columnDefinition expression="in_right.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+				<columnDefinition expression="in_right.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+				<columnDefinition expression="in_right.cio_account_credit_terms" name="cio_account_credit_terms"/>
+				<columnDefinition expression="in_right.tag_account" name="tag_account"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_left.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_left.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_left.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,288,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in account"/>
+		<target endpoint="in_left" step="Join in accountteam"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in accountteam">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+				<columnDefinition expression="in_left.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+				<columnDefinition expression="in_left.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_name" name="cio_account_account_name"/>
+				<columnDefinition expression="in_left.cio_account_credit_limit" name="cio_account_credit_limit"/>
+				<columnDefinition expression="in_left.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+				<columnDefinition expression="in_left.cio_account_credit_terms" name="cio_account_credit_terms"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_left.tag_account" name="tag_account"/>
+				<columnDefinition expression="in_right.cio_accountteam_acct_team_end_dt" name="cio_accountteam_acct_team_end_dt"/>
+				<columnDefinition expression="in_right.cio_accountteam_acct_team_start_dt" name="cio_accountteam_acct_team_start_dt"/>
+				<columnDefinition expression="in_right.cio_accountteam_direct_sales_rep" name="cio_accountteam_direct_sales_rep"/>
+				<columnDefinition expression="in_right.cio_accountteam_credit_rep" name="cio_accountteam_credit_rep"/>
+				<columnDefinition expression="in_right.cio_accountteam_acct_executive" name="cio_accountteam_acct_executive"/>
+				<columnDefinition expression="in_right.cio_accountteam_current_ind" name="cio_accountteam_current_ind"/>
+				<columnDefinition expression="in_right.tag_accountteam" name="tag_accountteam"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_left.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_left.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_left.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in accountteam"/>
+		<target endpoint="in_left" step="Join in contact"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in address">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+				<columnDefinition expression="in_left.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+				<columnDefinition expression="in_left.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_name" name="cio_account_account_name"/>
+				<columnDefinition expression="in_left.cio_account_credit_limit" name="cio_account_credit_limit"/>
+				<columnDefinition expression="in_left.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+				<columnDefinition expression="in_left.cio_account_credit_terms" name="cio_account_credit_terms"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_end_dt" name="cio_accountteam_acct_team_end_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_start_dt" name="cio_accountteam_acct_team_start_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_direct_sales_rep" name="cio_accountteam_direct_sales_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_credit_rep" name="cio_accountteam_credit_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_executive" name="cio_accountteam_acct_executive"/>
+				<columnDefinition expression="in_left.cio_accountteam_current_ind" name="cio_accountteam_current_ind"/>
+				<columnDefinition expression="in_left.cio_contact_first_name" name="cio_contact_first_name"/>
+				<columnDefinition expression="in_left.cio_contact_title" name="cio_contact_title"/>
+				<columnDefinition expression="in_left.cio_contact_full_name" name="cio_contact_full_name"/>
+				<columnDefinition expression="in_left.cio_contact_middle_name" name="cio_contact_middle_name"/>
+				<columnDefinition expression="in_left.cio_contact_last_name" name="cio_contact_last_name"/>
+				<columnDefinition expression="in_left.cio_contact_primary_ind" name="cio_contact_primary_ind"/>
+				<columnDefinition expression="in_left.cio_contact_ocd_contact_type" name="cio_contact_ocd_contact_type"/>
+				<columnDefinition expression="in_left.cio_contact_ocs_contact_type" name="cio_contact_ocs_contact_type"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_left.tag_account" name="tag_account"/>
+				<columnDefinition expression="in_left.tag_accountteam" name="tag_accountteam"/>
+				<columnDefinition expression="in_left.tag_contact" name="tag_contact"/>
+				<columnDefinition expression="in_right.cio_address_time_zone" name="cio_address_time_zone"/>
+				<columnDefinition expression="in_right.cio_address_ocd_address_type" name="cio_address_ocd_address_type"/>
+				<columnDefinition expression="in_right.cio_address_ocs_address_type" name="cio_address_ocs_address_type"/>
+				<columnDefinition expression="in_right.cio_address_ocd_address_status" name="cio_address_ocd_address_status"/>
+				<columnDefinition expression="in_right.cio_address_ocs_address_status" name="cio_address_ocs_address_status"/>
+				<columnDefinition expression="in_right.cio_address_city" name="cio_address_city"/>
+				<columnDefinition expression="in_right.cio_address_postal_code" name="cio_address_postal_code"/>
+				<columnDefinition expression="in_right.cio_address_state_territory" name="cio_address_state_territory"/>
+				<columnDefinition expression="in_right.cio_address_attn_to_contact" name="cio_address_attn_to_contact"/>
+				<columnDefinition expression="in_right.cio_address_street_address1" name="cio_address_street_address1"/>
+				<columnDefinition expression="in_right.cio_address_latitude" name="cio_address_latitude"/>
+				<columnDefinition expression="in_right.cio_address_primary_ind" name="cio_address_primary_ind"/>
+				<columnDefinition expression="in_right.cio_address_longitude" name="cio_address_longitude"/>
+				<columnDefinition expression="in_right.cio_address_country" name="cio_address_country"/>
+				<columnDefinition expression="in_right.cio_address_county" name="cio_address_county"/>
+				<columnDefinition expression="in_right.cio_address_ocd_address_geo_area" name="cio_address_ocd_address_geo_area"/>
+				<columnDefinition expression="in_right.cio_address_ocs_address_geo_area" name="cio_address_ocs_address_geo_area"/>
+				<columnDefinition expression="in_right.cio_address_street_address2" name="cio_address_street_address2"/>
+				<columnDefinition expression="in_right.tag_address" name="tag_address"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_left.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_left.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_left.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="888,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in address"/>
+		<target endpoint="in_left" step="Join in custdemographics"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in contact">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+				<columnDefinition expression="in_left.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+				<columnDefinition expression="in_left.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_name" name="cio_account_account_name"/>
+				<columnDefinition expression="in_left.cio_account_credit_limit" name="cio_account_credit_limit"/>
+				<columnDefinition expression="in_left.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+				<columnDefinition expression="in_left.cio_account_credit_terms" name="cio_account_credit_terms"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_end_dt" name="cio_accountteam_acct_team_end_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_start_dt" name="cio_accountteam_acct_team_start_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_direct_sales_rep" name="cio_accountteam_direct_sales_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_credit_rep" name="cio_accountteam_credit_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_executive" name="cio_accountteam_acct_executive"/>
+				<columnDefinition expression="in_left.cio_accountteam_current_ind" name="cio_accountteam_current_ind"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_left.tag_account" name="tag_account"/>
+				<columnDefinition expression="in_left.tag_accountteam" name="tag_accountteam"/>
+				<columnDefinition expression="in_right.cio_contact_first_name" name="cio_contact_first_name"/>
+				<columnDefinition expression="in_right.cio_contact_title" name="cio_contact_title"/>
+				<columnDefinition expression="in_right.cio_contact_full_name" name="cio_contact_full_name"/>
+				<columnDefinition expression="in_right.cio_contact_middle_name" name="cio_contact_middle_name"/>
+				<columnDefinition expression="in_right.cio_contact_last_name" name="cio_contact_last_name"/>
+				<columnDefinition expression="in_right.cio_contact_primary_ind" name="cio_contact_primary_ind"/>
+				<columnDefinition expression="in_right.cio_contact_ocd_contact_type" name="cio_contact_ocd_contact_type"/>
+				<columnDefinition expression="in_right.cio_contact_ocs_contact_type" name="cio_contact_ocs_contact_type"/>
+				<columnDefinition expression="in_right.tag_contact" name="tag_contact"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_left.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_left.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_left.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="744,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in contact"/>
+		<target endpoint="in_left" step="Join in address"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in custdemographics">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.cio_account_ocd_account_type" name="cio_account_ocd_account_type"/>
+				<columnDefinition expression="in_left.cio_account_ocs_account_type" name="cio_account_ocs_account_type"/>
+				<columnDefinition expression="in_left.cio_account_account_close_dt" name="cio_account_account_close_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_renew_dt" name="cio_account_account_renew_dt"/>
+				<columnDefinition expression="in_left.cio_account_account_name" name="cio_account_account_name"/>
+				<columnDefinition expression="in_left.cio_account_credit_limit" name="cio_account_credit_limit"/>
+				<columnDefinition expression="in_left.cio_account_ocd_credit_rating" name="cio_account_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_ocs_credit_rating" name="cio_account_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_account_account_open_dt" name="cio_account_account_open_dt"/>
+				<columnDefinition expression="in_left.cio_account_credit_terms" name="cio_account_credit_terms"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_end_dt" name="cio_accountteam_acct_team_end_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_team_start_dt" name="cio_accountteam_acct_team_start_dt"/>
+				<columnDefinition expression="in_left.cio_accountteam_direct_sales_rep" name="cio_accountteam_direct_sales_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_credit_rep" name="cio_accountteam_credit_rep"/>
+				<columnDefinition expression="in_left.cio_accountteam_acct_executive" name="cio_accountteam_acct_executive"/>
+				<columnDefinition expression="in_left.cio_accountteam_current_ind" name="cio_accountteam_current_ind"/>
+				<columnDefinition expression="in_left.cio_contact_first_name" name="cio_contact_first_name"/>
+				<columnDefinition expression="in_left.cio_contact_title" name="cio_contact_title"/>
+				<columnDefinition expression="in_left.cio_contact_full_name" name="cio_contact_full_name"/>
+				<columnDefinition expression="in_left.cio_contact_middle_name" name="cio_contact_middle_name"/>
+				<columnDefinition expression="in_left.cio_contact_last_name" name="cio_contact_last_name"/>
+				<columnDefinition expression="in_left.cio_contact_primary_ind" name="cio_contact_primary_ind"/>
+				<columnDefinition expression="in_left.cio_contact_ocd_contact_type" name="cio_contact_ocd_contact_type"/>
+				<columnDefinition expression="in_left.cio_contact_ocs_contact_type" name="cio_contact_ocs_contact_type"/>
+				<columnDefinition expression="in_left.cio_address_time_zone" name="cio_address_time_zone"/>
+				<columnDefinition expression="in_left.cio_address_ocd_address_type" name="cio_address_ocd_address_type"/>
+				<columnDefinition expression="in_left.cio_address_ocs_address_type" name="cio_address_ocs_address_type"/>
+				<columnDefinition expression="in_left.cio_address_ocd_address_status" name="cio_address_ocd_address_status"/>
+				<columnDefinition expression="in_left.cio_address_ocs_address_status" name="cio_address_ocs_address_status"/>
+				<columnDefinition expression="in_left.cio_address_city" name="cio_address_city"/>
+				<columnDefinition expression="in_left.cio_address_postal_code" name="cio_address_postal_code"/>
+				<columnDefinition expression="in_left.cio_address_state_territory" name="cio_address_state_territory"/>
+				<columnDefinition expression="in_left.cio_address_attn_to_contact" name="cio_address_attn_to_contact"/>
+				<columnDefinition expression="in_left.cio_address_street_address1" name="cio_address_street_address1"/>
+				<columnDefinition expression="in_left.cio_address_latitude" name="cio_address_latitude"/>
+				<columnDefinition expression="in_left.cio_address_primary_ind" name="cio_address_primary_ind"/>
+				<columnDefinition expression="in_left.cio_address_longitude" name="cio_address_longitude"/>
+				<columnDefinition expression="in_left.cio_address_country" name="cio_address_country"/>
+				<columnDefinition expression="in_left.cio_address_county" name="cio_address_county"/>
+				<columnDefinition expression="in_left.cio_address_ocd_address_geo_area" name="cio_address_ocd_address_geo_area"/>
+				<columnDefinition expression="in_left.cio_address_ocs_address_geo_area" name="cio_address_ocs_address_geo_area"/>
+				<columnDefinition expression="in_left.cio_address_street_address2" name="cio_address_street_address2"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_left.tag_account" name="tag_account"/>
+				<columnDefinition expression="in_left.tag_accountteam" name="tag_accountteam"/>
+				<columnDefinition expression="in_left.tag_contact" name="tag_contact"/>
+				<columnDefinition expression="in_left.tag_address" name="tag_address"/>
+				<columnDefinition expression="in_right.cio_custdemographics_current_ind" name="cio_custdemographics_current_ind"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocd_ethnicity" name="cio_custdemographics_ocd_ethnicity"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocs_ethnicity" name="cio_custdemographics_ocs_ethnicity"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocd_gender" name="cio_custdemographics_ocd_gender"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocs_gender" name="cio_custdemographics_ocs_gender"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocd_marital_status" name="cio_custdemographics_ocd_marital_status"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocs_marital_status" name="cio_custdemographics_ocs_marital_status"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocd_employment_status" name="cio_custdemographics_ocd_employment_status"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocs_employment_status" name="cio_custdemographics_ocs_employment_status"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocd_age_generation" name="cio_custdemographics_ocd_age_generation"/>
+				<columnDefinition expression="in_right.cio_custdemographics_ocs_age_generation" name="cio_custdemographics_ocs_age_generation"/>
+				<columnDefinition expression="in_right.cio_custdemographics_cust_demo_eff_dt" name="cio_custdemographics_cust_demo_eff_dt"/>
+				<columnDefinition expression="in_right.tag_custdemographics" name="tag_custdemographics"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_left.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_left.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_left.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in custdemographics"/>
+		<target endpoint="in" step="Create Matching output columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in email">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_right.email_addresses" name="email_addresses"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in email"/>
+		<target endpoint="in_left" step="Join in phone"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Join in phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.merge.Join" disabled="false" id="Join in phone">
+		<properties matchStrategy="MERGE" leftKey="nvl(toString(int_record_id_level_1),eng_id)" rightKey="nvl(toString(int_record_id_level_1),eng_parent_id)" joinType="LEFT">
+			<columnDefinitions>
+				<columnDefinition expression="in_left.int_record_id_level_1" name="int_record_id_level_1"/>
+				<columnDefinition expression="in_left.eng_id" name="eng_id"/>
+				<columnDefinition expression="in_left.eng_source_name" name="eng_source_name"/>
+				<columnDefinition expression="in_left.eng_source_instance_id" name="eng_source_instance_id"/>
+				<columnDefinition expression="in_left.eng_source_instance_id_name" name="eng_source_instance_id_name"/>
+				<columnDefinition expression="in_left.eng_status" name="eng_status"/>
+				<columnDefinition expression="in_left.eng_status_reason" name="eng_status_reason"/>
+				<columnDefinition expression="in_left.eng_source_created_date" name="eng_source_created_date"/>
+				<columnDefinition expression="in_left.eng_source_created_by" name="eng_source_created_by"/>
+				<columnDefinition expression="in_left.eng_source_modified_date" name="eng_source_modified_date"/>
+				<columnDefinition expression="in_left.eng_source_modified_by" name="eng_source_modified_by"/>
+				<columnDefinition expression="in_left.eng_ocd_source_status_code" name="eng_ocd_source_status_code"/>
+				<columnDefinition expression="in_left.eng_ocs_source_status_code" name="eng_ocs_source_status_code"/>
+				<columnDefinition expression="in_left.override_instance_id_whitelist" name="override_instance_id_whitelist"/>
+				<columnDefinition expression="in_left.override_instance_id_blacklist" name="override_instance_id_blacklist"/>
+				<columnDefinition expression="in_left.cio_customer_legal_name" name="cio_customer_legal_name"/>
+				<columnDefinition expression="in_left.cio_customer_lnk_prim_sales_org" name="cio_customer_lnk_prim_sales_org"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_credit_rating" name="cio_customer_ocd_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_credit_rating" name="cio_customer_ocs_credit_rating"/>
+				<columnDefinition expression="in_left.cio_customer_tax_exempt_num" name="cio_customer_tax_exempt_num"/>
+				<columnDefinition expression="in_left.cio_customer_date_of_birth" name="cio_customer_date_of_birth"/>
+				<columnDefinition expression="in_left.cio_customer_tax_id" name="cio_customer_tax_id"/>
+				<columnDefinition expression="in_left.cio_customer_lead_source_txt" name="cio_customer_lead_source_txt"/>
+				<columnDefinition expression="in_left.cio_customer_soc_sec_num" name="cio_customer_soc_sec_num"/>
+				<columnDefinition expression="in_left.cio_customer_display_name" name="cio_customer_display_name"/>
+				<columnDefinition expression="in_left.cio_customer_active_status" name="cio_customer_active_status"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_priority_group" name="cio_customer_ocd_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_priority_group" name="cio_customer_ocs_priority_group"/>
+				<columnDefinition expression="in_left.cio_customer_company_name" name="cio_customer_company_name"/>
+				<columnDefinition expression="in_left.cio_customer_last_name" name="cio_customer_last_name"/>
+				<columnDefinition expression="in_left.cio_customer_first_name" name="cio_customer_first_name"/>
+				<columnDefinition expression="in_left.cio_customer_ocd_primary_geo_area" name="cio_customer_ocd_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_ocs_primary_geo_area" name="cio_customer_ocs_primary_geo_area"/>
+				<columnDefinition expression="in_left.cio_customer_dba_name" name="cio_customer_dba_name"/>
+				<columnDefinition expression="in_left.cio_customer_middle_name" name="cio_customer_middle_name"/>
+				<columnDefinition expression="in_left.tag_customer" name="tag_customer"/>
+				<columnDefinition expression="in_left.email_addresses" name="email_addresses"/>
+				<columnDefinition expression="in_right.phones_office" name="phones_office"/>
+				<columnDefinition expression="in_right.phones_mobile" name="phones_mobile"/>
+				<columnDefinition expression="in_right.phones_home" name="phones_home"/>
+			</columnDefinitions>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Join in phone"/>
+		<target endpoint="in_left" step="Join in account"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Match customer) --><step mode="NORMAL" className="com.ataccama.dqc.unify.ExtendedUnify" disabled="false" id="Match customer">
+		<properties directUpdate="false" processingStatusColumn="match_processing_status" mapAllColumns="false" minimumIdToAssign="1" readOnly="false" repositoryName="repos_customer" primaryKeyColumn="eng_id" exclusiveMode="true" processingTimestampColumn="match_processing_timestamp" dataSource="repo" processingMode="NONINCREMENTAL" deleteFlagColumn="flg_deleted" timestampColumn="eng_source_modified_date">
+			<operations>
+				<iOperationConfig ruleNameColumn="match_rule" defaultMaxIterations="250" id="Match customer" matchingIdColumn="master_id" class="com.ataccama.dqc.unify.config.UnifyOperation" candidateIdColumn="match_can_id" unificationRoleColumn="match_role" useCenterAsSurvivor="true" matchQualityColumn="match_quality" outputDiscardedIds="NONE">
+					<defaultCenterSelectionRule>
+						<orderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+					</defaultCenterSelectionRule>
+					<defaultMatchingRules/>
+					<defaultMergeSurvivorSelectionRule/>
+					<groups>
+						<iGroupingMethod maxIterations="2000" matchNearest="true" class="com.ataccama.dqc.tasks.identify.grouping.Union">
+							<centerSelectionRule/>
+							<keys>
+								<unionKey noEmptyComponent="true">
+									<components>
+										<unionKeyComponent behaveAsSet="true" expression="trim(eng_id+&quot; &quot;+override_instance_id_whitelist)" separator=" "/>
+									</components>
+								</unionKey>
+								<unionKey noEmptyComponent="true">
+									<components>
+										<unionKeyComponent behaveAsSet="false" expression="mat_customer_soc_sec_num" separator=" "/>
+									</components>
+								</unionKey>
+								<unionKey noEmptyComponent="true">
+									<components>
+										<unionKeyComponent behaveAsSet="true" expression="mat_email_addresses" separator="!!!"/>
+									</components>
+								</unionKey>
+								<unionKey noEmptyComponent="true">
+									<components>
+										<unionKeyComponent behaveAsSet="true" expression="mat_phones_mobile" separator="!!!"/>
+									</components>
+								</unionKey>
+								<unionKey noEmptyComponent="false">
+									<components>
+										<unionKeyComponent behaveAsSet="false" expression="mat_customer_date_of_birth" separator=" "/>
+									</components>
+								</unionKey>
+							</keys>
+							<matchQualityExpression>measures.SC_EMAIL 		// max: 50, min    0
++ measures.SC_NAME		// max: 50, min -100
++ measures.SC_PHONES	// max: 50, min    0
++ measures.SC_SSN		// max: 90, min -100
++ measures.SC_DOB		// max: 50, min -100
++ measures.SC_ADDRESS	//</matchQualityExpression>
+							<matchingRules>
+								<matchingRule maximumAllowed="0.0" name="01_MATCH_OVERRIDE">
+									<expression>measures.SC_POSITIVE_OVERRIDE
++
+measures.SC_NEGATIVE_OVERRIDE
+
+&gt;= 1000</expression>
+									<tests/>
+								</matchingRule>
+								<matchingRule maximumAllowed="0.0" name="02_STRONG_MATCH">
+									<expression>// no negative override
+// at least some match across all matching attributes
+
+//measures.SC_NEGATIVE_OVERRIDE = 0
+//and
+measures.SC_EMAIL 		// max: 50, min    0
++ measures.SC_NAME		// max: 50, min -100
++ measures.SC_PHONES	// max: 50, min    0
++ measures.SC_SSN		// max: 90, min -100
++ measures.SC_DOB		// max: 50, min -100
++ measures.SC_ADDRESS	//
+&gt;= 200</expression>
+									<tests/>
+								</matchingRule>
+								<matchingRule maximumAllowed="0.0" name="03_POTENTIAL_MATCH">
+									<expression>// no negative override
+// a match across some of the matching attributes
+// these should be sent to remediation for evaluation by a person
+
+//measures.SC_NEGATIVE_OVERRIDE = 0
+//and
+measures.SC_EMAIL 		// max: 50, min    0
++ measures.SC_NAME		// max: 50, min -100
++ measures.SC_PHONES	// max: 50, min    0
++ measures.SC_SSN		// max: 90, min -100
++ measures.SC_DOB		// max: 50, min -100
++ measures.SC_ADDRESS	//
+&gt;= 130</expression>
+									<tests/>
+								</matchingRule>
+							</matchingRules>
+							<mergeSurvivorSelectionRule/>
+						</iGroupingMethod>
+					</groups>
+					<matchingMeasures>
+						<matchingMeasure name="SC_POSITIVE_OVERRIDE">
+							<expression>case(
+	//If master instance ID is in slave LINK list
+	set.contains(center.override_instance_id_whitelist, slave.eng_id, &quot; &quot;),
+	10000,
+	0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_NEGATIVE_OVERRIDE">
+							<expression>case(
+	//If master instance ID is in slave LINK list
+	set.contains(center.override_instance_id_blacklist, slave.eng_id, &quot; &quot;),
+	-10000,
+	0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_SSN">
+							<expression>case(
+	center.mat_customer_soc_sec_num is null or slave.mat_customer_soc_sec_num is null
+	,0
+	
+	// exact match
+	,center.mat_customer_soc_sec_num is not null
+	and center.mat_customer_soc_sec_num is slave.mat_customer_soc_sec_num
+	,90
+
+	// one character difference
+	,center.mat_customer_soc_sec_num is not null
+	and editDistance(center.mat_customer_soc_sec_num, slave.mat_customer_soc_sec_num)=1
+	,50
+
+	,-100
+
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_NAME_PARTS">
+							<expression>//********************************************************
+// First compare parsed out name individualy 
+// i.e. FIRST &lt;-&gt; FIRST, MIDDLE &lt;-&gt; MIDDLE, LAST &lt;-&gt; LAST
+//********************************************************
+
+//WEIGHTS ARE TOTAL 50; FN 17 MN 7 LN 26
+//
+
+score_first_name := //fn_weight * 
+		case(
+			//One is null
+			center.mat_customer_first_name is null or slave.mat_customer_first_name is null,
+			0,
+			//Full words with complete match
+			center.mat_customer_first_name is slave.mat_customer_first_name 
+			and min(length(center.mat_customer_first_name),length(slave.mat_customer_first_name)) &gt;= 2,
+			17,
+			//Initials only match
+			center.mat_customer_first_name is slave.mat_customer_first_name 
+			and length(center.mat_customer_first_name) is 1,
+			5,					
+			//Sounds-like
+			doubleMetaphone(center.mat_customer_first_name) is doubleMetaphone(slave.mat_customer_first_name) 
+			and min(length(center.mat_customer_first_name),length(slave.mat_customer_first_name)) &gt;= 3,
+			12,						
+			//Edit distance 1
+			editDistance(center.mat_customer_first_name,slave.mat_customer_first_name) is 1 
+			and min(length(center.mat_customer_first_name),length(slave.mat_customer_first_name)) &gt;= 4,
+			11,
+			//Edit distance 2
+			editDistance(center.mat_customer_first_name,slave.mat_customer_first_name) is 2 
+			and min(length(center.mat_customer_first_name),length(slave.mat_customer_first_name)) &gt;= 7,
+			8,						
+			//Shortened to word
+			(indexOf(center.mat_customer_first_name, slave.mat_customer_first_name) is 0 
+			or indexOf(slave.mat_customer_first_name, center.mat_customer_first_name) is 0) 
+			and min(length(center.mat_customer_first_name),length(slave.mat_customer_first_name)) &gt;= 2,
+			7,
+			//Shortened to initial
+			indexOf(center.mat_customer_first_name, slave.mat_customer_first_name) is 0 
+			or indexOf(slave.mat_customer_first_name, center.mat_customer_first_name) is 0,
+			5,						
+			//Not matching
+			-15
+);
+
+score_middle_name := //mn_weight * 
+		case(
+			//One is null
+			center.mat_customer_middle_name is null or slave.mat_customer_middle_name is null,
+			0,
+			//Full words with complete match
+			center.mat_customer_middle_name is slave.mat_customer_middle_name 
+			and min(length(center.mat_customer_middle_name),length(slave.mat_customer_middle_name)) &gt;= 2,
+			7,
+			//Initials with complete match
+			center.mat_customer_middle_name is slave.mat_customer_middle_name 
+			and length(center.mat_customer_middle_name) is 1,
+			2,					
+			//Sounds-like
+			doubleMetaphone(center.mat_customer_middle_name) is doubleMetaphone(slave.mat_customer_middle_name) 
+			and min(length(center.mat_customer_middle_name),length(slave.mat_customer_middle_name)) &gt;= 3,
+			6,						
+			//Edit distance 1
+			editDistance(center.mat_customer_middle_name,slave.mat_customer_middle_name) is 1 
+			and min(length(center.mat_customer_middle_name),length(slave.mat_customer_middle_name)) &gt;= 3,
+			5,
+			//Edit distance 2
+			editDistance(center.mat_customer_middle_name,slave.mat_customer_middle_name) is 2 
+			and min(length(center.mat_customer_middle_name),length(slave.mat_customer_middle_name)) &gt;= 7,
+			4,						
+			//Shortened to word
+			(indexOf(center.mat_customer_middle_name, slave.mat_customer_middle_name) is 0 
+			or indexOf(slave.mat_customer_middle_name, center.mat_customer_middle_name) is 0) 
+			and min(length(center.mat_customer_middle_name),length(slave.mat_customer_middle_name)) &gt;= 2,
+			3,
+			//Shortened to initial
+			indexOf(center.mat_customer_middle_name, slave.mat_customer_middle_name) is 0 
+			or indexOf(slave.mat_customer_middle_name, center.mat_customer_middle_name) is 0,
+			2,
+			//Not matching
+			-7
+);
+
+score_last_name := //ln_weight * 
+		case(
+			//One is null
+			center.mat_customer_last_name is null or slave.mat_customer_last_name is null,
+			0,
+			//Full words with complete match
+			center.mat_customer_last_name is slave.mat_customer_last_name 
+			and min(length(center.mat_customer_last_name),length(slave.mat_customer_last_name)) &gt;= 2,
+			26,
+			//Initials with complete match
+			center.mat_customer_last_name is slave.mat_customer_last_name 
+			and length(center.mat_customer_last_name) is 1,
+			5,					
+			//Sounds-like
+			doubleMetaphone(center.mat_customer_last_name) is doubleMetaphone(slave.mat_customer_last_name) 
+			and min(length(center.mat_customer_last_name),length(slave.mat_customer_last_name)) &gt;= 3,
+			21,						
+			//Edit distance 1
+			editDistance(center.mat_customer_last_name,slave.mat_customer_last_name) is 1 
+			and min(length(center.mat_customer_last_name),length(slave.mat_customer_last_name)) &gt;= 3,
+			20,
+			//Edit distance 2
+			editDistance(center.mat_customer_last_name,slave.mat_customer_last_name) is 2 
+			and min(length(center.mat_customer_last_name),length(slave.mat_customer_last_name)) &gt;= 7,
+			18,
+			//Subset ( &#39;MARIE BENNETT&#39; vs. &#39;BENNETT&#39;) or mismatch					
+			set.intersectionExp(center.mat_customer_last_name, slave.mat_customer_last_name, &quot; &quot;, false, (a,b) {a is b and min(length(a),length(b)) &gt;= 2} ) &gt;= 1,
+			17,
+			//Subset with 1 typpo (&#39;MARIE BENNET&#39; vs. &#39;BENETT&#39;) or mismatch
+			set.intersectionExp(center.mat_customer_last_name, slave.mat_customer_last_name, &quot; &quot;, false, (a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) &gt;= 3} ) &gt;= 1,
+			16,
+			//Subset with 2 typpo (&#39;MARIE BENNET&#39; vs. &#39;BENET&#39;) or mismatch
+			set.intersectionExp(center.mat_customer_last_name, slave.mat_customer_last_name, &quot; &quot;, false, (a,b) {editDistance(a,b) is 2 and min(length(a),length(b)) &gt;= 7} ) &gt;= 1,
+			12,
+			//Shortened to word
+			(indexOf(center.mat_customer_last_name, slave.mat_customer_last_name) is 0 
+			or indexOf(slave.mat_customer_last_name, center.mat_customer_last_name) is 0) 
+			and min(length(center.mat_customer_last_name),length(slave.mat_customer_last_name)) &gt;= 2,
+			10,
+			//Shortened to initial
+			indexOf(center.mat_customer_last_name, slave.mat_customer_last_name) is 0 
+			or indexOf(slave.mat_customer_last_name, center.mat_customer_last_name) is 0,
+			7,
+			//Not matching
+			-23
+);
+
+score_total := score_first_name + score_middle_name + score_last_name;
+
+//******************************************************************
+// Now compare the full name in case there is no parsed out version 
+// i.e. FULL_NAME vs FULL_NAME
+//******************************************************************
+
+case(
+	//Case of married woman - different last name but first and middle name matches
+	score_first_name &gt; 0 and
+	score_middle_name &gt;= 0 and
+	score_last_name &lt;= 0 and
+	center.mat_custdemographics_ocd_gender is &#39;F&#39; and slave.mat_custdemographics_ocd_gender is &#39;F&#39;,
+	score_first_name + score_middle_name,
+	//One of the names is completely blank
+	(center.mat_customer_first_name is null and center.mat_customer_middle_name is null 
+	and center.mat_customer_last_name is null and center.mat_customer_display_name is null)
+	or
+	(slave.mat_customer_first_name is null and slave.mat_customer_middle_name is null 
+	and slave.mat_customer_last_name is null and slave.mat_customer_display_name is null),
+	0,
+	
+	//Completely different name
+	score_first_name &lt;= 0 and
+	score_middle_name &lt;= 0 and
+	score_last_name &lt;= 0,
+	-100,
+	
+	//Largerly different name =&gt; Completely different name
+	score_total &lt;= 0,
+	-100,
+	
+	//At least one of the names differ
+	score_first_name &lt; 0 or
+	score_middle_name &lt; 0 or
+	score_last_name &lt; 0,
+	-50,
+	
+	//Rest of the cases, just match it together
+	score_total
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_NAME_FULL">
+							<expression>score_full_name := 
+	case(
+		center.mat_customer_display_name is null or slave.mat_customer_display_name is null,
+		0,
+		
+		min(wordCount(center.mat_customer_display_name),wordCount(slave.mat_customer_display_name)) &gt;= 3
+		and
+		symmetricDifference(center.mat_customer_display_name,slave.mat_customer_display_name) is 0,
+		45,
+		
+		min(wordCount(center.mat_customer_display_name),wordCount(slave.mat_customer_display_name)) &gt;= 3
+		and
+		replace(center.mat_customer_display_name,&quot; &quot;,&quot;&quot;) is replace(slave.mat_customer_display_name,&quot; &quot;,&quot;&quot;),
+		40,
+		
+		min(wordCount(center.mat_customer_display_name),wordCount(slave.mat_customer_display_name)) &gt;= 2
+		and
+		symmetricDifference(center.mat_customer_display_name,slave.mat_customer_display_name) is 0,
+		30,
+
+		wordCount(center.mat_customer_display_name) = wordCount(slave.mat_customer_display_name)
+		and
+		intersection(center.mat_customer_display_name,slave.mat_customer_display_name) = wordCount(center.mat_customer_display_name),
+		25,
+
+		min(wordCount(center.mat_customer_display_name),wordCount(slave.mat_customer_display_name)) &gt;= 2
+		and
+		replace(center.mat_customer_display_name,&quot; &quot;,&quot;&quot;) is replace(slave.mat_customer_display_name,&quot; &quot;,&quot;&quot;),
+		20,	
+		
+		wordCount(center.mat_customer_display_name) != wordCount(slave.mat_customer_display_name)
+		and
+		intersection(center.mat_customer_display_name,slave.mat_customer_display_name) &gt;= 2,
+		10,
+
+		wordCount(center.mat_customer_display_name) = wordCount(slave.mat_customer_display_name)
+		and
+		intersection(center.mat_customer_display_name,slave.mat_customer_display_name) = wordCount(center.mat_customer_display_name)-1
+		and wordCount(center.mat_customer_display_name) &gt;= 2,
+		5,
+				
+		-100
+);
+
+score_full_name</expression>
+						</matchingMeasure>
+						<matchingMeasure expression="max(measures.SC_NAME_PARTS,measures.SC_NAME_FULL)" name="SC_NAME"/>
+						<matchingMeasure name="SC_PHONE_HOME">
+							<expression>case (
+	center.mat_phones_home is null or slave.mat_phones_home is null
+	,0
+	
+	// 2 or more exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_home,slave.mat_phones_home,&quot;!!!&quot;) &gt;=2
+	and min(length(center.mat_phones_home),length(slave.mat_phones_home)) = 10
+	,100
+
+	// 1 exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_home,slave.mat_phones_home,&quot;!!!&quot;)=1
+	and min(length(center.mat_phones_home),length(slave.mat_phones_home)) = 10
+	,75
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 2 or more phone # matches	
+	,set.intersectionExp(center.mat_phones_home,slave.mat_phones_home
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) &gt;=2
+	,40	
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 1 phone # match	
+	,set.intersectionExp(center.mat_phones_home,slave.mat_phones_home
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) =1
+	,20
+
+	,0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_PHONE_MOBILE">
+							<expression>case (
+
+	center.mat_phones_mobile is null or slave.mat_phones_mobile is null
+	,0
+	
+	// 2 or more exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_mobile,slave.mat_phones_mobile,&quot;!!!&quot;) &gt;=2
+	and min(length(center.mat_phones_mobile),length(slave.mat_phones_mobile)) = 10
+	,100
+
+	// 1 exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_mobile,slave.mat_phones_mobile,&quot;!!!&quot;)=1
+	and min(length(center.mat_phones_mobile),length(slave.mat_phones_mobile)) = 10
+	,75
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 2 or more phone # matches	
+	,set.intersectionExp(center.mat_phones_mobile,slave.mat_phones_mobile
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) &gt;=2
+	,40	
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 1 phone # match	
+	,set.intersectionExp(center.mat_phones_mobile,slave.mat_phones_mobile
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) =1
+	,20
+
+	,0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_PHONE_OFFICE">
+							<expression>case (
+	center.mat_phones_office is null or slave.mat_phones_office is null
+	,0
+
+	// 2 or more exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_office,slave.mat_phones_office,&quot;!!!&quot;) &gt;=2
+	and min(length(center.mat_phones_office),length(slave.mat_phones_office)) = 10
+	,100
+
+	// 1 exact phone # matches
+	// phone # must be 10 digits
+	,set.intersection(center.mat_phones_office,slave.mat_phones_office,&quot;!!!&quot;)=1
+	and min(length(center.mat_phones_office),length(slave.mat_phones_office)) = 10
+	,75
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 2 or more phone # matches	
+	,set.intersectionExp(center.mat_phones_office,slave.mat_phones_office
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) &gt;=2
+	,40	
+
+	// 1 edit distance between set values; phone # must be 10 digits
+	// 1 phone # match	
+	,set.intersectionExp(center.mat_phones_office,slave.mat_phones_office
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) = 10}) =1
+	,20
+
+	,0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_PHONES">
+							<expression>
+case(
+
+	// 2 or more phone #s match across all 3 types
+	measures.SC_PHONE_HOME &gt;= 100
+	and measures.SC_PHONE_MOBILE &gt;= 100
+	and measures.SC_PHONE_OFFICE &gt;= 100
+	,50
+
+	// 2 matches across 2 sets
+	,(measures.SC_PHONE_MOBILE &gt;= 100 and measures.SC_PHONE_OFFICE &gt;= 100)
+	or (measures.SC_PHONE_HOME &gt;= 100 and measures.SC_PHONE_OFFICE &gt;= 100)
+	or (measures.SC_PHONE_HOME &gt;= 100 and measures.SC_PHONE_MOBILE &gt;= 100)
+	,45
+
+	//
+	,measures.SC_PHONE_HOME &gt;= 75
+	and measures.SC_PHONE_MOBILE &gt;= 75
+	and measures.SC_PHONE_OFFICE &gt;= 75
+	,40
+
+	,measures.SC_PHONE_HOME &gt;= 75
+	or measures.SC_PHONE_MOBILE &gt;= 75
+	or measures.SC_PHONE_OFFICE &gt;= 75
+	,35
+	
+	,measures.SC_PHONE_HOME &gt;= 40
+	and measures.SC_PHONE_MOBILE &gt;= 40
+	and measures.SC_PHONE_OFFICE &gt;= 40
+	,20
+	
+	,measures.SC_PHONE_HOME &gt;= 40
+	or measures.SC_PHONE_MOBILE &gt;= 40
+	or measures.SC_PHONE_OFFICE &gt;= 40
+	,15
+
+	,measures.SC_PHONE_HOME &gt;= 20
+	and measures.SC_PHONE_MOBILE &gt;= 20
+	and measures.SC_PHONE_OFFICE &gt;= 20
+	,10
+	
+	,measures.SC_PHONE_HOME &gt;= 20
+	or measures.SC_PHONE_MOBILE &gt;= 20
+	or measures.SC_PHONE_OFFICE &gt;= 20
+	,5
+	
+	,0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_EMAIL">
+							<expression>case (
+	center.mat_email_addresses is null or slave.mat_email_addresses is null
+	,0
+	
+	// 2 or more email addresses match exactly
+	,set.intersection(center.mat_email_addresses,slave.mat_email_addresses,&quot;!!!&quot;)&gt;=2
+	,50
+	
+	// 1 email address match exactly
+	,set.intersection(center.mat_email_addresses,slave.mat_email_addresses,&quot;!!!&quot;)=1
+	,45
+
+	// 2 or more email addresses match; max 1 char difference; minimum 9 characters for address
+	,set.intersectionExp(center.mat_phones_office,slave.mat_phones_office
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) &gt;=9 }) &gt;=2
+	,30
+
+	// 1 email address match; max 1 char difference; minimum 9 characters for address	
+	,set.intersectionExp(center.mat_phones_office,slave.mat_phones_office
+		,(a,b) {editDistance(a,b) is 1 and min(length(a),length(b)) &gt;=9 }) =1
+	,25
+
+	,0
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_DOB">
+							<expression>c:=toDate(center.mat_customer_date_of_birth,&#39;yyyy-MM-dd&#39;);
+s:=toDate(slave.mat_customer_date_of_birth,&#39;yyyy-MM-dd&#39;);
+
+y_c := datePart(c,&#39;YEAR&#39;);
+m_c := datePart(c,&#39;MONTH&#39;);
+d_c := datePart(c,&#39;DAY&#39;);
+
+y_s := datePart(s,&#39;YEAR&#39;);
+m_s := datePart(s,&#39;MONTH&#39;);
+d_s := datePart(s,&#39;DAY&#39;);
+
+case(
+	//One of them is null
+	center.mat_customer_date_of_birth is null
+	or slave.mat_customer_date_of_birth is null,
+	0,
+	
+	//Both are the same
+	center.mat_customer_date_of_birth is slave.mat_customer_date_of_birth
+	and center.mat_customer_date_of_birth is not null,
+	50,
+	
+	//date and month sections swapped
+	//i.e. 1957-05-06 vs 1957-06-05
+	y_c is y_s
+	and
+	m_c is d_s
+	and
+	m_s is d_c,
+	25,	
+	
+	//1 typo somewhere
+	//i.e. 1957-05-06 vs 1957-05-16
+	editDistance(center.mat_customer_date_of_birth,slave.mat_customer_date_of_birth) is 1,
+	20,
+	
+	//2 typos, at most 1 in every section
+	//i.e. 1957-05-06 vs 1967-05-16
+	editDistance(center.mat_customer_date_of_birth,slave.mat_customer_date_of_birth) is 2
+	and
+	editDistance(toString(y_c),toString(y_s)) &lt;= 1
+	and
+	editDistance(toString(m_c),toString(m_s)) &lt;= 1
+	and	
+	editDistance(toString(d_c),toString(d_s)) &lt;= 1,
+	2,
+	
+	//YEAR is the same, at least one is XXXX-01-01	
+	//i.e. 1957-05-06 vs 1957-01-01
+	y_c is y_s
+	and
+	(
+		(m_c is 1 and d_c is 1)
+		or
+		(m_s is 1 and d_s is 1)
+	
+	),
+	10,
+	
+	//DoBs different
+	-100
+)</expression>
+						</matchingMeasure>
+						<matchingMeasure name="SC_ADDRESS">
+							<expression>_total_address_points:=30;
+
+//
+// improvements that could be made:
+//  * include address type
+//
+
+case(
+	//At least 1 is null
+	center.mat_address_postal_code is null
+	or slave.mat_address_postal_code is null
+	,0
+	
+	//street and zip same and not null
+	,center.mat_address_postal_code is slave.mat_address_postal_code
+	and center.mat_address_street_address1 is slave.mat_address_street_address1
+	and center.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	,_total_address_points
+
+	// s1=&#39;123 S MAIN&#39;, s2=&#39;123 S MAIN ST&#39;; where they are equal except where 1 is missing the street type
+	// but have same zip+4
+	,(indexOf(center.mat_address_street_address1,slave.mat_address_street_address1,0)=0
+	or indexOf(slave.mat_address_street_address1,center.mat_address_street_address1,0)=0)
+	and set.symmetricDifferenceResult(center.mat_address_street_address1,slave.mat_address_street_address1) in {&#39;CT&#39;,&#39;ST&#39;,&#39;AVE&#39;,&#39;RD&#39;,&#39;DR&#39;,&#39;LN&#39;}
+	and center.mat_address_postal_code is slave.mat_address_postal_code
+	and length(center.mat_address_postal_code)=9
+	and center.mat_address_street_address1 is not null
+	and slave.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	,_total_address_points-2
+	
+	// s1=&#39;123 S MAIN&#39;, s2=&#39;123 S MAIN ST&#39;; where they are equal except where 1 is missing the street type
+	// but have same left 5 of zip
+	,(indexOf(center.mat_address_street_address1,slave.mat_address_street_address1,0)=0
+	or indexOf(slave.mat_address_street_address1,center.mat_address_street_address1,0)=0)
+	and set.symmetricDifferenceResult(center.mat_address_street_address1,slave.mat_address_street_address1) in {&#39;CT&#39;,&#39;ST&#39;,&#39;AVE&#39;,&#39;RD&#39;,&#39;DR&#39;,&#39;LN&#39;}
+	and left(center.mat_address_postal_code,5) is left(slave.mat_address_postal_code,5)
+	and center.mat_address_street_address1 is not null
+	and slave.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	,_total_address_points-15
+
+	// addresses have random spaces but otherwise the same
+	// s1=&quot;123 w red bud ct&quot;, s2=&quot;12 3 w redbud ct&quot;
+	// same left 5 of zip
+	,replace(center.mat_address_street_address1,&quot; &quot;,&quot;&quot;) is replace(slave.mat_address_street_address1,&quot; &quot;,&quot;&quot;)
+		and left(center.mat_address_postal_code,5) is left(slave.mat_address_postal_code,5)
+	and center.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	,_total_address_points-15
+	
+	// the street address the same but one edit on left 5 of zip
+	// this could mean 85701 and 15701 would be a valid match
+	,center.mat_address_street_address1 is slave.mat_address_street_address1
+	and editDistance(left(center.mat_address_postal_code,5),left(slave.mat_address_postal_code,5))=1
+	and center.mat_address_street_address1 is not null
+	,_total_address_points-20
+
+	// &lt;=1 edit on street; min len=10; left 5 of zip same
+	,editDistance(center.mat_address_street_address1,slave.mat_address_street_address1)&lt;=1
+	and min(length(center.mat_address_street_address1), length(slave.mat_address_street_address1))&gt;10
+	and center.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	and left(center.mat_address_postal_code,5) is left(slave.mat_address_postal_code,5)
+	,_total_address_points-20
+
+	//same zip+4
+	,center.mat_address_postal_code is slave.mat_address_postal_code
+	and length(center.mat_address_postal_code)=9
+	and center.mat_address_street_address1 is not null
+	and center.mat_address_postal_code is not null
+	,toInteger(_total_address_points/3)
+	
+	//Different
+	,0
+)</expression>
+						</matchingMeasure>
+					</matchingMeasures>
+				</iOperationConfig>
+				<iOperationConfig id="Analytics - candidates" class="com.ataccama.dqc.unify.config.RepresentativeCreatorOperation" groupByColumn="match_can_id">
+					<rules>
+						<rule>
+							<attributeSets>
+								<attributeSetCfg>
+									<instanceAttributes>
+										<attributeCfgInst expression="count(match_can_id)" name="count_can_id"/>
+									</instanceAttributes>
+									<representativeAttributes/>
+									<selectionRules/>
+								</attributeSetCfg>
+							</attributeSets>
+						</rule>
+					</rules>
+				</iOperationConfig>
+				<iOperationConfig id="Analytics - masters" class="com.ataccama.dqc.unify.config.RepresentativeCreatorOperation" groupByColumn="master_id">
+					<rules>
+						<rule>
+							<attributeSets>
+								<attributeSetCfg>
+									<instanceAttributes>
+										<attributeCfgInst expression="count(master_id)" name="count_master_id"/>
+									</instanceAttributes>
+									<representativeAttributes/>
+									<selectionRules/>
+								</attributeSetCfg>
+							</attributeSets>
+						</rule>
+					</rules>
+				</iOperationConfig>
+			</operations>
+			<outputStrategy exportUnchanged="true" exportDiscarded="false"/>
+			<repositoryColumns>
+				<columnRef name="master_id"/>
+				<columnRef name="match_can_id"/>
+				<columnRef name="match_role"/>
+				<columnRef name="match_rule"/>
+				<columnRef name="match_quality"/>
+				<columnRef name="eng_id"/>
+				<columnRef name="override_instance_id_whitelist"/>
+				<columnRef name="override_instance_id_blacklist"/>
+				<columnRef name="match_quality_detail"/>
+				<columnRef name="match_processing_timestamp"/>
+				<columnRef name="match_processing_status"/>
+				<columnRef name="mat_customer_date_of_birth"/>
+				<columnRef name="mat_customer_soc_sec_num"/>
+				<columnRef name="mat_customer_display_name"/>
+				<columnRef name="mat_customer_last_name"/>
+				<columnRef name="mat_customer_first_name"/>
+				<columnRef name="mat_customer_middle_name"/>
+				<columnRef name="mat_address_ocd_address_type"/>
+				<columnRef name="mat_address_street_address1"/>
+				<columnRef name="mat_address_postal_code"/>
+				<columnRef name="mat_custdemographics_ocd_gender"/>
+				<columnRef name="mat_email_addresses"/>
+				<columnRef name="mat_phones_office"/>
+				<columnRef name="mat_phones_mobile"/>
+				<columnRef name="mat_phones_home"/>
+			</repositoryColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Match customer"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="48,888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Remove working columns"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="true">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="out"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Remove working columns) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns">
+		<properties>
+			<addedColumns/>
+			<removedColumns>
+				<columnRef name="mat_customer_legal_name"/>
+				<columnRef name="mat_customer_tax_exempt_num"/>
+				<columnRef name="mat_customer_date_of_birth"/>
+				<columnRef name="mat_customer_tax_id"/>
+				<columnRef name="mat_customer_soc_sec_num"/>
+				<columnRef name="mat_customer_display_name"/>
+				<columnRef name="mat_customer_company_name"/>
+				<columnRef name="mat_customer_last_name"/>
+				<columnRef name="mat_customer_first_name"/>
+				<columnRef name="mat_customer_middle_name"/>
+				<columnRef name="mat_address_ocd_address_type"/>
+				<columnRef name="mat_address_postal_code"/>
+				<columnRef name="mat_address_street_address1"/>
+				<columnRef name="mat_custdemographics_ocd_gender"/>
+				<columnRef name="cio_customer_legal_name"/>
+				<columnRef name="cio_customer_lnk_prim_sales_org"/>
+				<columnRef name="cio_customer_ocd_credit_rating"/>
+				<columnRef name="cio_customer_ocs_credit_rating"/>
+				<columnRef name="cio_customer_tax_exempt_num"/>
+				<columnRef name="cio_customer_date_of_birth"/>
+				<columnRef name="cio_customer_tax_id"/>
+				<columnRef name="cio_customer_lead_source_txt"/>
+				<columnRef name="cio_customer_soc_sec_num"/>
+				<columnRef name="cio_customer_display_name"/>
+				<columnRef name="cio_customer_active_status"/>
+				<columnRef name="cio_customer_ocd_priority_group"/>
+				<columnRef name="cio_customer_ocs_priority_group"/>
+				<columnRef name="cio_customer_company_name"/>
+				<columnRef name="cio_customer_last_name"/>
+				<columnRef name="cio_customer_first_name"/>
+				<columnRef name="cio_customer_ocd_primary_geo_area"/>
+				<columnRef name="cio_customer_ocs_primary_geo_area"/>
+				<columnRef name="cio_customer_dba_name"/>
+				<columnRef name="cio_customer_middle_name"/>
+				<columnRef name="cio_account_ocd_account_type"/>
+				<columnRef name="cio_account_ocs_account_type"/>
+				<columnRef name="cio_account_account_close_dt"/>
+				<columnRef name="cio_account_account_renew_dt"/>
+				<columnRef name="cio_account_account_name"/>
+				<columnRef name="cio_account_credit_limit"/>
+				<columnRef name="cio_account_ocd_credit_rating"/>
+				<columnRef name="cio_account_ocs_credit_rating"/>
+				<columnRef name="cio_account_account_open_dt"/>
+				<columnRef name="cio_account_credit_terms"/>
+				<columnRef name="cio_accountteam_acct_team_end_dt"/>
+				<columnRef name="cio_accountteam_acct_team_start_dt"/>
+				<columnRef name="cio_accountteam_direct_sales_rep"/>
+				<columnRef name="cio_accountteam_credit_rep"/>
+				<columnRef name="cio_accountteam_acct_executive"/>
+				<columnRef name="cio_accountteam_current_ind"/>
+				<columnRef name="cio_contact_first_name"/>
+				<columnRef name="cio_contact_title"/>
+				<columnRef name="cio_contact_full_name"/>
+				<columnRef name="cio_contact_middle_name"/>
+				<columnRef name="cio_contact_last_name"/>
+				<columnRef name="cio_contact_primary_ind"/>
+				<columnRef name="cio_contact_ocd_contact_type"/>
+				<columnRef name="cio_contact_ocs_contact_type"/>
+				<columnRef name="cio_address_time_zone"/>
+				<columnRef name="cio_address_ocd_address_type"/>
+				<columnRef name="cio_address_ocs_address_type"/>
+				<columnRef name="cio_address_ocd_address_status"/>
+				<columnRef name="cio_address_ocs_address_status"/>
+				<columnRef name="cio_address_city"/>
+				<columnRef name="cio_address_postal_code"/>
+				<columnRef name="cio_address_state_territory"/>
+				<columnRef name="cio_address_attn_to_contact"/>
+				<columnRef name="cio_address_street_address1"/>
+				<columnRef name="cio_address_latitude"/>
+				<columnRef name="cio_address_primary_ind"/>
+				<columnRef name="cio_address_longitude"/>
+				<columnRef name="cio_address_country"/>
+				<columnRef name="cio_address_county"/>
+				<columnRef name="cio_address_ocd_address_geo_area"/>
+				<columnRef name="cio_address_ocs_address_geo_area"/>
+				<columnRef name="cio_address_street_address2"/>
+				<columnRef name="cio_custdemographics_current_ind"/>
+				<columnRef name="cio_custdemographics_ocd_ethnicity"/>
+				<columnRef name="cio_custdemographics_ocs_ethnicity"/>
+				<columnRef name="cio_custdemographics_ocd_gender"/>
+				<columnRef name="cio_custdemographics_ocs_gender"/>
+				<columnRef name="cio_custdemographics_ocd_marital_status"/>
+				<columnRef name="cio_custdemographics_ocs_marital_status"/>
+				<columnRef name="cio_custdemographics_ocd_employment_status"/>
+				<columnRef name="cio_custdemographics_ocs_employment_status"/>
+				<columnRef name="cio_custdemographics_ocd_age_generation"/>
+				<columnRef name="cio_custdemographics_ocs_age_generation"/>
+				<columnRef name="cio_custdemographics_cust_demo_eff_dt"/>
+				<columnRef name="tag_customer"/>
+				<columnRef name="tag_account"/>
+				<columnRef name="tag_accountteam"/>
+				<columnRef name="tag_contact"/>
+				<columnRef name="tag_address"/>
+				<columnRef name="tag_custdemographics"/>
+				<columnRef name="mat_email_addresses"/>
+				<columnRef name="mat_phones_office"/>
+				<columnRef name="mat_phones_mobile"/>
+				<columnRef name="mat_phones_home"/>
+			</removedColumns>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Remove working columns"/>
+		<target endpoint="in" step="out_customer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_account">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_account_ocd_account_type" type="STRING"/>
+				<columnDef name="cio_account_ocs_account_type" type="STRING"/>
+				<columnDef name="cio_account_account_close_dt" type="STRING"/>
+				<columnDef name="cio_account_account_renew_dt" type="STRING"/>
+				<columnDef name="cio_account_account_name" type="STRING"/>
+				<columnDef name="cio_account_credit_limit" type="STRING"/>
+				<columnDef name="cio_account_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_ocs_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_account_open_dt" type="STRING"/>
+				<columnDef name="cio_account_credit_terms" type="STRING"/>
+				<columnDef name="tag_account" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="456,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_account"/>
+		<target endpoint="in" step="Dedup account"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_accountteam">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_team_end_dt" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_team_start_dt" type="STRING"/>
+				<columnDef name="cio_accountteam_direct_sales_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_credit_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_executive" type="STRING"/>
+				<columnDef name="cio_accountteam_current_ind" type="STRING"/>
+				<columnDef name="tag_accountteam" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_accountteam"/>
+		<target endpoint="in" step="Dedup accountteam"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_address">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_address_time_zone" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_type" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_type" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_status" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_status" type="STRING"/>
+				<columnDef name="cio_address_city" type="STRING"/>
+				<columnDef name="cio_address_postal_code" type="STRING"/>
+				<columnDef name="cio_address_state_territory" type="STRING"/>
+				<columnDef name="cio_address_attn_to_contact" type="STRING"/>
+				<columnDef name="cio_address_street_address1" type="STRING"/>
+				<columnDef name="cio_address_latitude" type="STRING"/>
+				<columnDef name="cio_address_primary_ind" type="STRING"/>
+				<columnDef name="cio_address_longitude" type="STRING"/>
+				<columnDef name="cio_address_country" type="STRING"/>
+				<columnDef name="cio_address_county" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_street_address2" type="STRING"/>
+				<columnDef name="tag_address" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="888,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_address"/>
+		<target endpoint="in" step="Dedup address"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_contact">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_contact_first_name" type="STRING"/>
+				<columnDef name="cio_contact_title" type="STRING"/>
+				<columnDef name="cio_contact_full_name" type="STRING"/>
+				<columnDef name="cio_contact_middle_name" type="STRING"/>
+				<columnDef name="cio_contact_last_name" type="STRING"/>
+				<columnDef name="cio_contact_primary_ind" type="STRING"/>
+				<columnDef name="cio_contact_ocd_contact_type" type="STRING"/>
+				<columnDef name="cio_contact_ocs_contact_type" type="STRING"/>
+				<columnDef name="tag_contact" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="744,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_contact"/>
+		<target endpoint="in" step="Dedup contact"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_custdemographics">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_custdemographics_current_ind" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_cust_demo_eff_dt" type="STRING"/>
+				<columnDef name="tag_custdemographics" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_custdemographics"/>
+		<target endpoint="in" step="Dedup custdemographics"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_can_group_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="override_instance_id_whitelist" type="STRING"/>
+				<columnDef name="override_instance_id_blacklist" type="STRING"/>
+				<columnDef name="cio_customer_legal_name" type="STRING"/>
+				<columnDef name="cio_customer_lnk_prim_sales_org" type="STRING"/>
+				<columnDef name="cio_customer_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_customer_ocs_credit_rating" type="STRING"/>
+				<columnDef name="cio_customer_tax_exempt_num" type="STRING"/>
+				<columnDef name="cio_customer_date_of_birth" type="STRING"/>
+				<columnDef name="cio_customer_tax_id" type="STRING"/>
+				<columnDef name="cio_customer_lead_source_txt" type="STRING"/>
+				<columnDef name="cio_customer_soc_sec_num" type="STRING"/>
+				<columnDef name="cio_customer_display_name" type="STRING"/>
+				<columnDef name="cio_customer_active_status" type="STRING"/>
+				<columnDef name="cio_customer_ocd_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_ocs_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_company_name" type="STRING"/>
+				<columnDef name="cio_customer_last_name" type="STRING"/>
+				<columnDef name="cio_customer_first_name" type="STRING"/>
+				<columnDef name="cio_customer_ocd_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_ocs_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_dba_name" type="STRING"/>
+				<columnDef name="cio_customer_middle_name" type="STRING"/>
+				<columnDef name="tag_customer" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="24,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer"/>
+		<target endpoint="in_left" step="Join in email"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="47,192"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_email">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_email_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_email_ocs_comm_status" type="STRING"/>
+				<columnDef name="cio_email_email_address" type="STRING"/>
+				<columnDef name="cio_email_ocd_email_type" type="STRING"/>
+				<columnDef name="cio_email_ocs_email_type" type="STRING"/>
+				<columnDef name="cio_email_primary_ind" type="STRING"/>
+				<columnDef name="tag_email" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_email"/>
+		<target endpoint="in" step="Dedup email"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_phone">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="cio_phone_phone_number" type="STRING"/>
+				<columnDef name="cio_phone_ocd_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_ocs_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_extension" type="STRING"/>
+				<columnDef name="cio_phone_primary_ind" type="STRING"/>
+				<columnDef name="cio_phone_active_ind" type="STRING"/>
+				<columnDef name="cio_phone_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_phone_ocs_comm_status" type="STRING"/>
+				<columnDef name="tag_phone" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_phone"/>
+		<target endpoint="in" step="Dedup phone"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.text.write.TextFileWriter" disabled="true" id="out">
+		<properties writeHeader="true" fileName="match.csv" fieldSeparator=";" generateMetadata="true" stringQualifierEscape="&quot;" writeAllColumns="true" compression="NONE" encoding="UTF-8" lineSeparator="\r\n" stringQualifier="&quot;" useStringQualifierOnAllColumns="false">
+			<columns/>
+			<dataFormatParameters falseValue="false" dateTimeFormat="yyyy-MM-dd HH:mm:ss" decimalSeparator="." dayFormat="yyyy-MM-dd" trueValue="true" dateFormatLocale="en_US" thousandsSeparator=""/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,1032,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_customer">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="48,1032,-1,-1"/>
+	</step>
+
+
+
+<modelComment backgroundColor="255,255,180" borderColor="183,183,0" bounds="264,984,265,97" foregroundColor="51,51,51">debug for if you want to review match</modelComment>
+
+</purity-config>

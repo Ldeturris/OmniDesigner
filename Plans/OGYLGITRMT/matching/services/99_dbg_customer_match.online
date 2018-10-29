@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ServiceConfig version="10.6.1.ga-2016-11-20">
+    <services>
+        <serviceBean configFile="../components/customer_match.comp" maxPoolSize="5" minPoolSize="1" name="customer_match" parallelismLevel="0">
+            <additionalActions/>
+            <method class="com.ataccama.dqc.online.cfg.SoapOverHttpMethod" location="/customer_match" soapAction="customer_match" soapVersion="SOAP11">
+                <inputFormat namespace="http://www.example.com/ws" schemaValidation="false">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlInputSection idColumn="int_record_id_level_1" name="in" stepId="in_customer" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlColumn name="cio_customer_legal_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_lnk_prim_sales_org" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocd_credit_rating" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocs_credit_rating" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_tax_exempt_num" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_date_of_birth" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_tax_id" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_lead_source_txt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_soc_sec_num" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_display_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_active_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocd_priority_group" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocs_priority_group" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_company_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_last_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_first_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocd_primary_geo_area" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_ocs_primary_geo_area" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_dba_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_customer_middle_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_customer" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_master_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_can_group_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_rule" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality_detail" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="override_instance_id_whitelist" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="override_instance_id_blacklist" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                </columns>
+                                <references/>
+                                <sections>
+                                    <xmlInputSection name="email_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="email" stepId="in_email" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_email_ocd_comm_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_email_ocs_comm_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_email_email_address" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_email_ocd_email_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_email_ocs_email_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_email_primary_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_email" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="phone_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="phone" stepId="in_phone" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_phone_phone_number" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_ocd_phone_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_ocs_phone_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_extension" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_primary_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_active_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_ocd_comm_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_phone_ocs_comm_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_phone" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="account_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="account" stepId="in_account" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_account_ocd_account_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_ocs_account_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_account_close_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_account_renew_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_account_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_credit_limit" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_ocd_credit_rating" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_ocs_credit_rating" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_account_open_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_account_credit_terms" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_account" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="accountteam_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="accountteam" stepId="in_accountteam" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_accountteam_acct_team_end_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_accountteam_acct_team_start_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_accountteam_direct_sales_rep" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_accountteam_credit_rep" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_accountteam_acct_executive" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_accountteam_current_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_accountteam" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="contact_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="contact" stepId="in_contact" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_contact_first_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_title" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_full_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_middle_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_last_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_primary_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_ocd_contact_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_contact_ocs_contact_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_contact" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="address_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="address" stepId="in_address" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_address_time_zone" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocd_address_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocs_address_type" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocd_address_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocs_address_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_city" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_postal_code" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_state_territory" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_attn_to_contact" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_street_address1" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_latitude" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_primary_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_longitude" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_country" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_county" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocd_address_geo_area" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_ocs_address_geo_area" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_address_street_address2" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_address" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                    <xmlInputSection name="custdemographics_col" strategy="SINGLE_OPTIONAL">
+                                        <columns/>
+                                        <references/>
+                                        <sections>
+                                            <xmlInputSection idColumn="int_record_id_level_2" name="custdemographics" stepId="in_custdemographics" strategy="MULTIPLE_OPTIONAL">
+                                                <columns>
+                                                    <xmlColumn name="cio_custdemographics_current_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocd_ethnicity" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocs_ethnicity" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocd_gender" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocs_gender" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocd_marital_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocs_marital_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocd_employment_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocs_employment_status" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocd_age_generation" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_ocs_age_generation" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="cio_custdemographics_cust_demo_eff_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="tag_custdemographics" strategy="NILLABLE_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_parent_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                                </columns>
+                                                <references>
+                                                    <xmlReferencedColumn name="int_record_id_level_1" referencedColumn="int_record_id_level_1" referencedStepId="in_customer"/>
+                                                </references>
+                                                <sections/>
+                                            </xmlInputSection>
+                                        </sections>
+                                    </xmlInputSection>
+                                </sections>
+                            </xmlInputSection>
+                        </sections>
+                    </rootSection>
+                </inputFormat>
+                <outputFormat namespace="http://www.example.com/ws">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlOutputSection idColumn="int_record_id_level_1" name="out" stepId="out_customer" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlOutputColumn name="eng_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_instance_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_instance_id_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_status_reason" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_created_date" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="eng_source_created_by" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_source_modified_date" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="eng_source_modified_by" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocd_source_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocs_source_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="override_instance_id_whitelist" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="override_instance_id_blacklist" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="flg_deleted" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlOutputColumn name="master_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_quality_detail" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_can_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_role" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_rule" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="match_quality" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlOutputColumn name="match_processing_timestamp" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DATETIME"/>
+                                    <xmlOutputColumn name="match_processing_status" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                </columns>
+                                <sections/>
+                            </xmlOutputSection>
+                        </sections>
+                    </rootSection>
+                </outputFormat>
+            </method>
+        </serviceBean>
+    </services>
+</ServiceConfig>

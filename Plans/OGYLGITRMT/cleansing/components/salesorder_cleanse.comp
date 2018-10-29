@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.1.ga-2016-11-20">
+    <references/>
+    <component-mappings>
+        <propertyMappings/>
+    </component-mappings>
+    <!-- (Add output columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add output columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn name="out_cmt_delivery_dt" type="DAY"/>
+                <addedColumn name="out_cmt_ship_dt" type="DAY"/>
+                <addedColumn name="out_req_st_street" type="STRING"/>
+                <addedColumn name="out_req_st_zip" type="STRING"/>
+                <addedColumn name="out_ocd_order_status" type="STRING"/>
+                <addedColumn name="out_ocs_order_status" type="STRING"/>
+                <addedColumn name="out_act_st_street" type="STRING"/>
+                <addedColumn name="out_act_st_state" type="STRING"/>
+                <addedColumn name="out_req_delivery_dt" type="DAY"/>
+                <addedColumn name="out_sales_order_dt" type="DAY"/>
+                <addedColumn name="out_ocd_order_priority" type="STRING"/>
+                <addedColumn name="out_ocs_order_priority" type="STRING"/>
+                <addedColumn name="out_act_delivery_dt" type="DAY"/>
+                <addedColumn name="out_act_st_city" type="STRING"/>
+                <addedColumn name="out_lnk_sold_sales_org" type="STRING"/>
+                <addedColumn name="out_ocd_sales_order_type" type="STRING"/>
+                <addedColumn name="out_ocs_sales_order_type" type="STRING"/>
+                <addedColumn name="out_req_st_city" type="STRING"/>
+                <addedColumn name="out_act_st_zip" type="STRING"/>
+                <addedColumn name="out_lnk_ord_cust_id" type="STRING"/>
+                <addedColumn name="out_act_ship_dt" type="DAY"/>
+                <addedColumn name="out_req_st_state" type="STRING"/>
+                <addedColumn name="out_req_st_country" type="STRING"/>
+                <addedColumn name="out_act_st_country" type="STRING"/>
+                <addedColumn name="out_req_ship_dt" type="DAY"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add output columns"/>
+        <target endpoint="in" step="Add working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Add working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn expression="in_cmt_delivery_dt" name="pur_cmt_delivery_dt" type="DAY"/>
+                <addedColumn expression="in_cmt_ship_dt" name="pur_cmt_ship_dt" type="DAY"/>
+                <addedColumn expression="in_req_st_street" name="pur_req_st_street" type="STRING"/>
+                <addedColumn expression="in_req_st_zip" name="pur_req_st_zip" type="STRING"/>
+                <addedColumn expression="in_ocd_order_status" name="pur_ocd_order_status" type="STRING"/>
+                <addedColumn expression="in_ocs_order_status" name="pur_ocs_order_status" type="STRING"/>
+                <addedColumn expression="in_act_st_street" name="pur_act_st_street" type="STRING"/>
+                <addedColumn expression="in_act_st_state" name="pur_act_st_state" type="STRING"/>
+                <addedColumn expression="in_req_delivery_dt" name="pur_req_delivery_dt" type="DAY"/>
+                <addedColumn expression="in_sales_order_dt" name="pur_sales_order_dt" type="DAY"/>
+                <addedColumn expression="in_ocd_order_priority" name="pur_ocd_order_priority" type="STRING"/>
+                <addedColumn expression="in_ocs_order_priority" name="pur_ocs_order_priority" type="STRING"/>
+                <addedColumn expression="in_act_delivery_dt" name="pur_act_delivery_dt" type="DAY"/>
+                <addedColumn expression="in_act_st_city" name="pur_act_st_city" type="STRING"/>
+                <addedColumn expression="in_lnk_sold_sales_org" name="pur_lnk_sold_sales_org" type="STRING"/>
+                <addedColumn expression="in_ocd_sales_order_type" name="pur_ocd_sales_order_type" type="STRING"/>
+                <addedColumn expression="in_ocs_sales_order_type" name="pur_ocs_sales_order_type" type="STRING"/>
+                <addedColumn expression="in_req_st_city" name="pur_req_st_city" type="STRING"/>
+                <addedColumn expression="in_act_st_zip" name="pur_act_st_zip" type="STRING"/>
+                <addedColumn expression="in_lnk_ord_cust_id" name="pur_lnk_ord_cust_id" type="STRING"/>
+                <addedColumn expression="in_act_ship_dt" name="pur_act_ship_dt" type="DAY"/>
+                <addedColumn expression="in_req_st_state" name="pur_req_st_state" type="STRING"/>
+                <addedColumn expression="in_req_st_country" name="pur_req_st_country" type="STRING"/>
+                <addedColumn expression="in_act_st_country" name="pur_act_st_country" type="STRING"/>
+                <addedColumn expression="in_req_ship_dt" name="pur_req_ship_dt" type="DAY"/>
+                <addedColumn name="tmp_score" type="INTEGER"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add working columns"/>
+        <target endpoint="in" step="Insert cleansing rules here"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Insert cleansing rules here) -->
+    <step className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Insert cleansing rules here" mode="NORMAL">
+        <properties>
+            <assignments>
+                <assignment column="out_cmt_delivery_dt" expression="pur_cmt_delivery_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_cmt_ship_dt" expression="pur_cmt_ship_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_st_street" expression="pur_req_st_street">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_st_zip" expression="pur_req_st_zip">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocd_order_status" expression="pur_ocd_order_status">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocs_order_status" expression="pur_ocs_order_status">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_st_street" expression="pur_act_st_street">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_st_state" expression="pur_act_st_state">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_delivery_dt" expression="pur_req_delivery_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_sales_order_dt" expression="pur_sales_order_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocd_order_priority" expression="pur_ocd_order_priority">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocs_order_priority" expression="pur_ocs_order_priority">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_delivery_dt" expression="pur_act_delivery_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_st_city" expression="pur_act_st_city">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_lnk_sold_sales_org" expression="pur_lnk_sold_sales_org">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocd_sales_order_type" expression="pur_ocd_sales_order_type">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocs_sales_order_type" expression="pur_ocs_sales_order_type">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_st_city" expression="pur_req_st_city">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_st_zip" expression="pur_act_st_zip">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_lnk_ord_cust_id" expression="pur_lnk_ord_cust_id">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_ship_dt" expression="pur_act_ship_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_st_state" expression="pur_req_st_state">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_st_country" expression="pur_req_st_country">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_act_st_country" expression="pur_act_st_country">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_req_ship_dt" expression="pur_req_ship_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+            </assignments>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Insert cleansing rules here"/>
+        <target endpoint="in" step="Create Tags"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create Tags) -->
+    <step className="com.ataccama.dqc.tasks.scoring.SimpleScoring" disabled="false" id="Create Tags" mode="NORMAL">
+        <properties defaultExplainColumn="tag_subject" defaultScoreColumn="tmp_score">
+            <scoringCases/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create Tags"/>
+        <target endpoint="in" step="Remove working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Remove working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns" mode="NORMAL">
+        <properties>
+            <addedColumns/>
+            <removedColumns>
+                <columnRef name="eng_id"/>
+                <columnRef name="eng_source_name"/>
+                <columnRef name="eng_source_instance_id"/>
+                <columnRef name="eng_status"/>
+                <columnRef name="eng_status_reason"/>
+                <columnRef name="eng_source_created_date"/>
+                <columnRef name="eng_source_created_by"/>
+                <columnRef name="eng_source_modified_date"/>
+                <columnRef name="eng_source_modified_by"/>
+                <columnRef name="eng_ocd_source_status_code"/>
+                <columnRef name="eng_ocs_source_status_code"/>
+                <columnRef name="tmp_score"/>
+                <columnRef name="pur_cmt_delivery_dt"/>
+                <columnRef name="pur_cmt_ship_dt"/>
+                <columnRef name="pur_req_st_street"/>
+                <columnRef name="pur_req_st_zip"/>
+                <columnRef name="pur_ocd_order_status"/>
+                <columnRef name="pur_ocs_order_status"/>
+                <columnRef name="pur_act_st_street"/>
+                <columnRef name="pur_act_st_state"/>
+                <columnRef name="pur_req_delivery_dt"/>
+                <columnRef name="pur_sales_order_dt"/>
+                <columnRef name="pur_ocd_order_priority"/>
+                <columnRef name="pur_ocs_order_priority"/>
+                <columnRef name="pur_act_delivery_dt"/>
+                <columnRef name="pur_act_st_city"/>
+                <columnRef name="pur_lnk_sold_sales_org"/>
+                <columnRef name="pur_ocd_sales_order_type"/>
+                <columnRef name="pur_ocs_sales_order_type"/>
+                <columnRef name="pur_req_st_city"/>
+                <columnRef name="pur_act_st_zip"/>
+                <columnRef name="pur_lnk_ord_cust_id"/>
+                <columnRef name="pur_act_ship_dt"/>
+                <columnRef name="pur_req_st_state"/>
+                <columnRef name="pur_req_st_country"/>
+                <columnRef name="pur_act_st_country"/>
+                <columnRef name="pur_req_ship_dt"/>
+                <columnRef name="in_cmt_delivery_dt"/>
+                <columnRef name="in_cmt_ship_dt"/>
+                <columnRef name="in_req_st_street"/>
+                <columnRef name="in_req_st_zip"/>
+                <columnRef name="in_ocd_order_status"/>
+                <columnRef name="in_ocs_order_status"/>
+                <columnRef name="in_act_st_street"/>
+                <columnRef name="in_act_st_state"/>
+                <columnRef name="in_req_delivery_dt"/>
+                <columnRef name="in_sales_order_dt"/>
+                <columnRef name="in_ocd_order_priority"/>
+                <columnRef name="in_ocs_order_priority"/>
+                <columnRef name="in_act_delivery_dt"/>
+                <columnRef name="in_act_st_city"/>
+                <columnRef name="in_lnk_sold_sales_org"/>
+                <columnRef name="in_ocd_sales_order_type"/>
+                <columnRef name="in_ocs_sales_order_type"/>
+                <columnRef name="in_req_st_city"/>
+                <columnRef name="in_act_st_zip"/>
+                <columnRef name="in_lnk_ord_cust_id"/>
+                <columnRef name="in_act_ship_dt"/>
+                <columnRef name="in_req_st_state"/>
+                <columnRef name="in_req_st_country"/>
+                <columnRef name="in_act_st_country"/>
+                <columnRef name="in_req_ship_dt"/>
+            </removedColumns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Remove working columns"/>
+        <target endpoint="in" step="out"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (in) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in" mode="NORMAL">
+        <properties>
+            <columns>
+                <columnDef name="int_record_id_level_1" type="LONG">
+                    <comm:comment>DQ required attribute (always present)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_name" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id_name" type="STRING">
+                    <comm:comment>Engine added attribute (do not remove)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status_reason" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocd_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocs_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="tag_subject" type="STRING">
+                    <comm:comment>Subject level tag attribute</comm:comment>
+                </columnDef>
+                <columnDef name="in_cmt_delivery_dt" type="DAY"/>
+                <columnDef name="in_cmt_ship_dt" type="DAY"/>
+                <columnDef name="in_req_st_street" type="STRING"/>
+                <columnDef name="in_req_st_zip" type="STRING"/>
+                <columnDef name="in_ocd_order_status" type="STRING"/>
+                <columnDef name="in_ocs_order_status" type="STRING"/>
+                <columnDef name="in_act_st_street" type="STRING"/>
+                <columnDef name="in_act_st_state" type="STRING"/>
+                <columnDef name="in_req_delivery_dt" type="DAY"/>
+                <columnDef name="in_sales_order_dt" type="DAY"/>
+                <columnDef name="in_ocd_order_priority" type="STRING"/>
+                <columnDef name="in_ocs_order_priority" type="STRING"/>
+                <columnDef name="in_act_delivery_dt" type="DAY"/>
+                <columnDef name="in_act_st_city" type="STRING"/>
+                <columnDef name="in_lnk_sold_sales_org" type="STRING"/>
+                <columnDef name="in_ocd_sales_order_type" type="STRING"/>
+                <columnDef name="in_ocs_sales_order_type" type="STRING"/>
+                <columnDef name="in_req_st_city" type="STRING"/>
+                <columnDef name="in_act_st_zip" type="STRING"/>
+                <columnDef name="in_lnk_ord_cust_id" type="STRING"/>
+                <columnDef name="in_act_ship_dt" type="DAY"/>
+                <columnDef name="in_req_st_state" type="STRING"/>
+                <columnDef name="in_req_st_country" type="STRING"/>
+                <columnDef name="in_act_st_country" type="STRING"/>
+                <columnDef name="in_req_ship_dt" type="DAY"/>
+            </columns>
+            <shadowColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="in"/>
+        <target endpoint="in" step="Add output columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (out) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out" mode="NORMAL">
+        <properties>
+            <requiredColumns/>
+        </properties>
+    </step>
+</purity-config>
