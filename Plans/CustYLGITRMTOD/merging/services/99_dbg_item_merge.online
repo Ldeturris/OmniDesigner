@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ServiceConfig version="10.6.1.ga-2016-11-20">
+    <services>
+        <serviceBean configFile="../components/item_merge.comp" maxPoolSize="5" minPoolSize="1" name="item_merge" parallelismLevel="0">
+            <additionalActions/>
+            <method class="com.ataccama.dqc.online.cfg.SoapOverHttpMethod" location="/item_merge" soapAction="item_merge" soapVersion="SOAP11">
+                <inputFormat namespace="http://www.example.com/ws" schemaValidation="false">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlInputSection idColumn="int_record_id_level_1" name="in" stepId="in_item" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlColumn name="eng_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_master_id" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_rule" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_match_quality_detail" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_short_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_long_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_key_item_ind" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlColumn name="cio_item_ocd_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_ocs_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_base_price" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlColumn name="cio_item_item_sku" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_barcode" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_gtin" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="cio_item_item_eff_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="cio_item_item_eol_dt" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlColumn name="cio_item_item_base_cost" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlColumn name="tag_item_item_name" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_short_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_long_desc" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_key_item_ind" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_base_uom" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_base_price" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_sku" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_barcode" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_gtin" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_eff_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_eol_dt" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item_item_base_cost" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="tag_item" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_instance_id_name" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_status_reason" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_created_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_created_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_source_modified_date" strategy="OPTIONAL_ELEM" type="DATETIME"/>
+                                    <xmlColumn name="eng_source_modified_by" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocd_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                    <xmlColumn name="eng_ocs_source_status_code" strategy="OPTIONAL_ELEM" type="STRING"/>
+                                </columns>
+                                <references/>
+                                <sections/>
+                            </xmlInputSection>
+                        </sections>
+                    </rootSection>
+                </inputFormat>
+                <outputFormat namespace="http://www.example.com/ws">
+                    <rootSection>
+                        <columns/>
+                        <sections>
+                            <xmlOutputSection idColumn="int_record_id_level_1" name="out" stepId="out_master_item" strategy="MULTIPLE_REQUIRED">
+                                <columns>
+                                    <xmlOutputColumn name="eng_id" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocd_master_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="eng_ocs_master_status_code" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_name" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_short_desc" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_long_desc" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_key_item_ind" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="BOOLEAN"/>
+                                    <xmlOutputColumn name="cmo_item_ocd_item_base_uom" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_ocs_item_base_uom" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_base_price" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                    <xmlOutputColumn name="cmo_item_item_sku" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_barcode" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_gtin" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="STRING"/>
+                                    <xmlOutputColumn name="cmo_item_item_eff_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="cmo_item_item_eol_dt" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="DAY"/>
+                                    <xmlOutputColumn name="cmo_item_item_base_cost" nullHandling="ERROR" strategy="NILLABLE_ELEM" type="FLOAT"/>
+                                </columns>
+                                <sections/>
+                            </xmlOutputSection>
+                        </sections>
+                    </rootSection>
+                </outputFormat>
+            </method>
+        </serviceBean>
+    </services>
+</ServiceConfig>

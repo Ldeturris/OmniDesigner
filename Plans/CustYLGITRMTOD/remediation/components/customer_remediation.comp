@@ -1,0 +1,2033 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config version="10.6.2.ga-2017-03-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (Add flg remediation) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add flg remediation">
+		<properties>
+			<addedColumns>
+				<addedColumn name="flg_remediation" type="BOOLEAN"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add flg remediation"/>
+		<target endpoint="in" step="Identify groups for Remediation"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-24,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer]"/>
+		<target endpoint="in" step="Multiplicator"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_account]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,768,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_account]"/>
+		<target endpoint="in" step="Splitting explanations [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_accountteam]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,768,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_accountteam]"/>
+		<target endpoint="in" step="Splitting explanations [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_address]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_address]"/>
+		<target endpoint="in" step="Splitting explanations [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_contact]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_contact]"/>
+		<target endpoint="in" step="Splitting explanations [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_custdemographics]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1752,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_custdemographics]"/>
+		<target endpoint="in" step="Splitting explanations [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_email]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1392,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_email]"/>
+		<target endpoint="in" step="Splitting explanations [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add ticket columns [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add ticket columns [customer_phone]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="entity_id" type="STRING"/>
+				<addedColumn name="entity_name" type="STRING"/>
+				<addedColumn name="reason_code" type="STRING"/>
+				<addedColumn name="reason_description" type="STRING"/>
+				<addedColumn name="severity" type="INTEGER"/>
+				<addedColumn name="remediation_attribute" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,192,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add ticket columns [customer_phone]"/>
+		<target endpoint="in" step="Splitting explanations [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Create matching ticket) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Create matching ticket">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="concatenate(eng_id,&quot;^~^&quot;,10000000)" name="match_group_ids"/>
+								<attributeCfgRepr expression="2" name="severity"/>
+								<attributeCfgRepr expression="&quot;POTENTIAL_MATCH&quot;" name="reason_code"/>
+								<attributeCfgRepr expression="&quot;This is a low quality match&quot;" name="reason_description"/>
+							</representativeAttributes>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-168,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Create matching ticket"/>
+		<target endpoint="in" step="out_matching_tickets"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer]">
+		<properties>
+			<condition>tag_customer is not null
+or
+tag_customer_soc_sec_num is not null
+or
+tag_customer_date_of_birth is not null</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-96,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer]"/>
+		<target endpoint="in" step="Add flg remediation"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer]"/>
+		<target endpoint="in" step="Add ticket columns [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_account]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="552,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_account]"/>
+		<target endpoint="in" step="Add ticket columns [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_account]"/>
+		<target endpoint="in" step="Trash [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_accountteam]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="168,672,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_accountteam]"/>
+		<target endpoint="in" step="Add ticket columns [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_accountteam]"/>
+		<target endpoint="in" step="Trash [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_address]">
+		<properties condition="indexOf(tag_address_street_address1,&#39;ERR_&#39;) is not null"/>
+		<visual-constraints layout="vertical" bounds="960,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_address]"/>
+		<target endpoint="in" step="Add ticket columns [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_address]"/>
+		<target endpoint="in" step="Trash [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_contact]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="240,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_contact]"/>
+		<target endpoint="in" step="Add ticket columns [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_contact]"/>
+		<target endpoint="in" step="Trash [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_custdemographics]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="1680,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_custdemographics]"/>
+		<target endpoint="in" step="Add ticket columns [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_custdemographics]"/>
+		<target endpoint="in" step="Trash [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_email]">
+		<properties condition="indexOf(tag_email_email_address,&#39;ERR_&#39;) is not null"/>
+		<visual-constraints layout="vertical" bounds="1320,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_email]"/>
+		<target endpoint="in" step="Add ticket columns [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_email]"/>
+		<target endpoint="in" step="Trash [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Determine cleansing tickets [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.ExtractFilter" disabled="false" id="Determine cleansing tickets [customer_phone]">
+		<properties condition="indexOf(tag_phone_phone_number,&#39;ERR_&#39;) is not null"/>
+		<visual-constraints layout="vertical" bounds="600,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_extract" step="Determine cleansing tickets [customer_phone]"/>
+		<target endpoint="in" step="Add ticket columns [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Determine cleansing tickets [customer_phone]"/>
+		<target endpoint="in" step="Trash [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer]">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-24,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer]"/>
+		<target endpoint="in" step="Set ticket attributes [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer] 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer] 2">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer] 2"/>
+		<target endpoint="in" step="Set ticket attributes [customer] 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer] 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer] 3">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer] 3"/>
+		<target endpoint="in" step="Set ticket attributes [customer] 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_account]">
+		<properties condition="reason_code is not null"/>
+		<visual-constraints layout="vertical" bounds="624,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_account]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_accountteam]">
+		<properties condition="reason_code is not null"/>
+		<visual-constraints layout="vertical" bounds="240,912,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_accountteam]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_address]">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_address]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_contact]">
+		<properties condition="reason_code is not null"/>
+		<visual-constraints layout="vertical" bounds="312,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_contact]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_custdemographics]">
+		<properties condition="reason_code is not null"/>
+		<visual-constraints layout="vertical" bounds="1752,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_custdemographics]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_email]">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1392,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_email]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter [customer_phone]">
+		<properties>
+			<condition>reason_code is not null
+and
+indexOf(reason_code,&#39;ERR_&#39;)=0</condition>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter [customer_phone]"/>
+		<target endpoint="in" step="Set ticket attributes [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter only groups for remediation) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter only groups for remediation">
+		<properties condition="flg_remediation"/>
+		<visual-constraints layout="vertical" bounds="-168,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter only groups for remediation"/>
+		<target endpoint="in" step="Create matching ticket"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Identify groups for Remediation) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Identify groups for Remediation">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst name="flg_remediation">
+									<expression>countIf(
+eng_match_rule=&#39;03_POTENTIAL_MATCH&#39;
+) &gt; 0</expression>
+								</attributeCfgInst>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Identify groups for Remediation"/>
+		<target endpoint="in" step="Filter only groups for remediation"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Multiplicator) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Multiplicator" disabled="false" id="Multiplicator">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="-24,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Splitting explanations [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Splitting explanations [customer] - soc_sec_num"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="95,312"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Multiplicator"/>
+		<target endpoint="in" step="Splitting explanations [customer] - soc_sec_num 2"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="191,312"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+	reason_code=&#39;ERR_NAME_BLANK&#39;
+	,&#39;Name blank&#39;
+
+	,reason_code=&#39;ERR_LAST_NAME_BLANK&#39;
+	,&#39;Last name blank&#39;
+	
+	,&#39;UNKNOWN-&#39; + reason_code
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="remediation_attribute">
+					<expression>case (
+	reason_code=&#39;ERR_NAME_BLANK&#39;
+	,&#39;display_name&#39;
+
+	,reason_code=&#39;ERR_LAST_NAME_BLANK&#39;
+	,&#39;last_name&#39;
+	
+	,&#39;UNKNOWN-&#39; + reason_code
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-24,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer]"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer] 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer] 2">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+
+	reason_code=&#39;ERR_SSN_NO_9_DIGIT&#39;
+	,&#39;SSN not 9 digits&#39;
+	
+	,reason_code=&#39;ERR_SSN_ZEROS_IN_GROUP&#39;
+	,&#39;All zeros in SSN digit group&#39;
+	
+	,reason_code=&#39;ERR_SSN_UNACCEPTED_NUMBER&#39;
+	,&#39;SSN contains unacceptable number&#39;
+	
+	,reason_code=&#39;ERR_SSN_USED_FOR_ADVERT&#39;
+	,&#39;SSN used for advertising&#39;
+	
+	,reason_code=&#39;ERR_SSN_BLACKLISTED&#39;
+	,&#39;SSN blacklisted&#39;
+	
+	,reason_code=&#39;ERR_SSN_ZEROS_ADDED&#39;
+	,&#39;Zeros added to SSN&#39;
+	
+	,reason_code=&#39;ERR_SSN_NOT_A_SSN&#39;
+	,&#39;SSN is not valid&#39;
+	
+	,&quot;UNKNOWN&quot;
+	
+
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;soc_sec_num&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer] 2"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="95,552"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer] 3) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer] 3">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+
+	reason_code=&#39;ERR_DOB_BLACKLISTED&#39;
+	,&#39;Date of birth blacklisted&#39;
+	
+	,reason_code=&#39;ERR_DOB_IN_FUTURE&#39;
+	,&#39;Date of birth in the future&#39;
+	
+	,&quot;UNKNOWN-&quot; + reason_code
+	
+
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;date_of_birth&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,480,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer] 3"/>
+		<target endpoint="in" step="Union Same"/>
+		<visual-constraints>
+			<bendpoints>
+				<point location="191,552"/>
+			</bendpoints>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_account]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;TODO: Add reason description&quot;" column="reason_description">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="/*set remediation attribute here*/ &quot;&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_account]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_account"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_accountteam]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;TODO: Add reason description&quot;" column="reason_description">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="/*set remediation attribute here*/ &quot;&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,984,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_accountteam]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_accountteam"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_address]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+	reason_code=&#39;ERR_ADDRESS_INVALID&#39;
+	,&#39;Address invalid&#39;
+
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&#39;street_address1&#39;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_address]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_address"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_contact]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;TODO: Add reason description&quot;" column="reason_description">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="/*set remediation attribute here*/ &quot;&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_contact]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_contact"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_custdemographics]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&quot;TODO: Add reason description&quot;" column="reason_description">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="/*set remediation attribute here*/ &quot;&quot;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1752,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_custdemographics]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_custdemographics"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_email]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+
+	reason_code=&#39;ERR_EMAIL_INVALID&#39;
+	,&#39;Email address invalid&#39;
+	
+	,reason_code=&#39;ERR_EMAIL_TLD_MISSING&#39;
+	,&#39;Email address missing TLD&#39;
+		
+	,reason_code=&#39;ERR_EMAIL_DOMAIN_ONLY&#39;
+	,&#39;Email address contains only domain&#39;
+	
+	,reason_code=&#39;ERR_EMAIL_AT_SIGN_MISSING&#39;
+	,&#39;Email address at sign missing&#39;
+	
+	,reason_code=&#39;INF_EMAIL_SUSPICIOUS&#39;
+	,&#39;Suspicious email address&#39;
+	
+	,reason_code=&#39;ERR_EMAIL_WEB_ADDRESS&#39;
+	,&#39;Email address is web address&#39;
+
+	,&#39;UNKNOWN-&#39; + reason_code
+
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&#39;email_address&#39;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1392,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_email]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_email"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set ticket attributes [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set ticket attributes [customer_phone]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_id" column="entity_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="reason_code" column="reason_code">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment column="reason_description">
+					<expression>case (
+
+	reason_code=&#39;ERR_PHONE_NOT_A_NUMBER&#39;
+	,&#39;Not a phone number&#39;
+	
+	,reason_code=&#39;ERR_PHONE_TOO_SHORT&#39;
+	,&#39;Phone number too short&#39;
+	
+	,reason_code=&#39;ERR_PHONE_BLACKLISTED&#39;
+	,&#39;Phone number black listed&#39;
+	
+	,reason_code=&#39;ERR_PHONE_AREACODEINVALID&#39;
+	,&#39;Phone area code invalid&#39;
+
+	,reason_code=&#39;ERR_PHONE_CO_CODE_INVALID&#39;
+	,&#39;Phone CO code invalid&#39;
+
+	,&#39;UNKNOWN-&#39; + reason_code
+
+)</expression>
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="2" column="severity">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="&#39;phone_number&#39;" column="remediation_attribute">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,408,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set ticket attributes [customer_phone]"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer_phone"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer]">
+		<properties allSentenceColumn="tag_customer" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-24,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer]"/>
+		<target endpoint="in" step="Filter [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer] - soc_sec_num) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer] - soc_sec_num">
+		<properties allSentenceColumn="tag_customer_soc_sec_num" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="72,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer] - soc_sec_num"/>
+		<target endpoint="in" step="Filter [customer] 2"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer] - soc_sec_num 2) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer] - soc_sec_num 2">
+		<properties allSentenceColumn="tag_customer_date_of_birth" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,336,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer] - soc_sec_num 2"/>
+		<target endpoint="in" step="Filter [customer] 3"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_account]">
+		<properties oneWordColumn="reason_code">
+			<allSentenceColumn>//TAGs should go here
+&quot;&quot;</allSentenceColumn>
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_account]"/>
+		<target endpoint="in" step="Filter [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_accountteam]">
+		<properties oneWordColumn="reason_code">
+			<allSentenceColumn>//TAGs should go here
+&quot;&quot;</allSentenceColumn>
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,840,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_accountteam]"/>
+		<target endpoint="in" step="Filter [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_address]">
+		<properties allSentenceColumn="tag_address_street_address1" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_address]"/>
+		<target endpoint="in" step="Filter [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_contact]">
+		<properties oneWordColumn="reason_code">
+			<allSentenceColumn>//TAGs should go here
+&quot;&quot;</allSentenceColumn>
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_contact]"/>
+		<target endpoint="in" step="Filter [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_custdemographics]">
+		<properties oneWordColumn="reason_code">
+			<allSentenceColumn>//TAGs should go here
+&quot;&quot;</allSentenceColumn>
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1752,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_custdemographics]"/>
+		<target endpoint="in" step="Filter [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_email]">
+		<properties allSentenceColumn="tag_email_email_address" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1392,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_email]"/>
+		<target endpoint="in" step="Filter [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Splitting explanations [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.text.Splitter" disabled="false" id="Splitting explanations [customer_phone]">
+		<properties allSentenceColumn="tag_phone_phone_number" oneWordColumn="reason_code">
+			<separatorConfig upperCaseLetters="false" digits="false" includeSeparators=" " lowerCaseLetters="false" excludeSeparators="_#"/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,264,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Splitting explanations [customer_phone]"/>
+		<target endpoint="in" step="Filter [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Trash [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_account]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="504,768,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_accountteam]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="120,768,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_address]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="912,192,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_contact]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="192,192,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_custdemographics]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1632,192,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_email]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="1272,192,-1,-1"/>
+	</step>
+
+
+
+<!-- (Trash [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.io.Trash" disabled="false" id="Trash [customer_phone]">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="552,192,-1,-1"/>
+	</step>
+
+
+
+<!-- (Union Same) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.UnionSame" disabled="false" id="Union Same">
+		<properties/>
+		<visual-constraints layout="vertical" bounds="-24,552,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union Same"/>
+		<target endpoint="in" step="out_cleansing_tickets_customer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_customer" type="STRING"/>
+				<columnDef name="cio_customer_active_status" type="STRING"/>
+				<columnDef name="tag_customer_active_status" type="STRING"/>
+				<columnDef name="cio_customer_legal_name" type="STRING"/>
+				<columnDef name="tag_customer_legal_name" type="STRING"/>
+				<columnDef name="cio_customer_dba_name" type="STRING"/>
+				<columnDef name="tag_customer_dba_name" type="STRING"/>
+				<columnDef name="cio_customer_first_name" type="STRING"/>
+				<columnDef name="tag_customer_first_name" type="STRING"/>
+				<columnDef name="cio_customer_middle_name" type="STRING"/>
+				<columnDef name="tag_customer_middle_name" type="STRING"/>
+				<columnDef name="cio_customer_last_name" type="STRING"/>
+				<columnDef name="tag_customer_last_name" type="STRING"/>
+				<columnDef name="cio_customer_display_name" type="STRING"/>
+				<columnDef name="tag_customer_display_name" type="STRING"/>
+				<columnDef name="cio_customer_company_name" type="STRING"/>
+				<columnDef name="tag_customer_company_name" type="STRING"/>
+				<columnDef name="cio_customer_tax_id" type="STRING"/>
+				<columnDef name="tag_customer_tax_id" type="STRING"/>
+				<columnDef name="cio_customer_tax_exempt_num" type="STRING"/>
+				<columnDef name="tag_customer_tax_exempt_num" type="STRING"/>
+				<columnDef name="cio_customer_soc_sec_num" type="STRING"/>
+				<columnDef name="tag_customer_soc_sec_num" type="STRING"/>
+				<columnDef name="cio_customer_date_of_birth" type="DAY"/>
+				<columnDef name="tag_customer_date_of_birth" type="STRING"/>
+				<columnDef name="cio_customer_lnk_prim_sales_org" type="STRING"/>
+				<columnDef name="tag_customer_prim_sales_org" type="STRING"/>
+				<columnDef name="cio_customer_lead_source_txt" type="STRING"/>
+				<columnDef name="tag_customer_lead_source_txt" type="STRING"/>
+				<columnDef name="cio_customer_ocd_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_ocs_priority_group" type="STRING"/>
+				<columnDef name="tag_customer_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_ocd_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_ocs_primary_geo_area" type="STRING"/>
+				<columnDef name="tag_customer_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_customer_ocs_credit_rating" type="STRING"/>
+				<columnDef name="tag_customer_credit_rating" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-96,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_account">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_account" type="STRING"/>
+				<columnDef name="cio_account_ocd_account_type" type="STRING"/>
+				<columnDef name="cio_account_ocs_account_type" type="STRING"/>
+				<columnDef name="tag_account_account_type" type="STRING"/>
+				<columnDef name="cio_account_account_name" type="STRING"/>
+				<columnDef name="tag_account_account_name" type="STRING"/>
+				<columnDef name="cio_account_account_open_dt" type="DAY"/>
+				<columnDef name="tag_account_account_open_dt" type="STRING"/>
+				<columnDef name="cio_account_account_close_dt" type="DAY"/>
+				<columnDef name="tag_account_account_close_dt" type="STRING"/>
+				<columnDef name="cio_account_credit_limit" type="FLOAT"/>
+				<columnDef name="tag_account_credit_limit" type="STRING"/>
+				<columnDef name="cio_account_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_ocs_credit_rating" type="STRING"/>
+				<columnDef name="tag_account_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_credit_terms" type="STRING"/>
+				<columnDef name="tag_account_credit_terms" type="STRING"/>
+				<columnDef name="cio_account_account_renew_dt" type="DAY"/>
+				<columnDef name="tag_account_account_renew_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,600,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_account"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_accountteam">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_accountteam" type="STRING"/>
+				<columnDef name="cio_accountteam_current_ind" type="BOOLEAN"/>
+				<columnDef name="tag_accountteam_current_ind" type="STRING"/>
+				<columnDef name="cio_accountteam_credit_rep" type="STRING"/>
+				<columnDef name="tag_accountteam_credit_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_direct_sales_rep" type="STRING"/>
+				<columnDef name="tag_accountteam_direct_sales_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_executive" type="STRING"/>
+				<columnDef name="tag_accountteam_acct_executive" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_team_start_dt" type="DAY"/>
+				<columnDef name="tag_accountteam_acct_team_start_dt" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_team_end_dt" type="DAY"/>
+				<columnDef name="tag_accountteam_acct_team_end_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,600,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_accountteam"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_address">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_address" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_type" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_type" type="STRING"/>
+				<columnDef name="tag_address_address_type" type="STRING"/>
+				<columnDef name="cio_address_primary_ind" type="BOOLEAN"/>
+				<columnDef name="tag_address_primary_ind" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_status" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_status" type="STRING"/>
+				<columnDef name="tag_address_address_status" type="STRING"/>
+				<columnDef name="cio_address_attn_to_contact" type="STRING"/>
+				<columnDef name="tag_address_attn_to_contact" type="STRING"/>
+				<columnDef name="cio_address_street_address1" type="STRING"/>
+				<columnDef name="tag_address_street_address1" type="STRING"/>
+				<columnDef name="cio_address_street_address2" type="STRING"/>
+				<columnDef name="tag_address_street_address2" type="STRING"/>
+				<columnDef name="cio_address_city" type="STRING"/>
+				<columnDef name="tag_address_city" type="STRING"/>
+				<columnDef name="cio_address_state_territory" type="STRING"/>
+				<columnDef name="tag_address_state_territory" type="STRING"/>
+				<columnDef name="cio_address_county" type="STRING"/>
+				<columnDef name="tag_address_county" type="STRING"/>
+				<columnDef name="cio_address_country" type="STRING"/>
+				<columnDef name="tag_address_country" type="STRING"/>
+				<columnDef name="cio_address_postal_code" type="STRING"/>
+				<columnDef name="tag_address_postal_code" type="STRING"/>
+				<columnDef name="cio_address_time_zone" type="STRING"/>
+				<columnDef name="tag_address_time_zone" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_geo_area" type="STRING"/>
+				<columnDef name="tag_address_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_latitude" type="FLOAT"/>
+				<columnDef name="tag_address_latitude" type="STRING"/>
+				<columnDef name="cio_address_longitude" type="FLOAT"/>
+				<columnDef name="tag_address_longitude" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="960,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_address"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_contact">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_contact" type="STRING"/>
+				<columnDef name="cio_contact_primary_ind" type="BOOLEAN"/>
+				<columnDef name="tag_contact_primary_ind" type="STRING"/>
+				<columnDef name="cio_contact_ocd_contact_type" type="STRING"/>
+				<columnDef name="cio_contact_ocs_contact_type" type="STRING"/>
+				<columnDef name="tag_contact_contact_type" type="STRING"/>
+				<columnDef name="cio_contact_title" type="STRING"/>
+				<columnDef name="tag_contact_title" type="STRING"/>
+				<columnDef name="cio_contact_first_name" type="STRING"/>
+				<columnDef name="tag_contact_first_name" type="STRING"/>
+				<columnDef name="cio_contact_middle_name" type="STRING"/>
+				<columnDef name="tag_contact_middle_name" type="STRING"/>
+				<columnDef name="cio_contact_last_name" type="STRING"/>
+				<columnDef name="tag_contact_last_name" type="STRING"/>
+				<columnDef name="cio_contact_full_name" type="STRING"/>
+				<columnDef name="tag_contact_full_name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_contact"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_custdemographics">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_custdemographics" type="STRING"/>
+				<columnDef name="cio_custdemographics_current_ind" type="BOOLEAN"/>
+				<columnDef name="tag_custdemographics_current_ind" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_gender" type="STRING"/>
+				<columnDef name="tag_custdemographics_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_ethnicity" type="STRING"/>
+				<columnDef name="tag_custdemographics_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_age_generation" type="STRING"/>
+				<columnDef name="tag_custdemographics_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_marital_status" type="STRING"/>
+				<columnDef name="tag_custdemographics_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_employment_status" type="STRING"/>
+				<columnDef name="tag_custdemographics_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_cust_demo_eff_dt" type="DAY"/>
+				<columnDef name="tag_custdemographics_cust_demo_eff_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1680,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_custdemographics"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_email">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_email" type="STRING"/>
+				<columnDef name="cio_email_primary_ind" type="BOOLEAN"/>
+				<columnDef name="tag_email_primary_ind" type="STRING"/>
+				<columnDef name="cio_email_ocd_email_type" type="STRING"/>
+				<columnDef name="cio_email_ocs_email_type" type="STRING"/>
+				<columnDef name="tag_email_email_type" type="STRING"/>
+				<columnDef name="cio_email_email_address" type="STRING"/>
+				<columnDef name="tag_email_email_address" type="STRING"/>
+				<columnDef name="cio_email_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_email_ocs_comm_status" type="STRING"/>
+				<columnDef name="tag_email_comm_status" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_email"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_phone">
+		<properties>
+			<columns>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="tag_phone" type="STRING"/>
+				<columnDef name="cio_phone_primary_ind" type="BOOLEAN"/>
+				<columnDef name="tag_phone_primary_ind" type="STRING"/>
+				<columnDef name="cio_phone_active_ind" type="BOOLEAN"/>
+				<columnDef name="tag_phone_active_ind" type="STRING"/>
+				<columnDef name="cio_phone_ocd_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_ocs_phone_type" type="STRING"/>
+				<columnDef name="tag_phone_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_phone_number" type="STRING"/>
+				<columnDef name="tag_phone_phone_number" type="STRING"/>
+				<columnDef name="cio_phone_extension" type="STRING"/>
+				<columnDef name="tag_phone_extension" type="STRING"/>
+				<columnDef name="cio_phone_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_phone_ocs_comm_status" type="STRING"/>
+				<columnDef name="tag_phone_comm_status" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_phone"/>
+		<target endpoint="in" step="Determine cleansing tickets [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out_cleansing_tickets_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-24,624,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_account">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,1056,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_accountteam">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,1056,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_address">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1032,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_contact">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="312,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_custdemographics">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1752,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_email">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1392,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_cleansing_tickets_customer_phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_cleansing_tickets_customer_phone">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="672,480,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_matching_tickets) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_matching_tickets">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,480,-1,-1"/>
+	</step>
+
+</purity-config>
