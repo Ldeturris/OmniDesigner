@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.1.ga-2016-11-20">
+    <references/>
+    <component-mappings>
+        <propertyMappings/>
+    </component-mappings>
+    <!-- (Add output columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add output columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn name="out_item_gtin" type="STRING"/>
+                <addedColumn name="out_item_long_desc" type="STRING"/>
+                <addedColumn name="out_item_name" type="STRING"/>
+                <addedColumn name="out_item_eff_dt" type="DAY"/>
+                <addedColumn name="out_key_item_ind" type="BOOLEAN"/>
+                <addedColumn name="out_item_base_price" type="FLOAT"/>
+                <addedColumn name="out_item_base_cost" type="FLOAT"/>
+                <addedColumn name="out_item_barcode" type="STRING"/>
+                <addedColumn name="out_ocd_item_base_uom" type="STRING"/>
+                <addedColumn name="out_ocs_item_base_uom" type="STRING"/>
+                <addedColumn name="out_item_eol_dt" type="DAY"/>
+                <addedColumn name="out_item_short_desc" type="STRING"/>
+                <addedColumn name="out_item_sku" type="STRING"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add output columns"/>
+        <target endpoint="in" step="Add working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Add working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn expression="in_item_gtin" name="pur_item_gtin" type="STRING"/>
+                <addedColumn expression="in_item_long_desc" name="pur_item_long_desc" type="STRING"/>
+                <addedColumn expression="in_item_name" name="pur_item_name" type="STRING"/>
+                <addedColumn expression="in_item_eff_dt" name="pur_item_eff_dt" type="DAY"/>
+                <addedColumn expression="in_key_item_ind" name="pur_key_item_ind" type="BOOLEAN"/>
+                <addedColumn expression="in_item_base_price" name="pur_item_base_price" type="FLOAT"/>
+                <addedColumn expression="in_item_base_cost" name="pur_item_base_cost" type="FLOAT"/>
+                <addedColumn expression="in_item_barcode" name="pur_item_barcode" type="STRING"/>
+                <addedColumn expression="in_ocd_item_base_uom" name="pur_ocd_item_base_uom" type="STRING"/>
+                <addedColumn expression="in_ocs_item_base_uom" name="pur_ocs_item_base_uom" type="STRING"/>
+                <addedColumn expression="in_item_eol_dt" name="pur_item_eol_dt" type="DAY"/>
+                <addedColumn expression="in_item_short_desc" name="pur_item_short_desc" type="STRING"/>
+                <addedColumn expression="in_item_sku" name="pur_item_sku" type="STRING"/>
+                <addedColumn name="tmp_score" type="INTEGER"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add working columns"/>
+        <target endpoint="in" step="Insert cleansing rules here"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Insert cleansing rules here) -->
+    <step className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Insert cleansing rules here" mode="NORMAL">
+        <properties>
+            <assignments>
+                <assignment column="out_item_gtin" expression="pur_item_gtin">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_long_desc" expression="pur_item_long_desc">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_name" expression="pur_item_name">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_eff_dt" expression="pur_item_eff_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_key_item_ind" expression="pur_key_item_ind">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_base_price" expression="pur_item_base_price">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_base_cost" expression="pur_item_base_cost">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_barcode" expression="pur_item_barcode">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocd_item_base_uom" expression="pur_ocd_item_base_uom">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocs_item_base_uom" expression="pur_ocs_item_base_uom">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_eol_dt" expression="pur_item_eol_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_short_desc" expression="pur_item_short_desc">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_item_sku" expression="pur_item_sku">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+            </assignments>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Insert cleansing rules here"/>
+        <target endpoint="in" step="Create Tags"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create Tags) -->
+    <step className="com.ataccama.dqc.tasks.scoring.SimpleScoring" disabled="false" id="Create Tags" mode="NORMAL">
+        <properties defaultExplainColumn="tag_subject" defaultScoreColumn="tmp_score">
+            <scoringCases/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create Tags"/>
+        <target endpoint="in" step="Remove working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Remove working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns" mode="NORMAL">
+        <properties>
+            <addedColumns/>
+            <removedColumns>
+                <columnRef name="eng_id"/>
+                <columnRef name="eng_source_name"/>
+                <columnRef name="eng_source_instance_id"/>
+                <columnRef name="eng_status"/>
+                <columnRef name="eng_status_reason"/>
+                <columnRef name="eng_source_created_date"/>
+                <columnRef name="eng_source_created_by"/>
+                <columnRef name="eng_source_modified_date"/>
+                <columnRef name="eng_source_modified_by"/>
+                <columnRef name="eng_ocd_source_status_code"/>
+                <columnRef name="eng_ocs_source_status_code"/>
+                <columnRef name="tmp_score"/>
+                <columnRef name="pur_item_gtin"/>
+                <columnRef name="pur_item_long_desc"/>
+                <columnRef name="pur_item_name"/>
+                <columnRef name="pur_item_eff_dt"/>
+                <columnRef name="pur_key_item_ind"/>
+                <columnRef name="pur_item_base_price"/>
+                <columnRef name="pur_item_base_cost"/>
+                <columnRef name="pur_item_barcode"/>
+                <columnRef name="pur_ocd_item_base_uom"/>
+                <columnRef name="pur_ocs_item_base_uom"/>
+                <columnRef name="pur_item_eol_dt"/>
+                <columnRef name="pur_item_short_desc"/>
+                <columnRef name="pur_item_sku"/>
+                <columnRef name="in_item_gtin"/>
+                <columnRef name="in_item_long_desc"/>
+                <columnRef name="in_item_name"/>
+                <columnRef name="in_item_eff_dt"/>
+                <columnRef name="in_key_item_ind"/>
+                <columnRef name="in_item_base_price"/>
+                <columnRef name="in_item_base_cost"/>
+                <columnRef name="in_item_barcode"/>
+                <columnRef name="in_ocd_item_base_uom"/>
+                <columnRef name="in_ocs_item_base_uom"/>
+                <columnRef name="in_item_eol_dt"/>
+                <columnRef name="in_item_short_desc"/>
+                <columnRef name="in_item_sku"/>
+            </removedColumns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Remove working columns"/>
+        <target endpoint="in" step="out"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (in) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in" mode="NORMAL">
+        <properties>
+            <columns>
+                <columnDef name="int_record_id_level_1" type="LONG">
+                    <comm:comment>DQ required attribute (always present)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_name" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id_name" type="STRING">
+                    <comm:comment>Engine added attribute (do not remove)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status_reason" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocd_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocs_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="tag_subject" type="STRING">
+                    <comm:comment>Subject level tag attribute</comm:comment>
+                </columnDef>
+                <columnDef name="in_item_gtin" type="STRING"/>
+                <columnDef name="in_item_long_desc" type="STRING"/>
+                <columnDef name="in_item_name" type="STRING"/>
+                <columnDef name="in_item_eff_dt" type="DAY"/>
+                <columnDef name="in_key_item_ind" type="BOOLEAN"/>
+                <columnDef name="in_item_base_price" type="FLOAT"/>
+                <columnDef name="in_item_base_cost" type="FLOAT"/>
+                <columnDef name="in_item_barcode" type="STRING"/>
+                <columnDef name="in_ocd_item_base_uom" type="STRING"/>
+                <columnDef name="in_ocs_item_base_uom" type="STRING"/>
+                <columnDef name="in_item_eol_dt" type="DAY"/>
+                <columnDef name="in_item_short_desc" type="STRING"/>
+                <columnDef name="in_item_sku" type="STRING"/>
+            </columns>
+            <shadowColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="in"/>
+        <target endpoint="in" step="Add output columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (out) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out" mode="NORMAL">
+        <properties>
+            <requiredColumns/>
+        </properties>
+    </step>
+</purity-config>

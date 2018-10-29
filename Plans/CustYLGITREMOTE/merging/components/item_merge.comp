@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.1.ga-2016-11-20">
+    <references/>
+    <component-mappings>
+        <propertyMappings/>
+    </component-mappings>
+    <!-- (in_item) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_item" mode="NORMAL">
+        <properties>
+            <columns>
+                <columnDef name="int_record_id_level_1" type="LONG"/>
+                <columnDef name="eng_id" type="STRING"/>
+                <columnDef name="eng_source_name" type="STRING"/>
+                <columnDef name="eng_source_instance_id" type="STRING"/>
+                <columnDef name="eng_source_instance_id_name" type="STRING"/>
+                <columnDef name="eng_status" type="STRING"/>
+                <columnDef name="eng_status_reason" type="STRING"/>
+                <columnDef name="eng_source_created_date" type="DATETIME"/>
+                <columnDef name="eng_source_created_by" type="STRING"/>
+                <columnDef name="eng_source_modified_date" type="DATETIME"/>
+                <columnDef name="eng_source_modified_by" type="STRING"/>
+                <columnDef name="eng_ocd_source_status_code" type="STRING"/>
+                <columnDef name="eng_ocs_source_status_code" type="STRING"/>
+                <columnDef name="eng_master_id" type="STRING"/>
+                <columnDef name="eng_match_quality" type="STRING"/>
+                <columnDef name="eng_match_quality_detail" type="STRING"/>
+                <columnDef name="eng_match_rule" type="STRING"/>
+                <columnDef name="eng_match_role" type="STRING"/>
+                <columnDef name="tag_item" type="STRING"/>
+                <columnDef name="cio_item_item_name" type="STRING"/>
+                <columnDef name="cio_item_item_short_desc" type="STRING"/>
+                <columnDef name="cio_item_item_long_desc" type="STRING"/>
+                <columnDef name="cio_item_key_item_ind" type="BOOLEAN"/>
+                <columnDef name="cio_item_ocd_item_base_uom" type="STRING"/>
+                <columnDef name="cio_item_ocs_item_base_uom" type="STRING"/>
+                <columnDef name="cio_item_item_base_price" type="FLOAT"/>
+                <columnDef name="cio_item_item_sku" type="STRING"/>
+                <columnDef name="cio_item_item_barcode" type="STRING"/>
+                <columnDef name="cio_item_item_gtin" type="STRING"/>
+                <columnDef name="cio_item_item_eff_dt" type="DAY"/>
+                <columnDef name="cio_item_item_eol_dt" type="DAY"/>
+                <columnDef name="cio_item_item_base_cost" type="FLOAT"/>
+                <columnDef name="tag_item_item_name" type="STRING"/>
+                <columnDef name="tag_item_item_short_desc" type="STRING"/>
+                <columnDef name="tag_item_item_long_desc" type="STRING"/>
+                <columnDef name="tag_item_key_item_ind" type="STRING"/>
+                <columnDef name="tag_item_item_base_uom" type="STRING"/>
+                <columnDef name="tag_item_item_base_price" type="STRING"/>
+                <columnDef name="tag_item_item_sku" type="STRING"/>
+                <columnDef name="tag_item_item_barcode" type="STRING"/>
+                <columnDef name="tag_item_item_gtin" type="STRING"/>
+                <columnDef name="tag_item_item_eff_dt" type="STRING"/>
+                <columnDef name="tag_item_item_eol_dt" type="STRING"/>
+                <columnDef name="tag_item_item_base_cost" type="STRING"/>
+            </columns>
+            <shadowColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="in_item"/>
+        <target endpoint="in" step="Set int_record_ids"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Set int_record_ids) -->
+    <step className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids" mode="NORMAL">
+        <properties>
+            <assignments>
+                <assignment column="eng_id" expression="nvl(toString(int_record_id_level_1),eng_id)">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+            </assignments>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Set int_record_ids"/>
+        <target endpoint="in" step="Merge item"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Merge item) -->
+    <step className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Merge item" mode="NORMAL">
+        <properties>
+            <groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+                <groupBy>
+                    <keyComponent expression="eng_master_id"/>
+                </groupBy>
+            </groupingStrategy>
+            <rules>
+                <rule>
+                    <attributeSets>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+                                <attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+                                <attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="false"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden Engine values</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_name" name="cmo_item_item_name"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_name is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_name</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_short_desc" name="cmo_item_item_short_desc"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_short_desc is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_short_desc</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_long_desc" name="cmo_item_item_long_desc"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_long_desc is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_long_desc</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_key_item_ind" name="cmo_item_key_item_ind"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_key_item_ind is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden key_item_ind</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="cio_item_ocd_item_base_uom" name="cmo_item_ocd_item_base_uom"/>
+                                <attributeCfgRepr expression="cio_item_ocs_item_base_uom" name="cmo_item_ocs_item_base_uom"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_ocd_item_base_uom is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden ocd_item_base_uom</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_base_price" name="cmo_item_item_base_price"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_base_price is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_base_price</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_sku" name="cmo_item_item_sku"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_sku is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_sku</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_barcode" name="cmo_item_item_barcode"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_barcode is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_barcode</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_gtin" name="cmo_item_item_gtin"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_gtin is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_gtin</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_eff_dt" name="cmo_item_item_eff_dt"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_eff_dt is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_eff_dt</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_eol_dt" name="cmo_item_item_eol_dt"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_eol_dt is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_eol_dt</comm:comment>
+                        </attributeSetCfg>
+                        <attributeSetCfg>
+                            <instanceAttributes/>
+                            <representativeAttributes>
+                                <attributeCfgRepr expression="best.cio_item_item_base_cost" name="cmo_item_item_base_cost"/>
+                            </representativeAttributes>
+                            <selectionRules>
+                                <aggregatingOrderBy expression="cio_item_item_base_cost is not null" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+                                <aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+                            </selectionRules>
+                            <comm:comment>Golden item_base_cost</comm:comment>
+                        </attributeSetCfg>
+                    </attributeSets>
+                </rule>
+            </rules>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out_merged" step="Merge item"/>
+        <target endpoint="in" step="Add eng_id and eng_parent_id [item]"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Add eng_id and eng_parent_id [item]) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add eng_id and eng_parent_id [item]" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn name="eng_id" type="STRING"/>
+                <addedColumn name="eng_parent_id" type="STRING"/>
+                <addedColumn name="int_record_id_level_1" type="LONG"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add eng_id and eng_parent_id [item]"/>
+        <target endpoint="in" step="Set eng_id [item]"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Set eng_id [item]) -->
+    <step className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set eng_id [item]" mode="NORMAL">
+        <properties>
+            <assignments>
+                <assignment column="eng_id" expression="eng_master_id">
+                    <scorer>
+                        <scoringEntries>
+                            <scoringEntry explain="false" explainAs="CA_CHANGED" key="CA_CHANGED" score="0"/>
+                        </scoringEntries>
+                    </scorer>
+                </assignment>
+                <assignment column="int_record_id_level_1" expression="toLong(eng_master_id)">
+                    <scorer>
+                        <scoringEntries>
+                            <scoringEntry explain="false" explainAs="CA_CHANGED" key="CA_CHANGED" score="0"/>
+                        </scoringEntries>
+                    </scorer>
+                </assignment>
+            </assignments>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Set eng_id [item]"/>
+        <target endpoint="in" step="out_master_item"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (out_master_item) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_item" mode="NORMAL">
+        <properties>
+            <requiredColumns/>
+        </properties>
+    </step>
+</purity-config>

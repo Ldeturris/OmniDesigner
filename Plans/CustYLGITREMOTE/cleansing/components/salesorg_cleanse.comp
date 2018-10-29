@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.1.ga-2016-11-20">
+    <references/>
+    <component-mappings>
+        <propertyMappings/>
+    </component-mappings>
+    <!-- (Add output columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add output columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn name="out_sales_org_name" type="STRING"/>
+                <addedColumn name="out_ocd_primary_geo_area" type="STRING"/>
+                <addedColumn name="out_ocs_primary_geo_area" type="STRING"/>
+                <addedColumn name="out_sales_org_start_dt" type="DAY"/>
+                <addedColumn name="out_sales_org_desc" type="STRING"/>
+                <addedColumn name="out_sales_org_end_dt" type="DAY"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add output columns"/>
+        <target endpoint="in" step="Add working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Add working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns" mode="NORMAL">
+        <properties>
+            <addedColumns>
+                <addedColumn expression="in_sales_org_name" name="pur_sales_org_name" type="STRING"/>
+                <addedColumn expression="in_ocd_primary_geo_area" name="pur_ocd_primary_geo_area" type="STRING"/>
+                <addedColumn expression="in_ocs_primary_geo_area" name="pur_ocs_primary_geo_area" type="STRING"/>
+                <addedColumn expression="in_sales_org_start_dt" name="pur_sales_org_start_dt" type="DAY"/>
+                <addedColumn expression="in_sales_org_desc" name="pur_sales_org_desc" type="STRING"/>
+                <addedColumn expression="in_sales_org_end_dt" name="pur_sales_org_end_dt" type="DAY"/>
+                <addedColumn name="tmp_score" type="INTEGER"/>
+            </addedColumns>
+            <removedColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Add working columns"/>
+        <target endpoint="in" step="Insert cleansing rules here"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Insert cleansing rules here) -->
+    <step className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Insert cleansing rules here" mode="NORMAL">
+        <properties>
+            <assignments>
+                <assignment column="out_sales_org_name" expression="pur_sales_org_name">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocd_primary_geo_area" expression="pur_ocd_primary_geo_area">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_ocs_primary_geo_area" expression="pur_ocs_primary_geo_area">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_sales_org_start_dt" expression="pur_sales_org_start_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_sales_org_desc" expression="pur_sales_org_desc">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+                <assignment column="out_sales_org_end_dt" expression="pur_sales_org_end_dt">
+                    <scorer>
+                        <scoringEntries/>
+                    </scorer>
+                </assignment>
+            </assignments>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Insert cleansing rules here"/>
+        <target endpoint="in" step="Create Tags"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Create Tags) -->
+    <step className="com.ataccama.dqc.tasks.scoring.SimpleScoring" disabled="false" id="Create Tags" mode="NORMAL">
+        <properties defaultExplainColumn="tag_subject" defaultScoreColumn="tmp_score">
+            <scoringCases/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Create Tags"/>
+        <target endpoint="in" step="Remove working columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (Remove working columns) -->
+    <step className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Remove working columns" mode="NORMAL">
+        <properties>
+            <addedColumns/>
+            <removedColumns>
+                <columnRef name="eng_id"/>
+                <columnRef name="eng_source_name"/>
+                <columnRef name="eng_source_instance_id"/>
+                <columnRef name="eng_status"/>
+                <columnRef name="eng_status_reason"/>
+                <columnRef name="eng_source_created_date"/>
+                <columnRef name="eng_source_created_by"/>
+                <columnRef name="eng_source_modified_date"/>
+                <columnRef name="eng_source_modified_by"/>
+                <columnRef name="eng_ocd_source_status_code"/>
+                <columnRef name="eng_ocs_source_status_code"/>
+                <columnRef name="tmp_score"/>
+                <columnRef name="pur_sales_org_name"/>
+                <columnRef name="pur_ocd_primary_geo_area"/>
+                <columnRef name="pur_ocs_primary_geo_area"/>
+                <columnRef name="pur_sales_org_start_dt"/>
+                <columnRef name="pur_sales_org_desc"/>
+                <columnRef name="pur_sales_org_end_dt"/>
+                <columnRef name="in_sales_org_name"/>
+                <columnRef name="in_ocd_primary_geo_area"/>
+                <columnRef name="in_ocs_primary_geo_area"/>
+                <columnRef name="in_sales_org_start_dt"/>
+                <columnRef name="in_sales_org_desc"/>
+                <columnRef name="in_sales_org_end_dt"/>
+            </removedColumns>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="Remove working columns"/>
+        <target endpoint="in" step="out"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (in) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in" mode="NORMAL">
+        <properties>
+            <columns>
+                <columnDef name="int_record_id_level_1" type="LONG">
+                    <comm:comment>DQ required attribute (always present)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_name" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_instance_id_name" type="STRING">
+                    <comm:comment>Engine added attribute (do not remove)</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_status_reason" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_created_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_date" type="DATETIME">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_source_modified_by" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocd_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="eng_ocs_source_status_code" type="STRING">
+                    <comm:comment>Engine added attribute (always present)
+					</comm:comment>
+                </columnDef>
+                <columnDef name="tag_subject" type="STRING">
+                    <comm:comment>Subject level tag attribute</comm:comment>
+                </columnDef>
+                <columnDef name="in_sales_org_name" type="STRING"/>
+                <columnDef name="in_ocd_primary_geo_area" type="STRING"/>
+                <columnDef name="in_ocs_primary_geo_area" type="STRING"/>
+                <columnDef name="in_sales_org_start_dt" type="DAY"/>
+                <columnDef name="in_sales_org_desc" type="STRING"/>
+                <columnDef name="in_sales_org_end_dt" type="DAY"/>
+            </columns>
+            <shadowColumns/>
+        </properties>
+    </step>
+    <connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+        <source endpoint="out" step="in"/>
+        <target endpoint="in" step="Add output columns"/>
+        <visual-constraints>
+            <bendpoints/>
+        </visual-constraints>
+    </connection>
+    <!-- (out) -->
+    <step className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out" mode="NORMAL">
+        <properties>
+            <requiredColumns/>
+        </properties>
+    </step>
+</purity-config>

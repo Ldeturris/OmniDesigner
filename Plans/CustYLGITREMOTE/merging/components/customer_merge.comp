@@ -1,0 +1,3135 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<purity-config xmlns:comm="http://www.ataccama.com/purity/comment" version="10.6.2.ga-2017-03-03">
+	<references/>
+	<component-mappings>
+		<propertyMappings/>
+	</component-mappings>
+
+<!-- (1 per golden ? [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_account]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="192,1032,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_account]"/>
+		<target endpoint="in" step="One per golden [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_account]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_accountteam]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="552,1032,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_accountteam]"/>
+		<target endpoint="in" step="One per golden [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_accountteam]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_address]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="528,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_address]"/>
+		<target endpoint="in" step="One per golden [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_address]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_contact]">
+		<properties condition="false"/>
+		<visual-constraints layout="vertical" bounds="168,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_contact]"/>
+		<target endpoint="in" step="One per golden [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_contact]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_custdemographics]">
+		<properties condition="true"/>
+		<visual-constraints layout="vertical" bounds="912,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_custdemographics]"/>
+		<target endpoint="in" step="One per golden [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_custdemographics]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_email]">
+		<properties condition="true"/>
+		<visual-constraints layout="vertical" bounds="1656,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_email]"/>
+		<target endpoint="in" step="One per golden [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_email]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (1 per golden ? [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Condition" disabled="false" id="1 per golden ? [customer_phone]">
+		<properties condition="true"/>
+		<visual-constraints layout="vertical" bounds="1296,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_true" step="1 per golden ? [customer_phone]"/>
+		<target endpoint="in" step="One per golden [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_false" step="1 per golden ? [customer_phone]"/>
+		<target endpoint="in" step="Rules for &#39;Smart Unioning&#39; [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_account]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1296,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_account]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_accountteam]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,1296,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_accountteam]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_address]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_address]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_contact]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_contact]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_custdemographics]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_custdemographics]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_email]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_email]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add MasterLevel Id [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add MasterLevel Id [customer_phone]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="lnk_orig_parent_id" type="STRING"/>
+				<addedColumn name="lnk_orig_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+				<addedColumn name="int_record_id_level_2" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,504,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add MasterLevel Id [customer_phone]"/>
+		<target endpoint="in" step="Set links to orig instances [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add eng_id and eng_parent_id [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add eng_id and eng_parent_id [customer]">
+		<properties>
+			<addedColumns>
+				<addedColumn name="eng_id" type="STRING"/>
+				<addedColumn name="eng_parent_id" type="STRING"/>
+				<addedColumn name="int_record_id_level_1" type="LONG"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,240,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add eng_id and eng_parent_id [customer]"/>
+		<target endpoint="in" step="Set eng_id [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_account]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_account]"/>
+		<target endpoint="in" step="1 per golden ? [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_accountteam]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,960,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_accountteam]"/>
+		<target endpoint="in" step="1 per golden ? [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_address]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="528,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_address]"/>
+		<target endpoint="in" step="1 per golden ? [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_contact]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_contact]"/>
+		<target endpoint="in" step="1 per golden ? [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_custdemographics]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_custdemographics]"/>
+		<target endpoint="in" step="1 per golden ? [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_email]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_email]"/>
+		<target endpoint="in" step="1 per golden ? [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Add working columns [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.AlterFormat" disabled="false" id="Add working columns [customer_phone]">
+		<properties>
+			<addedColumns>
+				<addedColumn expression="false" name="flg_survivor" type="BOOLEAN"/>
+				<addedColumn name="int_orig_ids" type="STRING"/>
+			</addedColumns>
+			<removedColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1296,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Add working columns [customer_phone]"/>
+		<target endpoint="in" step="1 per golden ? [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_account]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="120,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_account]"/>
+		<target endpoint="in_a" step="Union [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_accountteam]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="480,1176,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_accountteam]"/>
+		<target endpoint="in_a" step="Union [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_address]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="456,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_address]"/>
+		<target endpoint="in_a" step="Union [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_contact]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="96,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_contact]"/>
+		<target endpoint="in_a" step="Union [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_custdemographics]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="840,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_custdemographics]"/>
+		<target endpoint="in_a" step="Union [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_email]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="1584,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_email]"/>
+		<target endpoint="in_a" step="Union [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Filter out those with tmp_filter_out [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.conditions.Filter" disabled="false" id="Filter out those with tmp_filter_out [customer_phone]">
+		<properties condition="flg_survivor"/>
+		<visual-constraints layout="vertical" bounds="1224,384,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Filter out those with tmp_filter_out [customer_phone]"/>
+		<target endpoint="in_a" step="Union [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Merge customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Merge customer">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="false"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_active_status" name="cmo_customer_active_status"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_active_status is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden active_status</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_legal_name" name="cmo_customer_legal_name"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_legal_name is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden legal_name</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_dba_name" name="cmo_customer_dba_name"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_dba_name is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden dba_name</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_last_name" name="cmo_customer_last_name"/>
+								<attributeCfgRepr expression="best.cio_customer_middle_name" name="cmo_customer_middle_name"/>
+								<attributeCfgRepr expression="best.cio_customer_first_name" name="cmo_customer_first_name"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>case (
+	cio_customer_last_name is not null
+	and cio_customer_middle_name is not null
+	and cio_customer_first_name is not null
+	,10
+	
+	,cio_customer_last_name is not null
+	and cio_customer_first_name is not null
+	,8
+
+	,cio_customer_last_name is not null
+	,6
+
+	,0
+	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden name parts</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_display_name" name="cmo_customer_display_name"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_display_name is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden display_name</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_company_name" name="cmo_customer_company_name"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_company_name is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden company_name</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_tax_id" name="cmo_customer_tax_id"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_tax_id is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden tax_id</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_tax_exempt_num" name="cmo_customer_tax_exempt_num"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_tax_exempt_num is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden tax_exempt_num</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_soc_sec_num" name="cmo_customer_soc_sec_num"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="false">
+									<expression>// order by tag
+case( 
+
+	indexOf(tag_customer_soc_sec_num,&#39;ERR_&#39;) is not null
+	,10
+
+	,indexOf(tag_customer_soc_sec_num,&#39;WRN_&#39;) is not null
+	,8
+
+	,indexOf(tag_customer_soc_sec_num,&#39;INF_&#39;) is not null
+	,6
+
+	,0	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="cio_customer_soc_sec_num is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden soc_sec_num</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_date_of_birth" name="cmo_customer_date_of_birth"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="false">
+									<expression>// order by tag
+case( 
+
+	indexOf(tag_customer_date_of_birth,&#39;ERR_&#39;) is not null
+	,10
+
+	,indexOf(tag_customer_date_of_birth,&#39;WRN_&#39;) is not null
+	,8
+
+	,indexOf(tag_customer_date_of_birth,&#39;INF_&#39;) is not null
+	,6
+
+	,0	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="cio_customer_date_of_birth is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden date_of_birth</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_lnk_prim_sales_org" name="cmo_customer_lnk_prim_sales_org"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_lnk_prim_sales_org is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden lnk_prim_sales_org</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_customer_lead_source_txt" name="cmo_customer_lead_source_txt"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_lead_source_txt is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden lead_source_txt</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="cio_customer_ocd_priority_group" name="cmo_customer_ocd_priority_group"/>
+								<attributeCfgRepr expression="cio_customer_ocs_priority_group" name="cmo_customer_ocs_priority_group"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_ocd_priority_group is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden ocd_priority_group</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="cio_customer_ocd_primary_geo_area" name="cmo_customer_ocd_primary_geo_area"/>
+								<attributeCfgRepr expression="cio_customer_ocs_primary_geo_area" name="cmo_customer_ocs_primary_geo_area"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_ocd_primary_geo_area is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden ocd_primary_geo_area</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="cio_customer_ocd_credit_rating" name="cmo_customer_ocd_credit_rating"/>
+								<attributeCfgRepr expression="cio_customer_ocs_credit_rating" name="cmo_customer_ocs_credit_rating"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_customer_ocd_credit_rating is not null" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_source_modified_date" nullsFirst="false" orderDescending="true"/>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden ocd_credit_rating</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-168,168,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="Merge customer"/>
+		<target endpoint="in" step="Add eng_id and eng_parent_id [customer]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_account]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_account_ocd_account_type" name="cmo_account_ocd_account_type"/>
+								<attributeCfgRepr expression="best.cio_account_ocs_account_type" name="cmo_account_ocs_account_type"/>
+								<attributeCfgRepr expression="best.cio_account_account_name" name="cmo_account_account_name"/>
+								<attributeCfgRepr expression="best.cio_account_account_open_dt" name="cmo_account_account_open_dt"/>
+								<attributeCfgRepr expression="best.cio_account_account_close_dt" name="cmo_account_account_close_dt"/>
+								<attributeCfgRepr expression="best.cio_account_credit_limit" name="cmo_account_credit_limit"/>
+								<attributeCfgRepr expression="best.cio_account_ocd_credit_rating" name="cmo_account_ocd_credit_rating"/>
+								<attributeCfgRepr expression="best.cio_account_ocs_credit_rating" name="cmo_account_ocs_credit_rating"/>
+								<attributeCfgRepr expression="best.cio_account_credit_terms" name="cmo_account_credit_terms"/>
+								<attributeCfgRepr expression="best.cio_account_account_renew_dt" name="cmo_account_account_renew_dt"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden account</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="264,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_account]"/>
+		<target endpoint="in_b" step="Union [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_accountteam]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_accountteam_current_ind" name="cmo_accountteam_current_ind"/>
+								<attributeCfgRepr expression="best.cio_accountteam_credit_rep" name="cmo_accountteam_credit_rep"/>
+								<attributeCfgRepr expression="best.cio_accountteam_direct_sales_rep" name="cmo_accountteam_direct_sales_rep"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_executive" name="cmo_accountteam_acct_executive"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_team_start_dt" name="cmo_accountteam_acct_team_start_dt"/>
+								<attributeCfgRepr expression="best.cio_accountteam_acct_team_end_dt" name="cmo_accountteam_acct_team_end_dt"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden accountteam</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="624,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_accountteam]"/>
+		<target endpoint="in_b" step="Union [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_address]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_type" name="cmo_address_ocd_address_type"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_type" name="cmo_address_ocs_address_type"/>
+								<attributeCfgRepr expression="best.cio_address_primary_ind" name="cmo_address_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_status" name="cmo_address_ocd_address_status"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_status" name="cmo_address_ocs_address_status"/>
+								<attributeCfgRepr expression="best.cio_address_attn_to_contact" name="cmo_address_attn_to_contact"/>
+								<attributeCfgRepr expression="best.cio_address_street_address1" name="cmo_address_street_address1"/>
+								<attributeCfgRepr expression="best.cio_address_street_address2" name="cmo_address_street_address2"/>
+								<attributeCfgRepr expression="best.cio_address_city" name="cmo_address_city"/>
+								<attributeCfgRepr expression="best.cio_address_state_territory" name="cmo_address_state_territory"/>
+								<attributeCfgRepr expression="best.cio_address_county" name="cmo_address_county"/>
+								<attributeCfgRepr expression="best.cio_address_country" name="cmo_address_country"/>
+								<attributeCfgRepr expression="best.cio_address_postal_code" name="cmo_address_postal_code"/>
+								<attributeCfgRepr expression="best.cio_address_time_zone" name="cmo_address_time_zone"/>
+								<attributeCfgRepr expression="best.cio_address_ocd_address_geo_area" name="cmo_address_ocd_address_geo_area"/>
+								<attributeCfgRepr expression="best.cio_address_ocs_address_geo_area" name="cmo_address_ocs_address_geo_area"/>
+								<attributeCfgRepr expression="best.cio_address_latitude" name="cmo_address_latitude"/>
+								<attributeCfgRepr expression="best.cio_address_longitude" name="cmo_address_longitude"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden address</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="600,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_address]"/>
+		<target endpoint="in_b" step="Union [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_contact]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_contact_primary_ind" name="cmo_contact_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_contact_ocd_contact_type" name="cmo_contact_ocd_contact_type"/>
+								<attributeCfgRepr expression="best.cio_contact_ocs_contact_type" name="cmo_contact_ocs_contact_type"/>
+								<attributeCfgRepr expression="best.cio_contact_title" name="cmo_contact_title"/>
+								<attributeCfgRepr expression="best.cio_contact_first_name" name="cmo_contact_first_name"/>
+								<attributeCfgRepr expression="best.cio_contact_middle_name" name="cmo_contact_middle_name"/>
+								<attributeCfgRepr expression="best.cio_contact_last_name" name="cmo_contact_last_name"/>
+								<attributeCfgRepr expression="best.cio_contact_full_name" name="cmo_contact_full_name"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden contact</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="240,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_contact]"/>
+		<target endpoint="in_b" step="Union [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_custdemographics]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_custdemographics_current_ind" name="cmo_custdemographics_current_ind"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_gender" name="cmo_custdemographics_ocd_gender"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_gender" name="cmo_custdemographics_ocs_gender"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_ethnicity" name="cmo_custdemographics_ocd_ethnicity"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_ethnicity" name="cmo_custdemographics_ocs_ethnicity"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_age_generation" name="cmo_custdemographics_ocd_age_generation"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_age_generation" name="cmo_custdemographics_ocs_age_generation"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_marital_status" name="cmo_custdemographics_ocd_marital_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_marital_status" name="cmo_custdemographics_ocs_marital_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocd_employment_status" name="cmo_custdemographics_ocd_employment_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_ocs_employment_status" name="cmo_custdemographics_ocs_employment_status"/>
+								<attributeCfgRepr expression="best.cio_custdemographics_cust_demo_eff_dt" name="cmo_custdemographics_cust_demo_eff_dt"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="true">
+									<expression>// order where the most attributes are populated
+iif(cio_custdemographics_ocd_age_generation is not null,10,0)
++
+iif(cio_custdemographics_ocd_employment_status is not null,10,0)
++
+iif(cio_custdemographics_ocd_ethnicity is not null,10,0)
++
+iif(cio_custdemographics_ocd_gender is not null,10,0)
++
+iif(cio_custdemographics_ocd_marital_status is not null,10,0)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden custdemographics</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="984,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_custdemographics]"/>
+		<target endpoint="in_b" step="Union [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_email]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_email_ocd_email_type"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_email_primary_ind" name="cmo_email_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_email_ocd_email_type" name="cmo_email_ocd_email_type"/>
+								<attributeCfgRepr expression="best.cio_email_ocs_email_type" name="cmo_email_ocs_email_type"/>
+								<attributeCfgRepr expression="best.cio_email_email_address" name="cmo_email_email_address"/>
+								<attributeCfgRepr expression="best.cio_email_ocd_comm_status" name="cmo_email_ocd_comm_status"/>
+								<attributeCfgRepr expression="best.cio_email_ocs_comm_status" name="cmo_email_ocs_comm_status"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_email_email_address is not null" nullsFirst="false" orderDescending="false"/>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="false">
+									<expression>// order by tag
+case (
+
+	indexOf(tag_email,&#39;ERR_&#39;) is not null
+	,10
+	
+	,indexOf(tag_email,&#39;WRN_&#39;) is not null
+	,8
+	
+	,indexOf(tag_email,&#39;INF_&#39;) is not null
+	,6
+	
+	,0
+	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden email</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1728,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_email]"/>
+		<target endpoint="in_b" step="Union [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (One per golden [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="One per golden [customer_phone]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_phone_ocd_phone_type"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.eng_master_id" name="eng_master_id"/>
+								<attributeCfgRepr expression="best.eng_parent_id" name="eng_parent_id"/>
+								<attributeCfgRepr expression="best.eng_id" name="eng_id"/>
+								<attributeCfgRepr expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Engine values</comm:comment>
+						</attributeSetCfg>
+						<attributeSetCfg>
+							<instanceAttributes/>
+							<representativeAttributes>
+								<attributeCfgRepr expression="best.cio_phone_primary_ind" name="cmo_phone_primary_ind"/>
+								<attributeCfgRepr expression="best.cio_phone_active_ind" name="cmo_phone_active_ind"/>
+								<attributeCfgRepr expression="best.cio_phone_ocd_phone_type" name="cmo_phone_ocd_phone_type"/>
+								<attributeCfgRepr expression="best.cio_phone_ocs_phone_type" name="cmo_phone_ocs_phone_type"/>
+								<attributeCfgRepr expression="best.cio_phone_phone_number" name="cmo_phone_phone_number"/>
+								<attributeCfgRepr expression="best.cio_phone_extension" name="cmo_phone_extension"/>
+								<attributeCfgRepr expression="best.cio_phone_ocd_comm_status" name="cmo_phone_ocd_comm_status"/>
+								<attributeCfgRepr expression="best.cio_phone_ocs_comm_status" name="cmo_phone_ocs_comm_status"/>
+								<attributeCfgRepr expression="best.eng_ocd_source_status_code" name="eng_ocd_master_status_code"/>
+								<attributeCfgRepr expression="best.eng_ocs_source_status_code" name="eng_ocs_master_status_code"/>
+							</representativeAttributes>
+							<selectionRules>
+								<aggregatingOrderBy expression="cio_phone_phone_number is not null" nullsFirst="false" orderDescending="false"/>
+								<aggregatingOrderBy nullsFirst="false" orderDescending="false">
+									<expression>// order by tag
+case (
+
+	indexOf(tag_phone,&#39;ERR_&#39;) is not null
+	,10
+	
+	,indexOf(tag_phone,&#39;WRN_&#39;) is not null
+	,8
+	
+	,indexOf(tag_phone,&#39;INF_&#39;) is not null
+	,6
+	
+	,0
+	
+)</expression>
+								</aggregatingOrderBy>
+								<aggregatingOrderBy expression="eng_id" nullsFirst="false" orderDescending="false"/>
+							</selectionRules>
+							<comm:comment>Golden phone</comm:comment>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1368,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out_merged" step="One per golden [customer_phone]"/>
+		<target endpoint="in_b" step="Union [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_account]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_account_ocd_account_type"/>
+					<keyComponent expression="cio_account_ocs_account_type"/>
+					<keyComponent expression="cio_account_account_name"/>
+					<keyComponent expression="cio_account_account_open_dt"/>
+					<keyComponent expression="cio_account_account_close_dt"/>
+					<keyComponent expression="cio_account_credit_limit"/>
+					<keyComponent expression="cio_account_ocd_credit_rating"/>
+					<keyComponent expression="cio_account_ocs_credit_rating"/>
+					<keyComponent expression="cio_account_credit_terms"/>
+					<keyComponent expression="cio_account_account_renew_dt"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="144,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_account]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_accountteam]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_accountteam_current_ind"/>
+					<keyComponent expression="cio_accountteam_credit_rep"/>
+					<keyComponent expression="cio_accountteam_direct_sales_rep"/>
+					<keyComponent expression="cio_accountteam_acct_executive"/>
+					<keyComponent expression="cio_accountteam_acct_team_start_dt"/>
+					<keyComponent expression="cio_accountteam_acct_team_end_dt"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="504,1104,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_accountteam]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_address]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_address_ocd_address_type"/>
+					<keyComponent expression="cio_address_ocs_address_type"/>
+					<keyComponent expression="cio_address_primary_ind"/>
+					<keyComponent expression="cio_address_ocd_address_status"/>
+					<keyComponent expression="cio_address_ocs_address_status"/>
+					<keyComponent expression="cio_address_attn_to_contact"/>
+					<keyComponent expression="cio_address_street_address1"/>
+					<keyComponent expression="cio_address_street_address2"/>
+					<keyComponent expression="cio_address_city"/>
+					<keyComponent expression="cio_address_state_territory"/>
+					<keyComponent expression="cio_address_county"/>
+					<keyComponent expression="cio_address_country"/>
+					<keyComponent expression="cio_address_postal_code"/>
+					<keyComponent expression="cio_address_time_zone"/>
+					<keyComponent expression="cio_address_ocd_address_geo_area"/>
+					<keyComponent expression="cio_address_ocs_address_geo_area"/>
+					<keyComponent expression="cio_address_latitude"/>
+					<keyComponent expression="cio_address_longitude"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="480,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_address]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_contact]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_contact_primary_ind"/>
+					<keyComponent expression="cio_contact_ocd_contact_type"/>
+					<keyComponent expression="cio_contact_ocs_contact_type"/>
+					<keyComponent expression="cio_contact_title"/>
+					<keyComponent expression="cio_contact_first_name"/>
+					<keyComponent expression="cio_contact_middle_name"/>
+					<keyComponent expression="cio_contact_last_name"/>
+					<keyComponent expression="cio_contact_full_name"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="120,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_contact]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_custdemographics]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_custdemographics_current_ind"/>
+					<keyComponent expression="cio_custdemographics_ocd_gender"/>
+					<keyComponent expression="cio_custdemographics_ocs_gender"/>
+					<keyComponent expression="cio_custdemographics_ocd_ethnicity"/>
+					<keyComponent expression="cio_custdemographics_ocs_ethnicity"/>
+					<keyComponent expression="cio_custdemographics_ocd_age_generation"/>
+					<keyComponent expression="cio_custdemographics_ocs_age_generation"/>
+					<keyComponent expression="cio_custdemographics_ocd_marital_status"/>
+					<keyComponent expression="cio_custdemographics_ocs_marital_status"/>
+					<keyComponent expression="cio_custdemographics_ocd_employment_status"/>
+					<keyComponent expression="cio_custdemographics_ocs_employment_status"/>
+					<keyComponent expression="cio_custdemographics_cust_demo_eff_dt"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="864,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_custdemographics]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_email]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_email_primary_ind"/>
+					<keyComponent expression="cio_email_ocd_email_type"/>
+					<keyComponent expression="cio_email_ocs_email_type"/>
+					<keyComponent expression="cio_email_email_address"/>
+					<keyComponent expression="cio_email_ocd_comm_status"/>
+					<keyComponent expression="cio_email_ocs_comm_status"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1608,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_email]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Rules for 'Smart Unioning' [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.identify.bob.RepresentativeCreator" disabled="false" id="Rules for &#39;Smart Unioning&#39; [customer_phone]">
+		<properties>
+			<groupingStrategy class="com.ataccama.dqc.tasks.common.group.KeyGroupingStrategy">
+				<groupBy>
+					<keyComponent expression="eng_master_id"/>
+					<keyComponent expression="cio_phone_primary_ind"/>
+					<keyComponent expression="cio_phone_active_ind"/>
+					<keyComponent expression="cio_phone_ocd_phone_type"/>
+					<keyComponent expression="cio_phone_ocs_phone_type"/>
+					<keyComponent expression="cio_phone_phone_number"/>
+					<keyComponent expression="cio_phone_extension"/>
+					<keyComponent expression="cio_phone_ocd_comm_status"/>
+					<keyComponent expression="cio_phone_ocs_comm_status"/>
+				</groupBy>
+			</groupingStrategy>
+			<rules>
+				<rule>
+					<attributeSets>
+						<attributeSetCfg>
+							<instanceAttributes>
+								<attributeCfgInst expression="best.eng_id is this.eng_id" name="flg_survivor"/>
+								<attributeCfgInst expression="concatenate(eng_id,10000)" name="int_orig_ids"/>
+							</instanceAttributes>
+							<representativeAttributes/>
+							<selectionRules/>
+						</attributeSetCfg>
+					</attributeSets>
+				</rule>
+			</rules>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1248,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Rules for &#39;Smart Unioning&#39; [customer_phone]"/>
+		<target endpoint="in" step="Filter out those with tmp_filter_out [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_account]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_account&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1440,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_account]"/>
+		<target endpoint="in" step="out_master_customer_account"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_accountteam]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_accountteam&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,1440,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_accountteam]"/>
+		<target endpoint="in" step="out_master_customer_accountteam"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_address]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_address&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,648,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_address]"/>
+		<target endpoint="in" step="out_master_customer_address"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_contact]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_contact&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,648,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_contact]"/>
+		<target endpoint="in" step="out_master_customer_contact"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_custdemographics]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_custdemographics&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,648,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_custdemographics]"/>
+		<target endpoint="in" step="out_master_customer_custdemographics"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_email]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_email&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,648,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_email]"/>
+		<target endpoint="in" step="out_master_customer_email"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set Master level Ids [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set Master level Ids [customer_phone]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_master_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_master_id" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="guid(now())" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="namedSequence(&quot;customer_phone&quot;)" column="int_record_id_level_2">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,648,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set Master level Ids [customer_phone]"/>
+		<target endpoint="in" step="out_master_customer_phone"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set eng_id [customer]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set eng_id [customer]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_master_id" column="eng_id">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+				<assignment expression="toLong(eng_master_id)" column="int_record_id_level_1">
+					<scorer>
+						<scoringEntries>
+							<scoringEntry explain="false" score="0" explainAs="CA_CHANGED" key="CA_CHANGED"/>
+						</scoringEntries>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,312,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set eng_id [customer]"/>
+		<target endpoint="in" step="out_master_customer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-168,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids"/>
+		<target endpoint="in" step="Merge customer"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_account]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_account]"/>
+		<target endpoint="in" step="Add working columns [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_accountteam]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,888,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_accountteam]"/>
+		<target endpoint="in" step="Add working columns [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_address]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="528,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_address]"/>
+		<target endpoint="in" step="Add working columns [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_contact]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_contact]"/>
+		<target endpoint="in" step="Add working columns [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_custdemographics]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_custdemographics]"/>
+		<target endpoint="in" step="Add working columns [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_email]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_email]"/>
+		<target endpoint="in" step="Add working columns [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set int_record_ids [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set int_record_ids [customer_phone]">
+		<properties>
+			<assignments>
+				<assignment expression="nvl(toString(int_record_id_level_2),eng_id)" column="eng_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="nvl(toString(int_record_id_level_1),eng_parent_id)" column="eng_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1296,96,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set int_record_ids [customer_phone]"/>
+		<target endpoint="in" step="Add working columns [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_account]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_account]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_accountteam]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,1368,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_accountteam]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_address]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_address]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_contact]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_contact]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_custdemographics]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_custdemographics]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_email]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_email]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Set links to orig instances [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.expressions.ColumnAssigner" disabled="false" id="Set links to orig instances [customer_phone]">
+		<properties>
+			<assignments>
+				<assignment expression="eng_parent_id" column="lnk_orig_parent_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+				<assignment expression="eng_id" column="lnk_orig_id">
+					<scorer>
+						<scoringEntries/>
+					</scorer>
+				</assignment>
+			</assignments>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,576,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Set links to orig instances [customer_phone]"/>
+		<target endpoint="in" step="Set Master level Ids [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_account]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_account]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_account_ocd_account_type" in_b="cmo_account_ocd_account_type" dest="cmo_account_ocd_account_type"/>
+				<columnMapping in_a="cio_account_ocs_account_type" in_b="cmo_account_ocs_account_type" dest="cmo_account_ocs_account_type"/>
+				<columnMapping in_a="cio_account_account_name" in_b="cmo_account_account_name" dest="cmo_account_account_name"/>
+				<columnMapping in_a="cio_account_account_open_dt" in_b="cmo_account_account_open_dt" dest="cmo_account_account_open_dt"/>
+				<columnMapping in_a="cio_account_account_close_dt" in_b="cmo_account_account_close_dt" dest="cmo_account_account_close_dt"/>
+				<columnMapping in_a="cio_account_credit_limit" in_b="cmo_account_credit_limit" dest="cmo_account_credit_limit"/>
+				<columnMapping in_a="cio_account_ocd_credit_rating" in_b="cmo_account_ocd_credit_rating" dest="cmo_account_ocd_credit_rating"/>
+				<columnMapping in_a="cio_account_ocs_credit_rating" in_b="cmo_account_ocs_credit_rating" dest="cmo_account_ocs_credit_rating"/>
+				<columnMapping in_a="cio_account_credit_terms" in_b="cmo_account_credit_terms" dest="cmo_account_credit_terms"/>
+				<columnMapping in_a="cio_account_account_renew_dt" in_b="cmo_account_account_renew_dt" dest="cmo_account_account_renew_dt"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_account]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_accountteam]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_accountteam]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_accountteam_current_ind" in_b="cmo_accountteam_current_ind" dest="cmo_accountteam_current_ind"/>
+				<columnMapping in_a="cio_accountteam_credit_rep" in_b="cmo_accountteam_credit_rep" dest="cmo_accountteam_credit_rep"/>
+				<columnMapping in_a="cio_accountteam_direct_sales_rep" in_b="cmo_accountteam_direct_sales_rep" dest="cmo_accountteam_direct_sales_rep"/>
+				<columnMapping in_a="cio_accountteam_acct_executive" in_b="cmo_accountteam_acct_executive" dest="cmo_accountteam_acct_executive"/>
+				<columnMapping in_a="cio_accountteam_acct_team_start_dt" in_b="cmo_accountteam_acct_team_start_dt" dest="cmo_accountteam_acct_team_start_dt"/>
+				<columnMapping in_a="cio_accountteam_acct_team_end_dt" in_b="cmo_accountteam_acct_team_end_dt" dest="cmo_accountteam_acct_team_end_dt"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,1224,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_accountteam]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_address]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_address]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_address_ocd_address_type" in_b="cmo_address_ocd_address_type" dest="cmo_address_ocd_address_type"/>
+				<columnMapping in_a="cio_address_ocs_address_type" in_b="cmo_address_ocs_address_type" dest="cmo_address_ocs_address_type"/>
+				<columnMapping in_a="cio_address_primary_ind" in_b="cmo_address_primary_ind" dest="cmo_address_primary_ind"/>
+				<columnMapping in_a="cio_address_ocd_address_status" in_b="cmo_address_ocd_address_status" dest="cmo_address_ocd_address_status"/>
+				<columnMapping in_a="cio_address_ocs_address_status" in_b="cmo_address_ocs_address_status" dest="cmo_address_ocs_address_status"/>
+				<columnMapping in_a="cio_address_attn_to_contact" in_b="cmo_address_attn_to_contact" dest="cmo_address_attn_to_contact"/>
+				<columnMapping in_a="cio_address_street_address1" in_b="cmo_address_street_address1" dest="cmo_address_street_address1"/>
+				<columnMapping in_a="cio_address_street_address2" in_b="cmo_address_street_address2" dest="cmo_address_street_address2"/>
+				<columnMapping in_a="cio_address_city" in_b="cmo_address_city" dest="cmo_address_city"/>
+				<columnMapping in_a="cio_address_state_territory" in_b="cmo_address_state_territory" dest="cmo_address_state_territory"/>
+				<columnMapping in_a="cio_address_county" in_b="cmo_address_county" dest="cmo_address_county"/>
+				<columnMapping in_a="cio_address_country" in_b="cmo_address_country" dest="cmo_address_country"/>
+				<columnMapping in_a="cio_address_postal_code" in_b="cmo_address_postal_code" dest="cmo_address_postal_code"/>
+				<columnMapping in_a="cio_address_time_zone" in_b="cmo_address_time_zone" dest="cmo_address_time_zone"/>
+				<columnMapping in_a="cio_address_ocd_address_geo_area" in_b="cmo_address_ocd_address_geo_area" dest="cmo_address_ocd_address_geo_area"/>
+				<columnMapping in_a="cio_address_ocs_address_geo_area" in_b="cmo_address_ocs_address_geo_area" dest="cmo_address_ocs_address_geo_area"/>
+				<columnMapping in_a="cio_address_latitude" in_b="cmo_address_latitude" dest="cmo_address_latitude"/>
+				<columnMapping in_a="cio_address_longitude" in_b="cmo_address_longitude" dest="cmo_address_longitude"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_address]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_contact]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_contact]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_contact_primary_ind" in_b="cmo_contact_primary_ind" dest="cmo_contact_primary_ind"/>
+				<columnMapping in_a="cio_contact_ocd_contact_type" in_b="cmo_contact_ocd_contact_type" dest="cmo_contact_ocd_contact_type"/>
+				<columnMapping in_a="cio_contact_ocs_contact_type" in_b="cmo_contact_ocs_contact_type" dest="cmo_contact_ocs_contact_type"/>
+				<columnMapping in_a="cio_contact_title" in_b="cmo_contact_title" dest="cmo_contact_title"/>
+				<columnMapping in_a="cio_contact_first_name" in_b="cmo_contact_first_name" dest="cmo_contact_first_name"/>
+				<columnMapping in_a="cio_contact_middle_name" in_b="cmo_contact_middle_name" dest="cmo_contact_middle_name"/>
+				<columnMapping in_a="cio_contact_last_name" in_b="cmo_contact_last_name" dest="cmo_contact_last_name"/>
+				<columnMapping in_a="cio_contact_full_name" in_b="cmo_contact_full_name" dest="cmo_contact_full_name"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_contact]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_custdemographics]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_custdemographics]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_custdemographics_current_ind" in_b="cmo_custdemographics_current_ind" dest="cmo_custdemographics_current_ind"/>
+				<columnMapping in_a="cio_custdemographics_ocd_gender" in_b="cmo_custdemographics_ocd_gender" dest="cmo_custdemographics_ocd_gender"/>
+				<columnMapping in_a="cio_custdemographics_ocs_gender" in_b="cmo_custdemographics_ocs_gender" dest="cmo_custdemographics_ocs_gender"/>
+				<columnMapping in_a="cio_custdemographics_ocd_ethnicity" in_b="cmo_custdemographics_ocd_ethnicity" dest="cmo_custdemographics_ocd_ethnicity"/>
+				<columnMapping in_a="cio_custdemographics_ocs_ethnicity" in_b="cmo_custdemographics_ocs_ethnicity" dest="cmo_custdemographics_ocs_ethnicity"/>
+				<columnMapping in_a="cio_custdemographics_ocd_age_generation" in_b="cmo_custdemographics_ocd_age_generation" dest="cmo_custdemographics_ocd_age_generation"/>
+				<columnMapping in_a="cio_custdemographics_ocs_age_generation" in_b="cmo_custdemographics_ocs_age_generation" dest="cmo_custdemographics_ocs_age_generation"/>
+				<columnMapping in_a="cio_custdemographics_ocd_marital_status" in_b="cmo_custdemographics_ocd_marital_status" dest="cmo_custdemographics_ocd_marital_status"/>
+				<columnMapping in_a="cio_custdemographics_ocs_marital_status" in_b="cmo_custdemographics_ocs_marital_status" dest="cmo_custdemographics_ocs_marital_status"/>
+				<columnMapping in_a="cio_custdemographics_ocd_employment_status" in_b="cmo_custdemographics_ocd_employment_status" dest="cmo_custdemographics_ocd_employment_status"/>
+				<columnMapping in_a="cio_custdemographics_ocs_employment_status" in_b="cmo_custdemographics_ocs_employment_status" dest="cmo_custdemographics_ocs_employment_status"/>
+				<columnMapping in_a="cio_custdemographics_cust_demo_eff_dt" in_b="cmo_custdemographics_cust_demo_eff_dt" dest="cmo_custdemographics_cust_demo_eff_dt"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_custdemographics]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_email]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_email]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_email_primary_ind" in_b="cmo_email_primary_ind" dest="cmo_email_primary_ind"/>
+				<columnMapping in_a="cio_email_ocd_email_type" in_b="cmo_email_ocd_email_type" dest="cmo_email_ocd_email_type"/>
+				<columnMapping in_a="cio_email_ocs_email_type" in_b="cmo_email_ocs_email_type" dest="cmo_email_ocs_email_type"/>
+				<columnMapping in_a="cio_email_email_address" in_b="cmo_email_email_address" dest="cmo_email_email_address"/>
+				<columnMapping in_a="cio_email_ocd_comm_status" in_b="cmo_email_ocd_comm_status" dest="cmo_email_ocd_comm_status"/>
+				<columnMapping in_a="cio_email_ocs_comm_status" in_b="cmo_email_ocs_comm_status" dest="cmo_email_ocs_comm_status"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_email]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (Union [customer_phone]) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.flow.Union" disabled="false" id="Union [customer_phone]">
+		<properties>
+			<columnMappings>
+				<columnMapping in_a="int_orig_ids" in_b="int_orig_ids" dest="int_orig_ids"/>
+				<columnMapping in_a="eng_master_id" in_b="eng_master_id" dest="eng_master_id"/>
+				<columnMapping in_a="eng_ocd_source_status_code" in_b="eng_ocd_master_status_code" dest="eng_ocd_master_status_code"/>
+				<columnMapping in_a="eng_ocs_source_status_code" in_b="eng_ocs_master_status_code" dest="eng_ocs_master_status_code"/>
+				<columnMapping in_a="eng_parent_id" in_b="eng_parent_id" dest="eng_parent_id"/>
+				<columnMapping in_a="eng_id" in_b="eng_id" dest="eng_id"/>
+				<columnMapping in_a="cio_phone_primary_ind" in_b="cmo_phone_primary_ind" dest="cmo_phone_primary_ind"/>
+				<columnMapping in_a="cio_phone_active_ind" in_b="cmo_phone_active_ind" dest="cmo_phone_active_ind"/>
+				<columnMapping in_a="cio_phone_ocd_phone_type" in_b="cmo_phone_ocd_phone_type" dest="cmo_phone_ocd_phone_type"/>
+				<columnMapping in_a="cio_phone_ocs_phone_type" in_b="cmo_phone_ocs_phone_type" dest="cmo_phone_ocs_phone_type"/>
+				<columnMapping in_a="cio_phone_phone_number" in_b="cmo_phone_phone_number" dest="cmo_phone_phone_number"/>
+				<columnMapping in_a="cio_phone_extension" in_b="cmo_phone_extension" dest="cmo_phone_extension"/>
+				<columnMapping in_a="cio_phone_ocd_comm_status" in_b="cmo_phone_ocd_comm_status" dest="cmo_phone_ocd_comm_status"/>
+				<columnMapping in_a="cio_phone_ocs_comm_status" in_b="cmo_phone_ocs_comm_status" dest="cmo_phone_ocs_comm_status"/>
+			</columnMappings>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,432,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="Union [customer_phone]"/>
+		<target endpoint="in" step="Add MasterLevel Id [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_customer" type="STRING"/>
+				<columnDef name="cio_customer_active_status" type="STRING"/>
+				<columnDef name="cio_customer_legal_name" type="STRING"/>
+				<columnDef name="cio_customer_dba_name" type="STRING"/>
+				<columnDef name="cio_customer_first_name" type="STRING"/>
+				<columnDef name="cio_customer_middle_name" type="STRING"/>
+				<columnDef name="cio_customer_last_name" type="STRING"/>
+				<columnDef name="cio_customer_display_name" type="STRING"/>
+				<columnDef name="cio_customer_company_name" type="STRING"/>
+				<columnDef name="cio_customer_tax_id" type="STRING"/>
+				<columnDef name="cio_customer_tax_exempt_num" type="STRING"/>
+				<columnDef name="cio_customer_soc_sec_num" type="STRING"/>
+				<columnDef name="cio_customer_date_of_birth" type="DAY"/>
+				<columnDef name="cio_customer_lnk_prim_sales_org" type="STRING"/>
+				<columnDef name="cio_customer_lead_source_txt" type="STRING"/>
+				<columnDef name="cio_customer_ocd_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_ocs_priority_group" type="STRING"/>
+				<columnDef name="cio_customer_ocd_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_ocs_primary_geo_area" type="STRING"/>
+				<columnDef name="cio_customer_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_customer_ocs_credit_rating" type="STRING"/>
+				<columnDef name="tag_customer_active_status" type="STRING"/>
+				<columnDef name="tag_customer_legal_name" type="STRING"/>
+				<columnDef name="tag_customer_dba_name" type="STRING"/>
+				<columnDef name="tag_customer_first_name" type="STRING"/>
+				<columnDef name="tag_customer_middle_name" type="STRING"/>
+				<columnDef name="tag_customer_last_name" type="STRING"/>
+				<columnDef name="tag_customer_display_name" type="STRING"/>
+				<columnDef name="tag_customer_company_name" type="STRING"/>
+				<columnDef name="tag_customer_tax_id" type="STRING"/>
+				<columnDef name="tag_customer_tax_exempt_num" type="STRING"/>
+				<columnDef name="tag_customer_soc_sec_num" type="STRING"/>
+				<columnDef name="tag_customer_date_of_birth" type="STRING"/>
+				<columnDef name="tag_customer_prim_sales_org" type="STRING"/>
+				<columnDef name="tag_customer_lead_source_txt" type="STRING"/>
+				<columnDef name="tag_customer_priority_group" type="STRING"/>
+				<columnDef name="tag_customer_primary_geo_area" type="STRING"/>
+				<columnDef name="tag_customer_credit_rating" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-168,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer"/>
+		<target endpoint="in" step="Set int_record_ids"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_account">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_account" type="STRING"/>
+				<columnDef name="cio_account_ocd_account_type" type="STRING"/>
+				<columnDef name="cio_account_ocs_account_type" type="STRING"/>
+				<columnDef name="cio_account_account_name" type="STRING"/>
+				<columnDef name="cio_account_account_open_dt" type="DAY"/>
+				<columnDef name="cio_account_account_close_dt" type="DAY"/>
+				<columnDef name="cio_account_credit_limit" type="FLOAT"/>
+				<columnDef name="cio_account_ocd_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_ocs_credit_rating" type="STRING"/>
+				<columnDef name="cio_account_credit_terms" type="STRING"/>
+				<columnDef name="cio_account_account_renew_dt" type="DAY"/>
+				<columnDef name="tag_account_account_type" type="STRING"/>
+				<columnDef name="tag_account_account_name" type="STRING"/>
+				<columnDef name="tag_account_account_open_dt" type="STRING"/>
+				<columnDef name="tag_account_account_close_dt" type="STRING"/>
+				<columnDef name="tag_account_credit_limit" type="STRING"/>
+				<columnDef name="tag_account_credit_rating" type="STRING"/>
+				<columnDef name="tag_account_credit_terms" type="STRING"/>
+				<columnDef name="tag_account_account_renew_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_account"/>
+		<target endpoint="in" step="Set int_record_ids [customer_account]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_accountteam">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_accountteam" type="STRING"/>
+				<columnDef name="cio_accountteam_current_ind" type="BOOLEAN"/>
+				<columnDef name="cio_accountteam_credit_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_direct_sales_rep" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_executive" type="STRING"/>
+				<columnDef name="cio_accountteam_acct_team_start_dt" type="DAY"/>
+				<columnDef name="cio_accountteam_acct_team_end_dt" type="DAY"/>
+				<columnDef name="tag_accountteam_current_ind" type="STRING"/>
+				<columnDef name="tag_accountteam_credit_rep" type="STRING"/>
+				<columnDef name="tag_accountteam_direct_sales_rep" type="STRING"/>
+				<columnDef name="tag_accountteam_acct_executive" type="STRING"/>
+				<columnDef name="tag_accountteam_acct_team_start_dt" type="STRING"/>
+				<columnDef name="tag_accountteam_acct_team_end_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,816,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_accountteam"/>
+		<target endpoint="in" step="Set int_record_ids [customer_accountteam]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_address">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_address" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_type" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_type" type="STRING"/>
+				<columnDef name="cio_address_primary_ind" type="BOOLEAN"/>
+				<columnDef name="cio_address_ocd_address_status" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_status" type="STRING"/>
+				<columnDef name="cio_address_attn_to_contact" type="STRING"/>
+				<columnDef name="cio_address_street_address1" type="STRING"/>
+				<columnDef name="cio_address_street_address2" type="STRING"/>
+				<columnDef name="cio_address_city" type="STRING"/>
+				<columnDef name="cio_address_state_territory" type="STRING"/>
+				<columnDef name="cio_address_county" type="STRING"/>
+				<columnDef name="cio_address_country" type="STRING"/>
+				<columnDef name="cio_address_postal_code" type="STRING"/>
+				<columnDef name="cio_address_time_zone" type="STRING"/>
+				<columnDef name="cio_address_ocd_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_ocs_address_geo_area" type="STRING"/>
+				<columnDef name="cio_address_latitude" type="FLOAT"/>
+				<columnDef name="cio_address_longitude" type="FLOAT"/>
+				<columnDef name="tag_address_address_type" type="STRING"/>
+				<columnDef name="tag_address_primary_ind" type="STRING"/>
+				<columnDef name="tag_address_address_status" type="STRING"/>
+				<columnDef name="tag_address_attn_to_contact" type="STRING"/>
+				<columnDef name="tag_address_street_address1" type="STRING"/>
+				<columnDef name="tag_address_street_address2" type="STRING"/>
+				<columnDef name="tag_address_city" type="STRING"/>
+				<columnDef name="tag_address_state_territory" type="STRING"/>
+				<columnDef name="tag_address_county" type="STRING"/>
+				<columnDef name="tag_address_country" type="STRING"/>
+				<columnDef name="tag_address_postal_code" type="STRING"/>
+				<columnDef name="tag_address_time_zone" type="STRING"/>
+				<columnDef name="tag_address_address_geo_area" type="STRING"/>
+				<columnDef name="tag_address_latitude" type="STRING"/>
+				<columnDef name="tag_address_longitude" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="528,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_address"/>
+		<target endpoint="in" step="Set int_record_ids [customer_address]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_contact">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_contact" type="STRING"/>
+				<columnDef name="cio_contact_primary_ind" type="BOOLEAN"/>
+				<columnDef name="cio_contact_ocd_contact_type" type="STRING"/>
+				<columnDef name="cio_contact_ocs_contact_type" type="STRING"/>
+				<columnDef name="cio_contact_title" type="STRING"/>
+				<columnDef name="cio_contact_first_name" type="STRING"/>
+				<columnDef name="cio_contact_middle_name" type="STRING"/>
+				<columnDef name="cio_contact_last_name" type="STRING"/>
+				<columnDef name="cio_contact_full_name" type="STRING"/>
+				<columnDef name="tag_contact_primary_ind" type="STRING"/>
+				<columnDef name="tag_contact_contact_type" type="STRING"/>
+				<columnDef name="tag_contact_title" type="STRING"/>
+				<columnDef name="tag_contact_first_name" type="STRING"/>
+				<columnDef name="tag_contact_middle_name" type="STRING"/>
+				<columnDef name="tag_contact_last_name" type="STRING"/>
+				<columnDef name="tag_contact_full_name" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="168,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_contact"/>
+		<target endpoint="in" step="Set int_record_ids [customer_contact]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_custdemographics">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_custdemographics" type="STRING"/>
+				<columnDef name="cio_custdemographics_current_ind" type="BOOLEAN"/>
+				<columnDef name="cio_custdemographics_ocd_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_gender" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_ethnicity" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_age_generation" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_marital_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocd_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_ocs_employment_status" type="STRING"/>
+				<columnDef name="cio_custdemographics_cust_demo_eff_dt" type="DAY"/>
+				<columnDef name="tag_custdemographics_current_ind" type="STRING"/>
+				<columnDef name="tag_custdemographics_gender" type="STRING"/>
+				<columnDef name="tag_custdemographics_ethnicity" type="STRING"/>
+				<columnDef name="tag_custdemographics_age_generation" type="STRING"/>
+				<columnDef name="tag_custdemographics_marital_status" type="STRING"/>
+				<columnDef name="tag_custdemographics_employment_status" type="STRING"/>
+				<columnDef name="tag_custdemographics_cust_demo_eff_dt" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_custdemographics"/>
+		<target endpoint="in" step="Set int_record_ids [customer_custdemographics]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_email">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_email" type="STRING"/>
+				<columnDef name="cio_email_primary_ind" type="BOOLEAN"/>
+				<columnDef name="cio_email_ocd_email_type" type="STRING"/>
+				<columnDef name="cio_email_ocs_email_type" type="STRING"/>
+				<columnDef name="cio_email_email_address" type="STRING"/>
+				<columnDef name="cio_email_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_email_ocs_comm_status" type="STRING"/>
+				<columnDef name="tag_email_primary_ind" type="STRING"/>
+				<columnDef name="tag_email_email_type" type="STRING"/>
+				<columnDef name="tag_email_email_address" type="STRING"/>
+				<columnDef name="tag_email_comm_status" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_email"/>
+		<target endpoint="in" step="Set int_record_ids [customer_email]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (in_customer_phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.InputStep" disabled="false" id="in_customer_phone">
+		<properties>
+			<columns>
+				<columnDef name="int_record_id_level_1" type="LONG"/>
+				<columnDef name="int_record_id_level_2" type="LONG"/>
+				<columnDef name="eng_id" type="STRING"/>
+				<columnDef name="eng_parent_id" type="STRING"/>
+				<columnDef name="eng_source_name" type="STRING"/>
+				<columnDef name="eng_source_instance_id" type="STRING"/>
+				<columnDef name="eng_source_instance_id_name" type="STRING"/>
+				<columnDef name="eng_status" type="STRING"/>
+				<columnDef name="eng_status_reason" type="STRING"/>
+				<columnDef name="eng_source_created_date" type="DATETIME"/>
+				<columnDef name="eng_source_created_by" type="STRING"/>
+				<columnDef name="eng_source_modified_date" type="DATETIME"/>
+				<columnDef name="eng_source_modified_by" type="STRING"/>
+				<columnDef name="eng_ocd_source_status_code" type="STRING"/>
+				<columnDef name="eng_ocs_source_status_code" type="STRING"/>
+				<columnDef name="eng_master_id" type="STRING"/>
+				<columnDef name="eng_match_quality" type="STRING"/>
+				<columnDef name="eng_match_quality_detail" type="STRING"/>
+				<columnDef name="eng_match_rule" type="STRING"/>
+				<columnDef name="eng_match_role" type="STRING"/>
+				<columnDef name="tag_phone" type="STRING"/>
+				<columnDef name="cio_phone_primary_ind" type="BOOLEAN"/>
+				<columnDef name="cio_phone_active_ind" type="BOOLEAN"/>
+				<columnDef name="cio_phone_ocd_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_ocs_phone_type" type="STRING"/>
+				<columnDef name="cio_phone_phone_number" type="STRING"/>
+				<columnDef name="cio_phone_extension" type="STRING"/>
+				<columnDef name="cio_phone_ocd_comm_status" type="STRING"/>
+				<columnDef name="cio_phone_ocs_comm_status" type="STRING"/>
+				<columnDef name="tag_phone_primary_ind" type="STRING"/>
+				<columnDef name="tag_phone_active_ind" type="STRING"/>
+				<columnDef name="tag_phone_phone_type" type="STRING"/>
+				<columnDef name="tag_phone_phone_number" type="STRING"/>
+				<columnDef name="tag_phone_extension" type="STRING"/>
+				<columnDef name="tag_phone_comm_status" type="STRING"/>
+			</columns>
+			<shadowColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1296,24,-1,-1"/>
+	</step>
+	<connection className="com.ataccama.dqc.model.elements.connections.StandardFlowConnection" disabled="false">
+		<source endpoint="out" step="in_customer_phone"/>
+		<target endpoint="in" step="Set int_record_ids [customer_phone]"/>
+		<visual-constraints>
+			<bendpoints/>
+		</visual-constraints>
+	</connection>
+
+
+
+<!-- (out_master_customer) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="-144,384,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_account) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_account">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,1512,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_accountteam) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_accountteam">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,1512,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_address) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_address">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="552,720,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_contact) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_contact">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="192,720,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_custdemographics) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_custdemographics">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="912,720,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_email) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_email">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1656,720,-1,-1"/>
+	</step>
+
+
+
+<!-- (out_master_customer_phone) --><step mode="NORMAL" className="com.ataccama.dqc.tasks.common.usersteps.io.OutputStep" disabled="false" id="out_master_customer_phone">
+		<properties>
+			<requiredColumns/>
+		</properties>
+		<visual-constraints layout="vertical" bounds="1320,720,-1,-1"/>
+	</step>
+
+</purity-config>
